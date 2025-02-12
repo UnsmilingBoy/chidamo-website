@@ -1,5 +1,6 @@
 export function primaryColor() {
-  const month = new Date().getMonth();
+  let month = new Date().getMonth();
+  // month = 5;
   if (month >= 2 && month <= 4) {
     return "#358838"; // Spring (March - May)
   } else if (month >= 5 && month <= 7) {
@@ -12,7 +13,8 @@ export function primaryColor() {
 }
 
 export function logoPicker() {
-  const month = new Date().getMonth();
+  let month = new Date().getMonth();
+  // month = 5;
   if (month >= 2 && month <= 4) {
     return "/images/spring-logo.svg"; // Spring (March - May)
   } else if (month >= 5 && month <= 7) {

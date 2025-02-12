@@ -18,7 +18,8 @@
     "react-dom": "^19.0.0",
     "react-draggable": "^4.4.6",
     "react-slick": "^0.30.3",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "swiper": "^11.2.3"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

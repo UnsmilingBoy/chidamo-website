@@ -16,7 +16,7 @@ export default async function Home() {
       <BannerSlider />
       <div className="flex flex-col mx-20">
         <StoriesSection />
-        <SalesBox />
+        <SalesBox products={products} />
       </div>
     </div>
   );

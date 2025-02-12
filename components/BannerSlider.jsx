@@ -13,16 +13,16 @@ export default function BannerSlider() {
   const settings = {
     arrows: true,
     dots: false,
-    infinite: true, // Infinite loop
-    speed: 500, // Animation speed in milliseconds
-    slidesToShow: 1, // Number of slides visible at a time
-    slidesToScroll: 1, // Number of slides scrolled at a time
-    autoplay: true, // Automatic sliding
-    autoplaySpeed: 3000, // Delay between slides in autoplay
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
   };
 
   return (
-    <Slider {...settings} className="overflow-hidden cursor-grab">
+    <Slider {...settings} className="overflow-hidden cursor-grab select-none">
       {banners.map((banner, index) => (
         <div key={index}>
           <img src={banner} alt={banner + index} />
