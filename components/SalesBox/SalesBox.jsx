@@ -9,7 +9,7 @@ import "swiper/css/scrollbar";
 import ProductTile from "../ProductTile";
 
 export default function SalesBox({ products }) {
-  const banners = [
+  const offersData = [
     ["/images/kafsh.jpg", "کیف فانتزی هرمی دخترونه چرم طبیعی بز", "290000"],
     ["/images/atr.jpg", "کیف فانتزی هرمی دخترونه چرم طبیعی بز", "290000"],
     [
@@ -61,7 +61,7 @@ export default function SalesBox({ products }) {
           {products.map((item, index) => (
             <SwiperSlide key={index}>
               <ProductTile
-                image={banners[index][0]}
+                image={offersData[index][0]}
                 title={item.name}
                 price={item.price}
               />
