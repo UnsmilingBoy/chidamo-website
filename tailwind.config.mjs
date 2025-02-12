@@ -1,3 +1,5 @@
+import { primaryColor } from "./utils/SeasonChanger";
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -8,8 +10,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        primary: primaryColor(),
       },
     },
   },

@@ -11,7 +11,7 @@ export default function RootLayout({ children }) {
     <html lang="en" dir="rtl">
       <body>
         <Header />
-        <div className="pt-36">{children}</div>
+        <div className="pt-44">{children}</div>
       </body>
     </html>
   );
