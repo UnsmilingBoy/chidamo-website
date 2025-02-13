@@ -25,7 +25,7 @@ export default function BannerSlider() {
     <Slider {...settings} className="overflow-hidden cursor-grab select-none">
       {banners.map((banner, index) => (
         <div key={index}>
-          <img src={banner} alt={banner + index} />
+          <img src={banner} alt={"Banner number" + index} />
         </div>
       ))}
     </Slider>

@@ -1,6 +1,7 @@
+let month = new Date().getMonth();
+// month = 5; //For test
+
 export function primaryColor() {
-  let month = new Date().getMonth();
-  // month = 5;
   if (month >= 2 && month <= 4) {
     return "#358838"; // Spring (March - May)
   } else if (month >= 5 && month <= 7) {
@@ -13,8 +14,6 @@ export function primaryColor() {
 }
 
 export function logoPicker() {
-  let month = new Date().getMonth();
-  // month = 5;
   if (month >= 2 && month <= 4) {
     return "/images/spring-logo.svg"; // Spring (March - May)
   } else if (month >= 5 && month <= 7) {
@@ -23,5 +22,17 @@ export function logoPicker() {
     return "/images/autumn-logo.svg"; // Fall (September - November)
   } else {
     return "/images/winter-logo.svg"; // Winter (December - February)
+  }
+}
+
+export function currentSeason() {
+  if (month >= 2 && month <= 4) {
+    return "spring"; // Spring (March - May)
+  } else if (month >= 5 && month <= 7) {
+    return "summer"; // Summer (June - August)
+  } else if (month >= 8 && month <= 10) {
+    return "autumn"; // Fall (September - November)
+  } else {
+    return "winter"; // Winter (December - February)
   }
 }

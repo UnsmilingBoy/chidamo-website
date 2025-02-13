@@ -6,10 +6,9 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import ProductTile from "../ProductTile";
-import Link from "next/link";
+import ProductTile from "@/components/ProductTile";
 
-export default function SalesBox({ products }) {
+export default function ProductsCatalog({ products }) {
   const offersData = [
     ["/images/kafsh.jpg", "کیف فانتزی هرمی دخترونه چرم طبیعی بز", "290000"],
     ["/images/atr.jpg", "کیف فانتزی هرمی دخترونه چرم طبیعی بز", "290000"],
@@ -40,22 +39,19 @@ export default function SalesBox({ products }) {
       "290000",
     ],
   ];
-
   return (
-    <section className="flex flex-col rounded-2xl border-[7px] border-primary p-2">
-      <div className="flex flex-row-reverse relative items-center px-7 py-5 rounded-md text-white bg-primary">
-        <div className="absolute inset-0 flex items-center justify-center font-bold text-lg">
-          تخفیفات زمستانه چیدامو
-        </div>
-        <div className="flex flex-row gap-3">
-          نمایش همه
+    <section className="flex flex-col gap-3 border border-[#b1b1b1] rounded-xl p-7">
+      <div className="flex flex-row justify-between">
+        <p className="text-xl font-medium">انواع کیف در چیدامو</p>
+        <button className="flex flex-row items-center gap-2 px-2 bg-primary rounded-md">
+          <p className="text-white">مشاهده همه</p>
           <Image
             src="/images/left-arrow.svg"
-            alt="Left arrow"
             width={7}
-            height={30}
+            height={10}
+            alt="Left Arrow"
           />
-        </div>
+        </button>
       </div>
       <div className="relative w-full cursor-grab py-5 select-none">
         <Swiper spaceBetween={10} slidesPerView={6}>
@@ -68,7 +64,6 @@ export default function SalesBox({ products }) {
                   title={item.name}
                   price={item.price}
                 />
-
                 {index < products.length - 1 && (
                   <div className="w-[1px] bg-[#dadada] h-[280px]"></div>
                 )}

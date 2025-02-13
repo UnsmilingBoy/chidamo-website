@@ -5,6 +5,7 @@ import CategoryItem from "./CategoryItem";
 import { logoPicker } from "@/utils/SeasonChanger";
 import { useEffect, useState } from "react";
 import Ad from "./Ad";
+import Link from "next/link";
 
 export default function Header() {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -25,7 +26,9 @@ export default function Header() {
 
   return (
     <div
-      className={`${isFixed ? "fixed" : "absolute"} flex flex-col w-full  z-50`}
+      className={`${
+        isFixed ? "fixed border-b border-[#dcdcdc]" : "absolute"
+      } flex flex-col w-full z-50`}
     >
       <Ad />
       <div
@@ -35,12 +38,14 @@ export default function Header() {
       >
         <div className="flex flex-row justify-between">
           <div className="flex flex-row items-center">
-            <Image
-              src={logoPicker()}
-              alt="Logo with leaf"
-              width={135}
-              height={100}
-            />
+            <Link href="/">
+              <Image
+                src={logoPicker()}
+                alt="Logo with leaf"
+                width={135}
+                height={100}
+              />
+            </Link>
             <div className="flex flex-row mx-5 bg-[#F0F0F0] rounded-xl items-center px-5 h-12">
               <Search className="text-[#9C9D9E]" />
               <input

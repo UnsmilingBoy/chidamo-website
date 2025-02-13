@@ -1,4 +1,6 @@
 import BannerSlider from "@/components/BannerSlider";
+import MiniBanner from "@/components/MiniBanners";
+import ProductsCatalog from "@/components/ProductsCatalog";
 import SalesBox from "@/components/SalesBox/SalesBox";
 import StoriesSection from "@/components/StoriesSection/StoriesSection";
 
@@ -17,6 +19,8 @@ export default async function Home() {
       <div className="flex flex-col mx-20">
         <StoriesSection />
         <SalesBox products={products} />
+        <MiniBanner />
+        <ProductsCatalog products={products} />
       </div>
     </div>
   );
