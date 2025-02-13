@@ -6,8 +6,11 @@ import { logoPicker } from "@/utils/SeasonChanger";
 import { useEffect, useState } from "react";
 import Ad from "./Ad";
 import Link from "next/link";
+import CategoryDropdownItem from "./CategoryDropdownItem";
 
 export default function Header() {
+  const categoryDropdownItems = ["کیف و کفش", "جواهرات", "نقاشی"];
+
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isFixed, setIsFixed] = useState(false);
 
@@ -69,10 +72,19 @@ export default function Header() {
         </div>
         {!isFixed && (
           <div className={`flex flex-row items-center gap-8`}>
-            <CategoryItem
-              title="دسته بندی محصولات"
-              image="/images/category.svg"
-            />
+            <div className="relative group">
+              <CategoryItem
+                title="دسته بندی محصولات"
+                image="/images/category.svg"
+              />
+              <div className="absolute right-0 opacity-0 pointer-events-none pt-6 group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-100 delay-150 w-80">
+                <ul className="text-sm bg-white shadow-md rounded-md overflow-hidden">
+                  {categoryDropdownItems.map((item, index) => (
+                    <CategoryDropdownItem key={index} title={item} />
+                  ))}
+                </ul>
+              </div>
+            </div>
             <div className="w-[1px] h-4 bg-[#b9b9b9]"></div>
             <CategoryItem
               title="محصولات تخفیف دار"
