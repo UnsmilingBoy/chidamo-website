@@ -12,6 +12,17 @@ export function primaryColor() {
     return "#2E5077"; // Winter (December - February)
   }
 }
+export function footerColor() {
+  if (month >= 2 && month <= 4) {
+    return "#19401A"; // Spring (March - May)
+  } else if (month >= 5 && month <= 7) {
+    return "#00403F"; // Summer (June - August)
+  } else if (month >= 8 && month <= 10) {
+    return "#40160D"; // Fall (September - November)
+  } else {
+    return "#192B40"; // Winter (December - February)
+  }
+}
 
 export function logoPicker() {
   if (month >= 2 && month <= 4) {

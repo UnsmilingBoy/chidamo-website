@@ -1,4 +1,4 @@
-import toPersianNumber from "@/utils/toPersianNumber";
+import { toPersianPrice } from "@/utils/toPersianNumber";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -19,7 +19,7 @@ export default function ProductTile({ image, title, price, productId }) {
           {title}
         </p>
         <p className="w-full text-left font-bold text-primary">
-          {toPersianNumber(price) + " تومان"}
+          {toPersianPrice(price) + " تومان"}
         </p>
       </div>
     </Link>

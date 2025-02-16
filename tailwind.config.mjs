@@ -1,4 +1,4 @@
-import { primaryColor } from "./utils/SeasonChanger";
+import { footerColor, primaryColor } from "./utils/SeasonChanger";
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -11,6 +11,16 @@ export default {
     extend: {
       colors: {
         primary: primaryColor(),
+        footer: footerColor(),
+      },
+      animation: {
+        rotate: "rotate 0.3s ease-in-out",
+      },
+      keyframes: {
+        rotate: {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(90deg)" },
+        },
       },
     },
   },

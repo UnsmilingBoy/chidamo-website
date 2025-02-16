@@ -8,8 +8,11 @@ import Ad from "./Ad";
 import Link from "next/link";
 import CategoryDropdownItem from "./CategoryDropdownItem";
 
-export default function Header() {
-  const categoryDropdownItems = ["کیف و کفش", "جواهرات", "نقاشی"];
+export default function Header({ categories }) {
+  const categoryDropdownItems = [];
+  for (let i = 0; i < categories.length; i++) {
+    categoryDropdownItems.push(categories[i].name);
+  }
 
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isFixed, setIsFixed] = useState(false);
@@ -77,8 +80,8 @@ export default function Header() {
                 title="دسته بندی محصولات"
                 image="/images/category.svg"
               />
-              <div className="absolute right-0 opacity-0 pointer-events-none pt-6 group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-100 delay-150 w-80">
-                <ul className="text-sm bg-white shadow-md rounded-md overflow-hidden">
+              <div className="absolute w-[600px] right-0 opacity-0 pointer-events-none pt-6 group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-100 delay-150">
+                <ul className="grid grid-cols-3 bg-white shadow-md rounded-md overflow-hidden">
                   {categoryDropdownItems.map((item, index) => (
                     <CategoryDropdownItem key={index} title={item} />
                   ))}
