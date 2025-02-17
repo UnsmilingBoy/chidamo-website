@@ -17,14 +17,15 @@ export default async function CategoryPage({ params }) {
       <p className="text-3xl font-bold">{id}</p>
       <div className="flex flex-row gap-10">
         <div className="flex flex-row w-96 h-screen border border-[#BBB] rounded-md"></div>
-        <div className="grid grid-cols-5">
+        <div className="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5">
           {products.map((product, index) => (
             <ProductTile
               key={index}
               image="/images/kafsh.jpg"
-              price={product.price}
+              price={product["regular_price"]}
               title={product.name}
               productId={product.id}
+              onSalePrice={product["sale_price"]}
             />
           ))}
         </div>

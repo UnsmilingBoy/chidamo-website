@@ -62,11 +62,12 @@ export default function ProductsCatalog({ products }) {
                   productId={item.id}
                   image={offersData[index][0]}
                   title={item.name}
-                  price={item.price}
+                  price={item["regular_price"]}
+                  onSalePrice={item["sale_price"]}
                 />
-                {index < products.length - 1 && (
+                {/* {index < products.length - 1 && (
                   <div className="w-[1px] bg-[#dadada] h-[280px]"></div>
-                )}
+                )} */}
               </div>
             </SwiperSlide>
           ))}

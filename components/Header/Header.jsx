@@ -7,8 +7,18 @@ import { useEffect, useState } from "react";
 import Ad from "./Ad";
 import Link from "next/link";
 import CategoryDropdownItem from "./CategoryDropdownItem";
+import { useRouter } from "next/navigation";
 
 export default function Header({ categories }) {
+  const router = useRouter();
+
+  const [inputValue, setInputValue] = useState("");
+  function searchFunction(e) {
+    if (e.key === "Enter") {
+      router.push(`/search/${inputValue}`);
+    }
+  }
+
   const categoryDropdownItems = [];
   const categoryIds = [];
   for (let i = 0; i < categories.length; i++) {
@@ -57,6 +67,9 @@ export default function Header({ categories }) {
             <div className="flex flex-row mx-5 bg-[#F0F0F0] rounded-xl items-center px-5 h-12">
               <Search className="text-[#9C9D9E]" />
               <input
+                onKeyDown={searchFunction}
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
                 type="text"
                 placeholder="محصول، برند یا دسته مورد نظرتان را جستجو کنید."
                 className="text-sm bg-[#F0F0F0] outline-none text-black px-2  w-[500px]"
