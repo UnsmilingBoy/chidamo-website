@@ -11,7 +11,9 @@ export default function Ad() {
         alt="Leaf image"
       />
       <div className="flex flex-row gap-3">
-        <p className="text-lg text-white font-bold">تخفیفات زمستانه چیدامو</p>
+        <p className="text-lg text-white font-bold animate-pulse">
+          تخفیفات زمستانه چیدامو
+        </p>
         <div className="flex flex-row gap-2 items-center bg-[#FEC30C] rounded-2xl px-3">
           <p className="text-[#282828]">خرید</p>
           <Image

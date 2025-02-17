@@ -25,7 +25,7 @@ export default async function RootLayout({ children }) {
         <Header categories={categories} />
         <div className="pt-[183px]">{children}</div>
         <ExpandCollapseText />
-        <Footer />
+        <Footer categories={categories} />
       </body>
     </html>
   );

@@ -10,8 +10,10 @@ import CategoryDropdownItem from "./CategoryDropdownItem";
 
 export default function Header({ categories }) {
   const categoryDropdownItems = [];
+  const categoryIds = [];
   for (let i = 0; i < categories.length; i++) {
     categoryDropdownItems.push(categories[i].name);
+    categoryIds.push(categories[i].id);
   }
 
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -83,7 +85,11 @@ export default function Header({ categories }) {
               <div className="absolute w-[600px] right-0 opacity-0 pointer-events-none pt-6 group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-100 delay-150">
                 <ul className="grid grid-cols-3 bg-white shadow-md rounded-md overflow-hidden">
                   {categoryDropdownItems.map((item, index) => (
-                    <CategoryDropdownItem key={index} title={item} />
+                    <CategoryDropdownItem
+                      key={index}
+                      title={item}
+                      id={categoryIds[index]}
+                    />
                   ))}
                 </ul>
               </div>

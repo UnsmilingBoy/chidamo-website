@@ -8,9 +8,7 @@ import StoriesSection from "@/components/StoriesSection/StoriesSection";
 
 async function getProducts() {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-  const res = await fetch(baseUrl + "/api/products", {
-    cache: "force-cache",
-  });
+  const res = await fetch(baseUrl + "/api/products");
   const products = await res.json();
   return products;
 }
