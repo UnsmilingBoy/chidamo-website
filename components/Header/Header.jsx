@@ -77,11 +77,13 @@ export default function Header({ categories }) {
             </div>
           </div>
           <div className="flex flex-row items-center gap-5 text-[#313131]">
-            <button className="flex flex-row items-center gap-4 border border-[#adadad] rounded-xl px-5 py-2 mx-2">
-              <p>ورود</p>
-              <div className="w-[1.5px] h-5 bg-[#666]"></div>
-              <p>ثبت نام</p>
-            </button>
+            <Link href="/login">
+              <button className="flex flex-row items-center gap-4 border border-[#adadad] rounded-xl px-5 py-2 mx-2">
+                <p>ورود</p>
+                <div className="w-[1.5px] h-5 bg-[#666]"></div>
+                <p>ثبت نام</p>
+              </button>
+            </Link>
             <div className="w-[1px] h-7 bg-[#666]"></div>
             <button>
               <img src="/images/shopping-cart.svg" alt="Shopping cart icon" />
