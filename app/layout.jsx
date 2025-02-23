@@ -2,7 +2,7 @@
 import "@/styles/globals.css";
 
 export const metadata = {
-  title: "Chidamo",
+  title: "فروشگاه اینترنتی چیدامو",
   description: "My App Description",
   icons: "/favicon.ico",
 };

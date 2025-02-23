@@ -45,7 +45,7 @@ export default function Footer({ categories }) {
   };
 
   return (
-    <div className="flex flex-col m-5 text-white">
+    <footer className="flex flex-col m-5 text-white">
       <div className="flex flex-col w-full py-10 px-20 bg-primary rounded-t-2xl">
         <div className="flex justify-between items-center w-full">
           <Image
@@ -105,6 +105,6 @@ export default function Footer({ categories }) {
           چیدامو می‌باشد.
         </p>
       </div>
-    </div>
+    </footer>
   );
 }

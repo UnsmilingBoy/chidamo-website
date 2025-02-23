@@ -43,7 +43,7 @@ export default function Header({ categories }) {
   }, []);
 
   return (
-    <div
+    <header
       className={`${
         isFixed ? "fixed border-b border-[#dcdcdc]" : "absolute"
       } flex flex-col w-full z-50`}
@@ -122,6 +122,6 @@ export default function Header({ categories }) {
           </div>
         )}
       </div>
-    </div>
+    </header>
   );
 }

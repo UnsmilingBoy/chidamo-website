@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Ad() {
   return (
-    <div className="flex flex-row justify-evenly items-center w-full h-12 bg-primary select-none cursor-pointer ">
+    <aside className="flex flex-row justify-evenly items-center w-full h-12 bg-primary select-none cursor-pointer ">
       <Image
         className="object-cover"
         src="/images/barg.png"
@@ -31,6 +31,6 @@ export default function Ad() {
         height={20}
         alt="Leaf image"
       />
-    </div>
+    </aside>
   );
 }
