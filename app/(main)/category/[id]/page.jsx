@@ -39,7 +39,7 @@ export default async function CategoryPage({ params }) {
           {products.map((product, index) => (
             <ProductTile
               key={index}
-              image="/images/kafsh.jpg"
+              image={product?.images?.[0]?.src || "/images/atr.jpg"}
               price={product["regular_price"]}
               title={product.name}
               productId={product.id}
