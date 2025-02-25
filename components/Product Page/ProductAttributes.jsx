@@ -1,6 +1,6 @@
 export default function ProductAttributes({ attributesList }) {
   return (
-    <div className="flex flex-col gap-2 p-4 text-sm border-2 rounded-2xl border-primary">
+    <div className="flex flex-col gap-2 p-4 text-sm border-2 rounded-2xl border-primary max-w-[500px]">
       {attributesList.map((att, index) => (
         <div key={index} className="flex flex-col gap-2">
           <div className="flex flex-row gap-7">
