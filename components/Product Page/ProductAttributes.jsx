@@ -1,5 +1,3 @@
-import { Divider } from "@mui/material";
-
 export default function ProductAttributes({ attributesList }) {
   return (
     <div className="flex flex-col gap-2 p-4 text-sm border-2 rounded-2xl border-primary">
@@ -9,7 +7,9 @@ export default function ProductAttributes({ attributesList }) {
             <p className="text-[#767676]">{att[0]}:</p>
             <p className="font-medium">{att[1]}</p>
           </div>
-          {index != attributesList.length - 1 && <Divider />}
+          {index != attributesList.length - 1 && (
+            <div className="h-[1px] w-full bg-[#D9D9D9]"></div>
+          )}
         </div>
       ))}
     </div>

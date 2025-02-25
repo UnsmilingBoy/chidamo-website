@@ -24,6 +24,18 @@ export function footerColor() {
   }
 }
 
+export function productPageLightPrimaryColor() {
+  if (month >= 2 && month <= 4) {
+    return "#F5FFF5"; // Spring (March - May)
+  } else if (month >= 5 && month <= 7) {
+    return "#F5FFFF"; // Summer (June - August)
+  } else if (month >= 8 && month <= 10) {
+    return "#FFF7F5"; // Fall (September - November)
+  } else {
+    return "#F5FAFF"; // Winter (December - February)
+  }
+}
+
 export function logoPicker() {
   if (month >= 2 && month <= 4) {
     return "/images/spring-logo.svg"; // Spring (March - May)

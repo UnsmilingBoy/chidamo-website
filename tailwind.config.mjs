@@ -1,4 +1,9 @@
-import { footerColor, primaryColor } from "./utils/SeasonChanger";
+/* eslint-disable import/no-anonymous-default-export */
+import {
+  footerColor,
+  primaryColor,
+  productPageLightPrimaryColor,
+} from "./utils/SeasonChanger";
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -12,6 +17,7 @@ export default {
       colors: {
         primary: primaryColor(),
         footer: footerColor(),
+        productPageLightPrimaryColor: productPageLightPrimaryColor(),
       },
       animation: {
         rotate: "rotate 0.3s ease-in-out",

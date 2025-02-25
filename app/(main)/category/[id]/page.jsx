@@ -1,11 +1,5 @@
 import FilterItem from "@/components/FilterItem";
 import ProductTile from "@/components/ProductTile";
-import {
-  Filter,
-  Filter1Outlined,
-  Filter5,
-  FilterTiltShiftSharp,
-} from "@mui/icons-material";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 

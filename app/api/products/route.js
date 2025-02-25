@@ -13,12 +13,14 @@ export async function GET(request) {
   const { searchParams } = new URL(request.url);
   const category = searchParams.get("category");
   const search = searchParams.get("search");
+  const include = searchParams.get("include");
   const stock_status = searchParams.get("stock_status");
 
   // Build query string dynamically
   let queryParams = new URLSearchParams();
   if (category) queryParams.append("category", category);
   if (search) queryParams.append("search", search);
+  if (include) queryParams.append("include", include);
   if (stock_status) queryParams.append("stock_status", stock_status);
 
   try {

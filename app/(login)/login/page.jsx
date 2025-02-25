@@ -1,5 +1,6 @@
 "use client";
 import LoginButton from "@/components/LoginButton";
+import StickyComponent from "@/components/Sticky";
 import { logoPicker } from "@/utils/SeasonChanger";
 import Image from "next/image";
 import Link from "next/link";

@@ -1,69 +1,78 @@
 "use client";
 
-import { toPersianNumber, toPersianPrice } from "@/utils/toPersianNumber";
-import { Inventory, ShoppingCart, Store } from "@mui/icons-material";
-import { Button } from "@mui/material";
+import { toPersianPrice } from "@/utils/toPersianNumber";
+import { SettingsIcon, ShoppingCartIcon, TimerIcon } from "lucide-react";
 import Image from "next/image";
 
 export default function PricingOverview({ product }) {
   return (
-    <div className="flex flex-col gap-2 text-sm rounded-lg border shadow-md border-[#D9D9D9] p-5 w-[500px] h-fit">
-      <div className="flex flex-col gap-2 p-5 bg-[#FFF7F5] rounded-md">
-        <div className="flex flex-row gap-2 items-center">
-          <Image
-            src={"/images/shop-icon.svg"}
-            width={24}
-            height={30}
-            alt="Shop icon"
-          />
-          <p className="text-lg">چیدامو</p>
+    <div className="flex flex-col gap-5 text-sm rounded-lg border shadow-md border-[#D9D9D9] p-5 w-fit h-fit text-nowrap">
+      <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 p-5 bg-productPageLightPrimaryColor rounded-md">
+          <div className="flex flex-row gap-2 items-center">
+            <Image
+              src={"/images/shop-icon.svg"}
+              width={24}
+              height={30}
+              alt="Shop icon"
+            />
+            <p className="text-lg">چیدامو</p>
+          </div>
+          <div className="flex flex-row gap-2 items-center">
+            <Image
+              src={"/Images/box-icon.svg"}
+              width={20}
+              height={20}
+              alt="Box icon"
+            />
+            <p className="text-sm text-primary font-medium">
+              موجود در انبار فروشنده
+            </p>
+          </div>
         </div>
-        <div className="flex flex-row gap-1 items-center">
+        <div className="flex flex-row gap-2 p-5 bg-productPageLightPrimaryColor rounded-md">
+          <SettingsIcon />
+          <p>ارزیابی عملکرد:</p>
+          <p className="text-green-700 font-medium">خیلی خوب</p>
+        </div>
+        <div className="flex flex-row gap-2 p-5 bg-productPageLightPrimaryColor rounded-md">
           <Image
-            src={"/Images/box-icon.svg"}
+            src={"/images/certified-icon.svg"}
             width={20}
             height={20}
-            alt="Box icon"
+            alt="Settings icon"
           />
-          <p className="text-sm">
-            موجود در انبار فروشنده (ارسال از 1 روز کاری)
-          </p>
+          <p className="">ضمانت اصالت کالا</p>
         </div>
       </div>
-      <div className="flex flex-row gap-2 p-5 bg-[#FFF7F5] rounded-md">
-        <Image
-          src={"/images/settings-icon.svg"}
-          width={20}
-          height={20}
-          alt="Settings icon"
-        />
-        <p>ارزیابی عملکرد کلی</p>
-        <p className="text-green-800">خیلی خوب</p>
-      </div>
-      <div className="flex flex-row gap-2 p-5 bg-[#FFF7F5] rounded-md">
-        <Image
-          src={"/images/certified-icon.svg"}
-          width={20}
-          height={20}
-          alt="Settings icon"
-        />
-        <p>ضمانت اصالت کالا</p>
-      </div>
-      <div className="flex flex-row justify-end items-center gap-2 mt-5">
-        <p className="font-medium text-2xl">{toPersianPrice(product.price)}</p>
-        <p className="text-sm">تومان</p>
-      </div>
-      <Button
-        className="bg-[#009B1C] font-[Shabnam] py-3 my-3"
-        variant="contained"
+      <div
+        className={` flex gap-10 ${
+          product["stock_quantity"] < 10 ? "justify-between" : "justify-end"
+        }  items-center`}
       >
+        {product["stock_quantity"] < 10 && (
+          <div className="flex flex-row gap-2 items-center">
+            <TimerIcon />
+            <p className="text-xs font-bold text-red-600">
+              2 عدد در انبار باقی مانده
+            </p>
+          </div>
+        )}
+        <div className="flex flex-row justify-end items-center gap-2">
+          <p className="font-medium text-2xl">
+            {toPersianPrice(product.price)}
+          </p>
+          <p className="text-sm">تومان</p>
+        </div>
+      </div>
+      <button className="bg-primary font-[Shabnam] p-3 rounded-md my-3 text-white">
         <div className="flex flex-row-reverse relative w-full">
-          <p className="absolute inset-0 flex items-center justify-center text-[16px]">
+          <p className="absolute inset-0 flex items-center justify-center">
             افزودن به سبد خرید
           </p>
-          <ShoppingCart />
+          <ShoppingCartIcon size={24} />
         </div>
-      </Button>
+      </button>
     </div>
   );
 }

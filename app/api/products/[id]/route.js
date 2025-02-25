@@ -9,7 +9,7 @@ export async function GET(request, { params }) {
     "base64"
   );
 
-  const { id } = params; // Extract product ID from the URL
+  const { id } = await params;
 
   try {
     // Construct the WooCommerce API URL

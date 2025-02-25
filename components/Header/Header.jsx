@@ -1,5 +1,4 @@
 "use client";
-import { Search, ShoppingCart } from "@mui/icons-material";
 import Image from "next/image";
 import CategoryItem from "./CategoryItem";
 import { logoPicker } from "@/utils/SeasonChanger";
@@ -8,6 +7,7 @@ import Ad from "./Ad";
 import Link from "next/link";
 import CategoryDropdownItem from "./CategoryDropdownItem";
 import { useRouter } from "next/navigation";
+import { SearchIcon } from "lucide-react";
 
 export default function Header({ categories }) {
   const router = useRouter();
@@ -65,7 +65,7 @@ export default function Header({ categories }) {
               />
             </Link>
             <div className="flex flex-row mx-5 bg-[#F0F0F0] rounded-xl items-center px-5 h-12">
-              <Search className="text-[#9C9D9E]" />
+              <SearchIcon className="text-[#9C9D9E]" />
               <input
                 onKeyDown={searchFunction}
                 value={inputValue}
@@ -77,7 +77,7 @@ export default function Header({ categories }) {
             </div>
           </div>
           <div className="flex flex-row items-center gap-5 text-[#313131]">
-            <Link href="/login">
+            <Link href="/cat">
               <button className="flex flex-row items-center gap-4 border border-[#adadad] rounded-xl px-5 py-2 mx-2">
                 <p>ورود</p>
                 <div className="w-[1.5px] h-5 bg-[#666]"></div>

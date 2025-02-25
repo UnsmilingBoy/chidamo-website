@@ -1,10 +1,5 @@
 "use client";
-import {
-  ArrowDropDown,
-  ArrowDropDownCircle,
-  ArrowDropDownRounded,
-  ArrowDropDownSharp,
-} from "@mui/icons-material";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
 
 export default function FilterItem() {
@@ -49,12 +44,12 @@ export default function FilterItem() {
         {isExpanded ? (
           <div className="flex flex-row gap-2">
             <p>نمایش کمتر</p>
-            <ArrowDropDownSharp className="rotate-180" />
+            <ChevronUp />
           </div>
         ) : (
           <div className="flex flex-row gap-2">
             <p>نمایش بیشتر</p>
-            <ArrowDropDownSharp />
+            <ChevronDown />
           </div>
         )}
       </button>
