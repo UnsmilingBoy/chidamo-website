@@ -1,7 +1,6 @@
-import FilterItem from "@/components/FilterItem";
-import ProductTile from "@/components/ProductTile";
-import Image from "next/image";
-import { notFound } from "next/navigation";
+import CategoryFilters from "@/components/Category Page/CategoryFilters";
+import CategoryProducts from "@/components/Category Page/CategoryProducts";
+import Link from "next/link";
 
 async function getProducts(id) {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
@@ -10,36 +9,33 @@ async function getProducts(id) {
   return products;
 }
 
+async function getCategoryInfo(id) {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+  const res = await fetch(baseUrl + `/api/categories/${id}`);
+  const category = await res.json();
+  return category;
+}
+
 export default async function CategoryPage({ params }) {
   const { id } = await params;
   const products = await getProducts(id);
+  const category = await getCategoryInfo(id);
 
   return (
-    <div className="p-6">
-      <p className="text-3xl font-bold">{id}</p>
-      <div className="flex flex-row gap-10">
-        <div className="flex flex-col items-start w-96 h-screen border border-[#BBB] rounded-md">
-          <div className="flex flex-row p-4 w-full gap-2 items-center border-b border-[#BBB]">
-            <Image
-              src="/images/filter-icon.svg"
-              width={20}
-              height={20}
-              alt="Filter icon"
-            />
-            <p>فیلتر ها</p>
-          </div>
-        </div>
-        <div className="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5">
-          {products.map((product, index) => (
-            <ProductTile
-              key={index}
-              image={product?.images?.[0]?.src || "/images/atr.jpg"}
-              price={product["regular_price"]}
-              title={product.name}
-              productId={product.id}
-              onSalePrice={product["sale_price"]}
-            />
-          ))}
+    <div className="p-6 flex justify-center">
+      <div className="flex flex-col gap-7">
+        <p className="text-sm text-[#797979] font-medium">
+          {<Link href={"/"}>فروشگاه اینترنتی چیدامو</Link>}
+          <span> / </span>
+          {
+            <Link className="text-[#505050]" href={`/category/${id}`}>
+              {category.name}
+            </Link>
+          }
+        </p>
+        <div className="flex flex-row gap-10">
+          <CategoryFilters />
+          <CategoryProducts products={products} />
         </div>
       </div>
     </div>
