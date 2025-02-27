@@ -50,13 +50,15 @@ export default function PricingOverview({ product }) {
           product["stock_quantity"] < 10 ? "justify-between" : "justify-end"
         }  items-center`}
       >
-        {product["stock_quantity"] < 10 && (
+        {product["stock_quantity"] < 10 ? (
           <div className="flex flex-row gap-2 items-center">
             <TimerIcon />
             <p className="text-xs font-bold text-red-600">
               2 عدد در انبار باقی مانده
             </p>
           </div>
+        ) : (
+          <div className="w-36"></div>
         )}
         <div className="flex flex-row justify-end items-center gap-2">
           <p className="font-medium text-2xl">

@@ -27,7 +27,7 @@ export default function CategoryProducts({ products }) {
           </p>
         ))}
       </div>
-      <div className="w-fit grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5">
+      <div className="w-fit grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 3xl:grid-cols-5">
         {products.map((product, index) => (
           <div key={index} className="w-[250px]">
             <ProductTile

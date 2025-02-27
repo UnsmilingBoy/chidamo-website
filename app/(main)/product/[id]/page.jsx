@@ -43,36 +43,38 @@ export default async function productPage({ params }) {
   };
 
   return (
-    <div className="flex flex-col px-14 py-10 gap-20">
-      {/* PATH HERE (فروشگاه اینترنتی چیدامو / صنعت مد / کیف و کفش / کیف و کفش زنانه / کیف کج زنانه چرم طبیعی بز کد 01)  */}
+    <div className="flex justify-center p-6 w-full">
+      <div className="flex flex-col gap-20 h-full w-[1400px]">
+        {/* PATH HERE (فروشگاه اینترنتی چیدامو / صنعت مد / کیف و کفش / کیف و کفش زنانه / کیف کج زنانه چرم طبیعی بز کد 01)  */}
 
-      <section className="flex flex-row gap-10 justify-between">
-        {/*  Overview of the product (images, compact details and price) */}
-        <ProductOverview product={data} />
-        <PricingOverview product={data} />
-      </section>
-      <div className="flex flex-row justify-center gap-12 w-full items-center">
-        {Object.keys(validations).map((key, index) => (
-          <div key={index} className="flex flex-row gap-5 w-fit items-center">
-            <Image
-              src={validations[key][0]}
-              width={validations[key][1]}
-              height={60}
-              alt="key"
-            />
-            <p className="text-[#414141] text-sm">{key}</p>
-          </div>
-        ))}
-      </div>
-      <section className="flex flex-row gap-10">
-        <ProductDetails product={data} />
-        <div className="sticky top-52 h-full">
+        <section className="flex flex-row gap-10 justify-between">
+          {/*  Overview of the product (images, compact details and price) */}
+          <ProductOverview product={data} />
           <PricingOverview product={data} />
+        </section>
+        <div className="flex flex-row justify-center gap-12 w-full items-center">
+          {Object.keys(validations).map((key, index) => (
+            <div key={index} className="flex flex-row gap-5 w-fit items-center">
+              <Image
+                src={validations[key][0]}
+                width={validations[key][1]}
+                height={60}
+                alt="key"
+              />
+              <p className="text-[#414141] text-sm">{key}</p>
+            </div>
+          ))}
         </div>
-      </section>
-      <section>
-        <RelatedProducts dataList={relatedProductsData} />
-      </section>
+        <section className="flex flex-row gap-10">
+          <ProductDetails product={data} />
+          <div className="sticky top-36 h-full w-fit">
+            <PricingOverview product={data} />
+          </div>
+        </section>
+        <section>
+          <RelatedProducts dataList={relatedProductsData} />
+        </section>
+      </div>
     </div>
   );
 }

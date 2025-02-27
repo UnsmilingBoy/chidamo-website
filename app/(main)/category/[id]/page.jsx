@@ -22,7 +22,7 @@ export default async function CategoryPage({ params }) {
   const category = await getCategoryInfo(id);
 
   return (
-    <div className="p-6 flex justify-center">
+    <div className="p-6 flex justify-center w-full">
       <div className="flex flex-col gap-7">
         <p className="text-sm text-[#797979] font-medium">
           {<Link href={"/"}>فروشگاه اینترنتی چیدامو</Link>}
