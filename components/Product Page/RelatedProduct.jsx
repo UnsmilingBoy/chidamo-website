@@ -6,9 +6,8 @@ export default function RelatedProducts({ dataList }) {
       <p className="font-bold text-lg">محصولات مشابه</p>
       <div className="flex flex-row">
         {dataList.map((product, index) => (
-          <div className="w-56">
+          <div key={index} className="w-56">
             <ProductTile
-              key={index}
               image={product?.images?.[0]?.src || "/images/atr.jpg"}
               title={product.name}
               productId={product.id}

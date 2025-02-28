@@ -2,9 +2,11 @@ import CategoryFilters from "@/components/Category Page/CategoryFilters";
 import CategoryProducts from "@/components/Category Page/CategoryProducts";
 import Link from "next/link";
 
-async function getProducts(id) {
+async function getProducts(id, available) {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-  const res = await fetch(baseUrl + `/api/products?category=${id}`);
+  const res = await fetch(
+    baseUrl + `/api/products?category=${id}&stock_status=${available || ""}`
+  );
   const products = await res.json();
   return products;
 }
@@ -16,9 +18,11 @@ async function getCategoryInfo(id) {
   return category;
 }
 
-export default async function CategoryPage({ params }) {
+export default async function CategoryPage({ params, searchParams }) {
   const { id } = await params;
-  const products = await getProducts(id);
+  const { available } = await searchParams;
+
+  const products = await getProducts(id, available);
   const category = await getCategoryInfo(id);
 
   return (

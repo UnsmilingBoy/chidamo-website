@@ -3,14 +3,23 @@
 import Image from "next/image";
 import HeadlessSwitch from "../Switch";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { redirect } from "next/navigation";
-import { useState } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 export default function CategoryFilters() {
   const [expandPriceFilter, setExpandPriceFilter] = useState(false);
   const [expandColorFilter, setExpandColorFilter] = useState(false);
   const [expandSellerFilter, setExpandSellerFilter] = useState(false);
+
+  const [enable, setEnable] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const pathName = usePathname();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const params = new URLSearchParams(searchParams.toString());
 
   const colors = {
     red: "قرمز",
@@ -19,6 +28,24 @@ export default function CategoryFilters() {
   };
 
   const sellers = ["چیدامو", "خلیل شاپ"];
+
+  function handleSwitch() {
+    setIsLoading(true);
+
+    if (params.get("available") === "instock") {
+      params.delete("available");
+    } else {
+      params.set("available", "instock");
+    }
+
+    router.push(`${pathName}?${params.toString()}`);
+  }
+
+  useEffect(() => {
+    const isInStock = searchParams.get("available") === "instock";
+    setEnable(isInStock);
+    setIsLoading(false);
+  }, [searchParams]);
 
   return (
     <div className="flex flex-col items-start w-[300px] border border-[#BBB] rounded-md h-fit">
@@ -33,7 +60,18 @@ export default function CategoryFilters() {
       </div>
       <div className="flex flex-row w-full items-center justify-between p-3 cursor-pointer">
         <p>فقط کالا های موجود</p>
-        <HeadlessSwitch />
+
+        {isLoading ? (
+          <div className=" px-2">
+            <div className="w-5 h-5 border-2 border-t-transparent border-[#4A4A4A] rounded-full animate-spin"></div>
+          </div>
+        ) : (
+          <HeadlessSwitch
+            enable={enable}
+            setEnable={setEnable}
+            handleSwitch={handleSwitch}
+          />
+        )}
       </div>
       <div
         onClick={() => setExpandPriceFilter(!expandPriceFilter)}
