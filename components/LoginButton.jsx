@@ -1,9 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { redirect } from "next/navigation";
-import { Router, useRouter } from "next/router";
 import { useState } from "react";
 
 const loginUser = async (username, password) => {
@@ -17,7 +15,7 @@ const loginUser = async (username, password) => {
 
     const data = await response.json();
 
-    localStorage.setItem("token", data.token); // Store token
+    // localStorage.setItem("token", data.token); // Store token
     return [data, response.status];
   } catch (error) {
     console.error("Login error:", error.message);

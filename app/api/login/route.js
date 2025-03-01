@@ -1,3 +1,6 @@
+import { NextResponse } from "next/server";
+import { cookies } from "next/headers";
+
 export async function POST(req) {
   try {
     const { username, password } = await req.json();
@@ -13,14 +16,22 @@ export async function POST(req) {
 
     const data = await response.json();
 
-    if (!response.ok) {
-      return new Response(
-        JSON.stringify({ message: data.message || "Login failed" }),
-        { status: 400 }
-      );
+    if (response.ok && data.token) {
+      const cookieStore = await cookies();
+      cookieStore.set("token", data.token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        path: "/",
+        maxAge: 3600, // 1 hour
+      });
+
+      return NextResponse.json({ success: true });
     }
 
-    return new Response(JSON.stringify(data), { status: 200 });
+    return NextResponse.json(
+      { error: data.message || "Invalid credentials" },
+      { status: 401 }
+    );
   } catch (error) {
     return new Response(JSON.stringify({ message: "Server error" }), {
       status: 500,

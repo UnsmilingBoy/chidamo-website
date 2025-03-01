@@ -7,7 +7,8 @@ import Ad from "./Ad";
 import Link from "next/link";
 import CategoryDropdownItem from "./CategoryDropdownItem";
 import { useRouter } from "next/navigation";
-import { SearchIcon } from "lucide-react";
+import { Cat, SearchIcon, UserRound } from "lucide-react";
+import UserDropDown from "../UserDropDown";
 
 export default function Header({ categories }) {
   const router = useRouter();
@@ -29,6 +30,8 @@ export default function Header({ categories }) {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isFixed, setIsFixed] = useState(false);
 
+  const [openUserOverlay, setOpenUserOvelay] = useState(false);
+
   useEffect(() => {
     const handleScroll = () => {
       setScrollPosition(window.scrollY);
@@ -42,11 +45,25 @@ export default function Header({ categories }) {
     };
   }, []);
 
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    async function fetchUser() {
+      const res = await fetch("/api/check-auth", { credentials: "include" });
+
+      if (res.ok) {
+        const data = await res.json();
+        setUser(data.user);
+      }
+    }
+    fetchUser();
+  }, []);
+
   return (
     <header
       className={`${
         isFixed ? "fixed" : "absolute"
-      } flex flex-col w-full z-50 border-b border-[#dcdcdc]`}
+      } flex flex-col w-full z-40 border-b border-[#dcdcdc]`}
     >
       <Ad />
       <div
@@ -77,13 +94,17 @@ export default function Header({ categories }) {
             </div>
           </div>
           <div className="flex flex-row items-center gap-5 text-[#313131]">
-            <Link href="/cat">
-              <button className="flex flex-row items-center gap-4 border border-[#adadad] rounded-xl px-5 py-2 mx-2">
-                <p>ورود</p>
-                <div className="w-[1.5px] h-5 bg-[#666]"></div>
-                <p>ثبت نام</p>
-              </button>
-            </Link>
+            {user ? (
+              <UserDropDown />
+            ) : (
+              <Link href="/login">
+                <button className="flex flex-row items-center gap-4 border border-[#adadad] rounded-xl px-5 py-2 mx-2">
+                  <p>ورود</p>
+                  <div className="w-[1.5px] h-5 bg-[#666]"></div>
+                  <p>ثبت نام</p>
+                </button>
+              </Link>
+            )}
             <div className="w-[1px] h-7 bg-[#666]"></div>
             <button>
               <img src="/images/shopping-cart.svg" alt="Shopping cart icon" />
