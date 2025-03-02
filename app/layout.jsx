@@ -1,4 +1,4 @@
-// app/layout.js
+import { CartProvider } from "@/context/CartContext";
 import "@/styles/globals.css";
 
 export const metadata = {
@@ -7,10 +7,12 @@ export const metadata = {
   icons: "/favicon.ico",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl">
-      <body>{children}</body>
+      <body>
+        <CartProvider>{children}</CartProvider>
+      </body>
     </html>
   );
 }

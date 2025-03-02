@@ -7,8 +7,11 @@ import Ad from "./Ad";
 import Link from "next/link";
 import CategoryDropdownItem from "./CategoryDropdownItem";
 import { useRouter } from "next/navigation";
-import { Cat, SearchIcon, UserRound } from "lucide-react";
+import { SearchIcon } from "lucide-react";
 import UserDropDown from "../UserDropDown";
+import { useAuth } from "@/context/AuthContext";
+import { useCart } from "@/context/CartContext";
+import CartDropDown from "./CartDropDown";
 
 export default function Header({ categories }) {
   const router = useRouter();
@@ -30,8 +33,6 @@ export default function Header({ categories }) {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isFixed, setIsFixed] = useState(false);
 
-  const [openUserOverlay, setOpenUserOvelay] = useState(false);
-
   useEffect(() => {
     const handleScroll = () => {
       setScrollPosition(window.scrollY);
@@ -45,19 +46,9 @@ export default function Header({ categories }) {
     };
   }, []);
 
-  const [user, setUser] = useState(null);
+  const { user, loading } = useAuth();
 
-  useEffect(() => {
-    async function fetchUser() {
-      const res = await fetch("/api/check-auth", { credentials: "include" });
-
-      if (res.ok) {
-        const data = await res.json();
-        setUser(data.user);
-      }
-    }
-    fetchUser();
-  }, []);
+  if (loading) return null;
 
   return (
     <header
@@ -95,7 +86,7 @@ export default function Header({ categories }) {
           </div>
           <div className="flex flex-row items-center gap-5 text-[#313131]">
             {user ? (
-              <UserDropDown />
+              <UserDropDown user={user} />
             ) : (
               <Link href="/login">
                 <button className="flex flex-row items-center gap-4 border border-[#adadad] rounded-xl px-5 py-2 mx-2">
@@ -105,10 +96,9 @@ export default function Header({ categories }) {
                 </button>
               </Link>
             )}
-            <div className="w-[1px] h-7 bg-[#666]"></div>
-            <button>
-              <img src="/images/shopping-cart.svg" alt="Shopping cart icon" />
-            </button>
+            <div className="w-[1px] h-7 bg-[#d3d3d3]"></div>
+
+            <CartDropDown />
           </div>
         </div>
         {!isFixed && (

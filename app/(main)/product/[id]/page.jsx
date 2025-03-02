@@ -4,6 +4,7 @@ import ProductDetails from "@/components/Product Page/ProductDetails";
 import ProductOverview from "@/components/Product Page/ProductOverview";
 import RelatedProducts from "@/components/Product Page/RelatedProduct";
 import StickyComponent from "@/components/Sticky";
+import { useCart } from "@/context/CartContext";
 import Image from "next/image";
 
 async function getProductData(id) {
