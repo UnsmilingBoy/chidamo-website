@@ -51,3 +51,7 @@
 body {
   font-family: "Shabnam";
 }
+
+#nprogress .bar {
+  background: #d42b2b !important;
+}

@@ -4,6 +4,7 @@ import { useCart } from "@/context/CartContext";
 import { toPersianNumber, toPersianPrice } from "@/utils/toPersianNumber";
 import {
   Delete,
+  Minus,
   Plus,
   SettingsIcon,
   ShoppingCartIcon,
@@ -89,19 +90,28 @@ export default function PricingOverview({ product }) {
               className="cursor-pointer text-primary"
               size={18}
             />
-            <p className="text-lg">{toPersianNumber(inCartQuantity)}</p>
-            <Trash
-              onClick={() => {
-                if (inCartQuantity == 1) {
+            <p className="text-lg select-none">
+              {toPersianNumber(inCartQuantity)}
+            </p>
+            {inCartQuantity == 1 ? (
+              <Trash
+                onClick={() => {
                   removeFromCart(product.id);
-                } else {
+                }}
+                className="cursor-pointer"
+                size={18}
+                color="red"
+              />
+            ) : (
+              <Minus
+                onClick={() => {
                   updateQuantity(product.id, inCartQuantity - 1);
-                }
-              }}
-              className="cursor-pointer"
-              size={18}
-              color="red"
-            />
+                }}
+                className="cursor-pointer"
+                size={18}
+                color="red"
+              />
+            )}
           </div>
           <button className="border w-full border-primary bg-white font-[Shabnam] p-3 rounded-md my-3 text-black">
             مشاهده سبد خرید

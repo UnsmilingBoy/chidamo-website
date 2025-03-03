@@ -1,4 +1,6 @@
+import MiniLoader from "@/components/MiniLoader";
 import { CartProvider } from "@/context/CartContext";
+
 import "@/styles/globals.css";
 
 export const metadata = {
@@ -11,6 +13,7 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl">
       <body>
+        <MiniLoader />
         <CartProvider>{children}</CartProvider>
       </body>
     </html>

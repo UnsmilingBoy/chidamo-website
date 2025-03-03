@@ -3,13 +3,6 @@ import Image from "next/image";
 export default function Ad() {
   return (
     <aside className="flex flex-row justify-evenly items-center w-full h-12 bg-primary select-none cursor-pointer ">
-      <Image
-        className="object-cover"
-        src="/images/barg.png"
-        width={95}
-        height={20}
-        alt="Leaf image"
-      />
       <div className="flex flex-row gap-3">
         <p className="text-lg text-white font-bold animate-pulse">
           تخفیفات زمستانه چیدامو
@@ -24,13 +17,6 @@ export default function Ad() {
           />
         </div>
       </div>
-      <Image
-        className="object-cover"
-        src="/images/barg.png"
-        width={95}
-        height={20}
-        alt="Leaf image"
-      />
     </aside>
   );
 }

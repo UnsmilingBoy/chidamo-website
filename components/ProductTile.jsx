@@ -13,7 +13,7 @@ export default function ProductTile({
   return (
     <Link href={`/product/${productId}`}>
       <div className="flex flex-col items-center border gap-2 p-[15px] hover:bg-slate-50 h-full">
-        <div className="w-full aspect-[3/4] overflow-hidden p-2">
+        <div className="w-full aspect-square overflow-hidden p-2">
           <Image
             src={image}
             width={200}
