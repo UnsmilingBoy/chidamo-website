@@ -28,7 +28,9 @@ export default function CartDropDown() {
         <ShoppingCart color="#666666" size="35" />
         {cart.length > 0 && (
           <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
-            {cart.reduce((total, item) => total + item.quantity, 0)}
+            {toPersianNumber(
+              cart.reduce((total, item) => total + item.quantity, 0)
+            )}
           </span>
         )}
       </button>

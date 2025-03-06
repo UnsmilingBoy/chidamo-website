@@ -20,7 +20,7 @@ export default function ProductGallery({ photosArray }) {
           >
             <Image
               className="w-full h-full object-cover rounded-md"
-              src={pic}
+              src={"/images/atr.jpg"}
               alt="Product picture"
               width={300}
               height={300}

@@ -17,7 +17,14 @@ import { useEffect, useState } from "react";
 export default function PricingOverview({ product }) {
   const { addToCart, cart, updateQuantity, removeFromCart } = useCart();
 
-  const inCartQuantity = cart.reduce((total, item) => total + item.quantity, 0);
+  // const inCartQuantity = cart.reduce((total, item) => total + item.quantity, 0);
+
+  let cartIndex;
+  for (let i = 0; i < cart.length; i++) {
+    if (cart[i].id == product.id) {
+      cartIndex = i;
+    }
+  }
 
   return (
     <div className="flex flex-col gap-5 text-sm rounded-lg border shadow-md border-[#D9D9D9] p-5 w-fit h-fit text-nowrap">
@@ -82,7 +89,7 @@ export default function PricingOverview({ product }) {
         </div>
       </div>
 
-      {inCartQuantity > 0 ? (
+      {cart.length != 0 && cart[cartIndex].quantity > 0 ? (
         <div className="flex flex-row justify-center gap-3 w-full items-center">
           <div className="flex flex-row items-center gap-3 shadow-md p-2 rounded-md">
             <Plus
@@ -91,9 +98,9 @@ export default function PricingOverview({ product }) {
               size={18}
             />
             <p className="text-lg select-none">
-              {toPersianNumber(inCartQuantity)}
+              {toPersianNumber(cart[cartIndex].quantity)}
             </p>
-            {inCartQuantity == 1 ? (
+            {cart[cartIndex].quantity == 1 ? (
               <Trash
                 onClick={() => {
                   removeFromCart(product.id);
@@ -105,7 +112,7 @@ export default function PricingOverview({ product }) {
             ) : (
               <Minus
                 onClick={() => {
-                  updateQuantity(product.id, inCartQuantity - 1);
+                  updateQuantity(product.id, cart[cartIndex].quantity - 1);
                 }}
                 className="cursor-pointer"
                 size={18}
