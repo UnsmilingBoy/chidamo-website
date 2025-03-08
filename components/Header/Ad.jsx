@@ -5,7 +5,7 @@ export default function Ad() {
     <aside className="flex flex-row justify-evenly items-center w-full h-12 bg-primary select-none cursor-pointer ">
       <div className="flex flex-row gap-3">
         <p className="text-lg text-white font-bold animate-pulse">
-          تخفیفات زمستانه چیدامو
+          تخفیفات بهاره چیدامو
         </p>
         <div className="flex flex-row gap-2 items-center bg-[#FEC30C] rounded-2xl px-3">
           <p className="text-[#282828]">خرید</p>
