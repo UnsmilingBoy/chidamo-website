@@ -1,5 +1,6 @@
 import { ChevronLeft } from "lucide-react";
 import { cookies } from "next/headers";
+import Image from "next/image";
 import { redirect } from "next/navigation";
 
 export async function getUserOrders(id) {
@@ -27,7 +28,7 @@ export default async function Orders() {
   } else {
     redirect("/login");
   }
-  console.log(orders);
+  // console.log(orders);
   return (
     <div className="w-full flex flex-col gap-5">
       {!orders.length ? (
@@ -38,13 +39,29 @@ export default async function Orders() {
         orders.map((order, index) => (
           <div
             key={index}
-            className="flex flex-col rounded-md border border-[#BEBEBE] p-5"
+            className="flex flex-col rounded-md gap-2 border border-[#BEBEBE] p-5"
           >
-            <div className="flex flex-row w-full justify-between text-sm">
+            <div className="flex flex-row w-full justify-between text-sm font-medium">
               {order.status == "completed" ? (
-                <p>تکمیل شده</p>
+                <div className="flex flex-row items-center gap-1">
+                  <Image
+                    src={"/images/done-orders.svg"}
+                    width={20}
+                    height={20}
+                    alt="Done Orders"
+                  />
+                  <p>تکمیل شده</p>
+                </div>
               ) : order.status == "cancelled" ? (
-                <p>لغو شده</p>
+                <div className="flex flex-row items-center gap-1">
+                  <Image
+                    src={"/images/returned-orders.svg"}
+                    width={18}
+                    height={20}
+                    alt="Done Orders"
+                  />
+                  <p>لغو شده</p>
+                </div>
               ) : (
                 <p>در حال انجام</p>
               )}
@@ -62,6 +79,18 @@ export default async function Orders() {
                   {order.total} تومان
                 </span>
               </p>
+            </div>
+            <div className="h-[1px] w-full bg-[#bebebe] my-3"></div>
+            <div className="w-full flex flex-row gap-5 justify-start">
+              {order["line_items"].map((product, index) => (
+                <Image
+                  key={index}
+                  src={product.image.src}
+                  width={100}
+                  height={60}
+                  alt="Product Picture"
+                />
+              ))}
             </div>
           </div>
         ))

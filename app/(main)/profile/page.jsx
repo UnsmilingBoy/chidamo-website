@@ -137,8 +137,11 @@ export default async function profile() {
           </Link>
         </div>
         <div className="flex flex-row justify-evenly w-full">
-          {tiles.map((item) => (
-            <div className="flex flex-col gap-5 items-center bg-gray-100 px-7 py-3 rounded-md">
+          {tiles.map((item, index) => (
+            <div
+              key={index}
+              className="flex flex-col gap-5 items-center bg-gray-100 px-7 py-3 rounded-md"
+            >
               <div className="flex flex-row gap-1 items-center">
                 <Image
                   src={item.icon}
