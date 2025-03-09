@@ -37,6 +37,7 @@ export default function UserDropdown({ user }) {
       {isOpen && (
         <div className="absolute left-0 mt-2 w-60 bg-white shadow-lg shadow-[#4e4e4e] rounded-lg p-2 z-50">
           <Link
+            onClick={() => setIsOpen((prev) => !prev)}
             href="/profile"
             className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
           >

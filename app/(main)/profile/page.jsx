@@ -1,26 +1,79 @@
 import { AtSign, ChevronLeft, Phone, User2 } from "lucide-react";
+import { cookies } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
-const tiles = [
-  {
-    title: "سفارشات جاری",
-    icon: "/images/current-orders.svg",
-    data: 12,
-  },
-  {
-    title: "سفارشات تحویل شده",
-    icon: "/images/done-orders.svg",
-    data: 134,
-  },
-  {
-    title: "سفارشات مرجوعی",
-    icon: "/images/returned-orders.svg",
-    data: 4,
-  },
-];
+async function getUserInfo(id) {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+  const res = await fetch(baseUrl + `/api/userinfo/${id}`);
+  const data = await res.json();
+  return data;
+}
 
-export default function profile() {
+export async function getUserOrders(id) {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+  const res = await fetch(baseUrl + `/api/orders?customer=${id}`);
+  const orders = await res.json();
+  return orders;
+}
+
+export default async function profile() {
+  const cookieStore = await cookies();
+  const token = cookieStore.get("token")?.value;
+  let user = null;
+  let wpUser = null;
+  let orders = null;
+  let completed = 0;
+  let cancelled = 0;
+  let onGoing = 0;
+
+  if (token) {
+    const res = await fetch(`${process.env.BASE_URL}/wp-json/wp/v2/users/me`, {
+      headers: { Authorization: `Bearer ${token}` },
+      cache: "no-store",
+    });
+
+    if (res.ok) {
+      user = await res.json();
+      // user = await getUserInfo(wpUser.id);
+      orders = await getUserOrders(user.id);
+      for (let i = 0; i < orders.length; i++) {
+        switch (orders[i].status) {
+          case "completed":
+            completed++;
+            break;
+          case "cancelled":
+            cancelled++;
+            break;
+          default:
+            onGoing++;
+            break;
+        }
+      }
+    }
+  } else {
+    redirect("/login");
+  }
+
+  const tiles = [
+    {
+      title: "سفارشات جاری",
+      icon: "/images/current-orders.svg",
+      data: onGoing,
+    },
+    {
+      title: "سفارشات تحویل شده",
+      icon: "/images/done-orders.svg",
+      data: completed,
+    },
+    {
+      title: "سفارشات لغو شده",
+      icon: "/images/returned-orders.svg",
+      data: cancelled,
+    },
+  ];
+
   return (
     <div className="w-full flex flex-col gap-5">
       <div className="flex flex-col gap-10 border border-[#BEBEBE] rounded-md p-5">
@@ -43,7 +96,9 @@ export default function profile() {
             </div>
             <p className="text-gray-500">
               نام و نام خانوادگی:{" "}
-              <span className="text-black font-medium">خلیل الله خلیلی</span>
+              <span className="text-black font-medium">
+                {`${user["first_name"]} ${user["last_name"]}`}
+              </span>
             </p>
           </div>
           <div className="flex flex-row gap-2 items-center">
@@ -52,9 +107,7 @@ export default function profile() {
             </div>
             <p className="text-gray-500">
               ایمیل:{" "}
-              <span className="text-black font-medium">
-                sepantashafizadeh@gmail.com
-              </span>
+              <span className="text-black font-medium">{user.email}</span>
             </p>
           </div>
           <div className="flex flex-row gap-2 items-center">
@@ -63,7 +116,9 @@ export default function profile() {
             </div>
             <p className="text-gray-500">
               تلفن همراه:{" "}
-              <span className="text-black font-medium">09912404990</span>
+              <span className="text-black font-medium">
+                {user?.billing?.phone || "شماره ای وارد نشده است."}
+              </span>
             </p>
           </div>
         </div>

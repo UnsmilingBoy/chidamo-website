@@ -1,13 +1,21 @@
 import { NextResponse } from "next/server";
+import { cookies } from "next/headers";
 
-export function middleware(req) {
-  const res = NextResponse.next();
+export async function middleware(req) {
+  const cookieStore = await cookies();
+  const token = cookieStore.get("token")?.value;
 
-  // Disable caching for all responses
-  res.headers.set(
-    "Cache-Control",
-    "no-store, no-cache, must-revalidate, proxy-revalidate"
-  );
+  const { pathname } = req.nextUrl;
 
-  return res;
+  // Protect all /profile routes
+  if (pathname.startsWith("/profile") && !token) {
+    return NextResponse.redirect(new URL("/login", req.url));
+  }
+
+  return NextResponse.next();
 }
+
+// Apply the middleware only to /profile and its subroutes
+export const config = {
+  matcher: ["/profile/:path*"],
+};
