@@ -27,21 +27,27 @@ export default async function CategoryPage({ params, searchParams }) {
 
   return (
     <div className="py-5 max-w-[1340px] m-auto">
-      <div className="flex flex-col gap-7">
-        <p className="text-sm text-[#797979] font-medium">
-          {<Link href={"/"}>فروشگاه اینترنتی چیدامو</Link>}
-          <span> / </span>
-          {
-            <Link className="text-[#505050]" href={`/category/${id}`}>
-              {category.name}
-            </Link>
-          }
-        </p>
-        <div className="flex flex-row gap-10">
-          <CategoryFilters />
-          <CategoryProducts products={products} />
+      {!products.length ? (
+        <div className="flex justify-center items-center w-full h-[50vh]">
+          <p>کالایی یافت نشد.</p>
         </div>
-      </div>
+      ) : (
+        <div className="flex flex-col gap-7">
+          <p className="text-sm text-[#797979] font-medium">
+            {<Link href={"/"}>فروشگاه اینترنتی چیدامو</Link>}
+            <span> / </span>
+            {
+              <Link className="text-[#505050]" href={`/category/${id}`}>
+                {category.name}
+              </Link>
+            }
+          </p>
+          <div className="flex flex-row gap-10">
+            <CategoryFilters />
+            <CategoryProducts products={products} />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

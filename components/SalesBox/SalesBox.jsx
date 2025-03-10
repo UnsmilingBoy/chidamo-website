@@ -64,7 +64,7 @@ export default function SalesBox({ products }) {
               <div className="flex gap-[10px] items-center">
                 <ProductTile
                   productId={item.id}
-                  image={offersData[index][0]}
+                  image={item?.images[0]?.src || "/images/atr.jpg"}
                   title={item.name}
                   price={item["regular_price"]}
                   onSalePrice={item["sale_price"]}

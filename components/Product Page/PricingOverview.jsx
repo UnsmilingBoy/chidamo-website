@@ -14,7 +14,7 @@ import {
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-export default function PricingOverview({ product }) {
+export default function PricingOverview({ product, isSticky }) {
   const { addToCart, cart, updateQuantity, removeFromCart } = useCart();
 
   // const inCartQuantity = cart.reduce((total, item) => total + item.quantity, 0);
@@ -27,7 +27,11 @@ export default function PricingOverview({ product }) {
   }
 
   return (
-    <div className="flex flex-col gap-5 text-sm rounded-lg border shadow-md border-[#D9D9D9] p-5 w-fit h-fit text-nowrap">
+    <div
+      className={`flex flex-col gap-5 text-sm rounded-lg border shadow-md border-[#D9D9D9] p-5 w-[520px] h-fit text-nowrap ${
+        isSticky && "sticky top-36 h-full"
+      }`}
+    >
       <div className="flex flex-col gap-2">
         <div className="flex flex-col gap-2 p-5 bg-productPageLightPrimaryColor rounded-md">
           <div className="flex flex-row gap-2 items-center">

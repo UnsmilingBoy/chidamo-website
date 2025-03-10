@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import Ad from "./Ad";
 import Link from "next/link";
 import CategoryDropdownItem from "./CategoryDropdownItem";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { SearchIcon } from "lucide-react";
 import UserDropDown from "../UserDropDown";
 import { useAuth } from "@/context/AuthContext";
@@ -14,6 +14,7 @@ import { useCart } from "@/context/CartContext";
 import CartDropDown from "./CartDropDown";
 
 export default function Header({ categories }) {
+  const pathname = usePathname();
   const router = useRouter();
 
   const [inputValue, setInputValue] = useState("");
@@ -47,6 +48,12 @@ export default function Header({ categories }) {
   }, []);
 
   const { user, loading } = useAuth();
+
+  useEffect(() => {
+    if (!pathname.includes("search")) {
+      setInputValue("");
+    }
+  }, [pathname]);
 
   if (loading) return null;
 

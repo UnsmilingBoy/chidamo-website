@@ -11,7 +11,11 @@ export default function ProductTile({
   onSalePrice,
 }) {
   return (
-    <Link href={`/product/${productId}`}>
+    <Link
+      href={`/product/${productId}`}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <div className="flex flex-col items-center border gap-2 p-[15px] hover:bg-slate-50 h-full">
         <div className="w-full aspect-square overflow-hidden p-2">
           <Image

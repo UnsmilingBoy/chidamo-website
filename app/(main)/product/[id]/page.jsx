@@ -68,9 +68,9 @@ export default async function productPage({ params }) {
         </div>
         <section className="flex flex-row gap-10">
           <ProductDetails product={data} />
-          <div className="sticky top-36 h-full w-fit">
-            <PricingOverview product={data} />
-          </div>
+          {/* <div className="sticky top-36 h-full w-[400px]"> */}
+          <PricingOverview isSticky={true} product={data} />
+          {/* </div> */}
         </section>
         <section>
           <RelatedProducts dataList={relatedProductsData} />
