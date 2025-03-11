@@ -29,7 +29,7 @@ export default async function Addresses() {
   }
   console.log(user);
   return (
-    <div className="w-full flex flex-col gap-5 text-sm font-medium text-gray-500">
+    <div className="flex flex-col w-full gap-5 text-sm font-medium text-gray-500">
       {user.billing["address_1"] ? (
         <div className="flex flex-col gap-10 border border-[#BEBEBE] rounded-md p-5">
           <p className="text-black">آدرس: {user.billing["address_1"]}</p>

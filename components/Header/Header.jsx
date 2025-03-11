@@ -69,7 +69,7 @@ export default function Header({ categories }) {
           isFixed ? "py-3" : "py-5"
         } bg-white w-full flex flex-col px-16 gap-6`}
       >
-        <div className="flex flex-row justify-between">
+        <div className="flex flex-row justify-between w-full m-auto max-w-[1600px]">
           <div className="flex flex-row items-center">
             <Link href="/">
               <Image
@@ -109,7 +109,9 @@ export default function Header({ categories }) {
           </div>
         </div>
         {!isFixed && (
-          <div className={`flex flex-row items-center gap-8`}>
+          <div
+            className={`flex flex-row items-center gap-8 w-full m-auto max-w-[1600px]`}
+          >
             <div className="relative group">
               <CategoryItem
                 title="دسته بندی محصولات"

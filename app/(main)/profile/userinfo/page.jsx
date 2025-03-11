@@ -1,3 +1,3 @@
 export default function UserInfo() {
-  return <div className="w-full flex flex-col gap-5"></div>;
+  return <div className="flex flex-col w-full gap-5"></div>;
 }

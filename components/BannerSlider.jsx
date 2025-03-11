@@ -22,7 +22,10 @@ export default function BannerSlider() {
   };
 
   return (
-    <Slider {...settings} className="overflow-hidden cursor-grab select-none">
+    <Slider
+      {...settings}
+      className="overflow-hidden cursor-grab select-none max-w-[1920px]"
+    >
       {banners.map((banner, index) => (
         <div key={index}>
           <img src={banner} alt={"Banner number" + index} />

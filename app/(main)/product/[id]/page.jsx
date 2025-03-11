@@ -44,18 +44,18 @@ export default async function productPage({ params }) {
   };
 
   return (
-    <div className="flex justify-center p-6 w-full">
+    <div className="flex justify-center w-full p-6">
       <div className="flex flex-col gap-20 h-full w-[1400px]">
         {/* PATH HERE (فروشگاه اینترنتی چیدامو / صنعت مد / کیف و کفش / کیف و کفش زنانه / کیف کج زنانه چرم طبیعی بز کد 01)  */}
 
-        <section className="flex flex-row gap-10 justify-between">
+        <section className="flex flex-row justify-between gap-10">
           {/*  Overview of the product (images, compact details and price) */}
           <ProductOverview product={data} />
           <PricingOverview product={data} />
         </section>
-        <div className="flex flex-row justify-center gap-12 w-full items-center">
+        <div className="flex flex-row items-center justify-center w-full gap-12">
           {Object.keys(validations).map((key, index) => (
-            <div key={index} className="flex flex-row gap-5 w-fit items-center">
+            <div key={index} className="flex flex-row items-center gap-5 w-fit">
               <Image
                 src={validations[key][0]}
                 width={validations[key][1]}

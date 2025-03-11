@@ -19,7 +19,7 @@ export default async function Home() {
   return (
     <div className="flex flex-col">
       <BannerSlider />
-      <div className="flex flex-col mx-20">
+      <div className="flex flex-col w-full max-w-[1340px] m-auto">
         <StoriesSection />
         <SalesBox products={products} />
         <MiniBanner />

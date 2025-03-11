@@ -15,7 +15,7 @@ export default async function searchResult({ params }) {
       <p>Search result for {query}</p>
       <div className="flex flex-row gap-10">
         <div className="flex flex-row w-96 border border-[#BBB] rounded-md"></div>
-        <div className="w-full grid grid-cols-5">
+        <div className="grid w-full grid-cols-5">
           {results.map((product, index) => (
             <ProductTile
               key={index}

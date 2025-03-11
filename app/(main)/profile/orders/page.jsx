@@ -31,16 +31,16 @@ export default async function Orders() {
   }
   // console.log(orders);
   return (
-    <div className="w-full flex flex-col gap-5">
+    <div className="flex flex-col w-full gap-5">
       {!orders.length ? (
-        <div className="w-full flex h-full justify-center items-center">
+        <div className="flex items-center justify-center w-full h-full">
           <p>سفارشی پیدا نشد.</p>
         </div>
       ) : (
         orders.map((order, index) => (
           <Link href={`/profile/orders/${order.id}`} key={index}>
             <div className="flex flex-col cursor-pointer rounded-md gap-2 border border-[#BEBEBE] p-5">
-              <div className="flex flex-row w-full justify-between text-sm font-medium">
+              <div className="flex flex-row justify-between w-full text-sm font-medium">
                 {order.status == "completed" ? (
                   <div className="flex flex-row items-center gap-1">
                     <Image
@@ -70,17 +70,17 @@ export default async function Orders() {
                 <p className="">{order["date_created"]}</p>
                 <p>
                   کد سفارش:{" "}
-                  <span className="text-black font-medium">{order.id}</span>
+                  <span className="font-medium text-black">{order.id}</span>
                 </p>
                 <p>
                   مبلغ:{" "}
-                  <span className="text-black font-medium">
+                  <span className="font-medium text-black">
                     {order.total} تومان
                   </span>
                 </p>
               </div>
               <div className="h-[1px] w-full bg-[#bebebe] my-3"></div>
-              <div className="w-full flex flex-row gap-5 justify-start">
+              <div className="flex flex-row justify-start w-full gap-5">
                 {order["line_items"].map((product, index) => (
                   <Image
                     key={index}

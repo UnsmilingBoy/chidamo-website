@@ -75,48 +75,48 @@ export default async function profile() {
   ];
 
   return (
-    <div className="w-full flex flex-col gap-5">
+    <div className="flex flex-col w-full gap-5">
       <div className="flex flex-col gap-10 border border-[#BEBEBE] rounded-md p-5">
-        <div className="flex flex-row justify-between items-center w-full">
+        <div className="flex flex-row items-center justify-between w-full">
           <div className="flex flex-col gap-2">
             <p className="font-medium">اطلاعات حساب کاربری</p>
             <div className="h-[2px] w-full bg-primary"></div>
           </div>
           <Link href={"/profile/userinfo"}>
-            <div className="flex flex-row items-center gap-1 text-primary font-medium">
+            <div className="flex flex-row items-center gap-1 font-medium text-primary">
               <p className="text-sm">ویرایش</p>
               <ChevronLeft size={16} />
             </div>
           </Link>
         </div>
         <div className="grid grid-cols-2 gap-5">
-          <div className="flex flex-row gap-2 items-center">
+          <div className="flex flex-row items-center gap-2">
             <div className="p-3 bg-gray-100 rounded-full">
               <User2 />
             </div>
             <p className="text-gray-500">
               نام و نام خانوادگی:{" "}
-              <span className="text-black font-medium">
+              <span className="font-medium text-black">
                 {`${user["first_name"]} ${user["last_name"]}`}
               </span>
             </p>
           </div>
-          <div className="flex flex-row gap-2 items-center">
+          <div className="flex flex-row items-center gap-2">
             <div className="p-3 bg-gray-100 rounded-full">
               <AtSign />
             </div>
             <p className="text-gray-500">
               ایمیل:{" "}
-              <span className="text-black font-medium">{user.email}</span>
+              <span className="font-medium text-black">{user.email}</span>
             </p>
           </div>
-          <div className="flex flex-row gap-2 items-center">
+          <div className="flex flex-row items-center gap-2">
             <div className="p-3 bg-gray-100 rounded-full">
               <Phone />
             </div>
             <p className="text-gray-500">
               تلفن همراه:{" "}
-              <span className="text-black font-medium">
+              <span className="font-medium text-black">
                 {user?.billing?.phone || "شماره ای وارد نشده است."}
               </span>
             </p>
@@ -124,25 +124,25 @@ export default async function profile() {
         </div>
       </div>
       <div className="flex flex-col gap-10 border border-[#BEBEBE] rounded-md p-5">
-        <div className="flex flex-row justify-between items-center w-full">
+        <div className="flex flex-row items-center justify-between w-full">
           <div className="flex flex-col gap-2">
             <p className="font-medium">سفارش های من</p>
             <div className="h-[2px] w-full bg-primary"></div>
           </div>
           <Link href={"/profile/orders"}>
-            <div className="flex flex-row items-center gap-1 text-primary font-medium">
+            <div className="flex flex-row items-center gap-1 font-medium text-primary">
               <p className="text-sm">همه سفارش ها</p>
               <ChevronLeft size={16} />
             </div>
           </Link>
         </div>
-        <div className="flex flex-row justify-evenly w-full">
+        <div className="flex flex-row w-full justify-evenly">
           {tiles.map((item, index) => (
             <div
               key={index}
-              className="flex flex-col gap-5 items-center bg-gray-100 px-7 py-3 rounded-md"
+              className="flex flex-col items-center gap-5 py-3 bg-gray-100 rounded-md px-7"
             >
-              <div className="flex flex-row gap-1 items-center">
+              <div className="flex flex-row items-center gap-1">
                 <Image
                   src={item.icon}
                   alt="Orders Icon"
@@ -151,7 +151,7 @@ export default async function profile() {
                 />
                 <p>{item.title}</p>
               </div>
-              <p className="font-bold text-3xl">{item.data}</p>
+              <p className="text-3xl font-bold">{item.data}</p>
             </div>
           ))}
         </div>
