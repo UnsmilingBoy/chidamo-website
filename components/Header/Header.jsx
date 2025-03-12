@@ -95,7 +95,7 @@ export default function Header({ categories }) {
             {user ? (
               <UserDropDown user={user} />
             ) : (
-              <Link href="/login">
+              <Link href={`/login?returnPage=${pathname}`}>
                 <button className="flex flex-row items-center gap-4 border border-[#adadad] rounded-xl px-5 py-2 mx-2">
                   <p>ورود</p>
                   <div className="w-[1.5px] h-5 bg-[#666]"></div>

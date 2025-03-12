@@ -35,7 +35,7 @@ export default function UserDropdown({ user }) {
 
       {/* Dropdown Menu */}
       {isOpen && (
-        <div className="absolute left-0 mt-2 w-60 bg-white shadow-lg shadow-[#4e4e4e] rounded-lg p-2 z-50">
+        <div className="absolute left-0 mt-2 w-60 bg-white shadow-[0px_10px_30px_rgba(0,0,0,0.3)] rounded-lg p-2 z-50">
           <Link
             onClick={() => setIsOpen((prev) => !prev)}
             href="/profile"

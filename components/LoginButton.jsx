@@ -23,7 +23,12 @@ const loginUser = async (username, password) => {
   }
 };
 
-export default function LoginButton({ username, password, setError }) {
+export default function LoginButton({
+  username,
+  password,
+  setError,
+  returnPage,
+}) {
   const [loading, setLoading] = useState(false);
   return (
     <button
@@ -32,7 +37,7 @@ export default function LoginButton({ username, password, setError }) {
         let response = await loginUser(username, password);
         switch (response[1]) {
           case 200:
-            redirect("/");
+            redirect(returnPage || "/");
 
           default:
             setError(true);

@@ -4,12 +4,15 @@ import StickyComponent from "@/components/Sticky";
 import { logoPicker } from "@/utils/SeasonChanger";
 import Image from "next/image";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 
 export default function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
+  const searchParams = useSearchParams();
+  const returnPage = searchParams.get("returnPage");
 
   return (
     <div className="w-screen h-screen flex items-center justify-center">
@@ -30,7 +33,7 @@ export default function LoginPage() {
             } outline-none w-72 p-3 rounded-md bg-[#F4F4F4]`}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            type="text"
+            type="password"
             placeholder="رمز عبور"
           />
           <div className="flex flex-row gap-2">
@@ -45,6 +48,7 @@ export default function LoginPage() {
         </div>
         <div className="flex flex-col w-full gap-2">
           <LoginButton
+            returnPage={returnPage}
             username={username}
             password={password}
             setError={setError}

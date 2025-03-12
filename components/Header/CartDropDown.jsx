@@ -1,6 +1,7 @@
 import { useCart } from "@/context/CartContext";
 import { toPersianNumber, toPersianPrice } from "@/utils/toPersianNumber";
 import { ShoppingCart } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
@@ -37,9 +38,17 @@ export default function CartDropDown() {
 
       {/* Dropdown */}
       {isOpen && (
-        <div className="absolute left-0 mt-2 w-64 bg-white shadow-lg shadow-[#7a7a7a] rounded-lg p-4 z-10">
+        <div className="absolute left-0 mt-2 w-64 bg-white shadow-[0px_10px_30px_rgba(0,0,0,0.3)] rounded-lg p-4 z-10">
           {cart.length === 0 ? (
-            <p className="text-center text-gray-500">سبد خرید خالی است.</p>
+            <div className="flex flex-col items-center gap-5">
+              <Image
+                src={"/images/empty-cart.png"}
+                alt="Empty cart"
+                width={80}
+                height={80}
+              />
+              <p className="text-center text-gray-500">سبد خرید خالی است.</p>
+            </div>
           ) : (
             <>
               <ul className="max-h-60 overflow-y-auto">
@@ -67,6 +76,7 @@ export default function CartDropDown() {
 
               {/* View Cart Button */}
               <Link
+                onClick={() => setIsOpen(false)}
                 href="/cart"
                 className="block text-center mt-3 bg-primary text-white py-2 rounded-lg"
               >

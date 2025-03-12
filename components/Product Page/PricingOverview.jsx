@@ -12,6 +12,8 @@ import {
   Trash,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { redirect } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function PricingOverview({ product, isSticky }) {
@@ -124,7 +126,11 @@ export default function PricingOverview({ product, isSticky }) {
               />
             )}
           </div>
-          <button className="border w-full border-primary bg-white font-[Shabnam] p-3 rounded-md my-3 text-black">
+
+          <button
+            onClick={() => redirect("/cart")}
+            className="border w-full border-primary bg-white font-[Shabnam] p-3 rounded-md my-3 text-black"
+          >
             مشاهده سبد خرید
           </button>
         </div>

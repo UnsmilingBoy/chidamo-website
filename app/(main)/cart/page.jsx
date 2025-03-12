@@ -1,8 +1,11 @@
 "use client";
+import CartPricingInfo from "@/components/Cart/CartPricingInfo";
 import { useCart } from "@/context/CartContext";
+import { completeOrder } from "@/serverActions";
 import { toPersianNumber, toPersianPrice } from "@/utils/toPersianNumber";
-import { Minus, Plus, Trash } from "lucide-react";
+import { ChevronLeft, Minus, Plus, Trash } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Cart() {
   const { cart, removeFromCart, addToCart, updateQuantity } = useCart();
@@ -18,7 +21,22 @@ export default function Cart() {
     <div className="max-w-[1340px] m-auto py-5">
       {cart.length == 0 ? (
         <div className="flex justify-center items-center h-[50vh] w-full">
-          <div className="flex flex-col gap-2">سبد خرید شما خالی است.</div>
+          <div className="flex flex-col gap-7 font-medium items-center text-xl">
+            <Image
+              src={"/images/empty-cart.png"}
+              alt="Empty cart"
+              width={150}
+              height={100}
+            />
+            <p>سبد خرید شما خالی است.</p>
+            <Link
+              className="flex items-center gap-2 py-2 px-3 text-base text-white font-normal bg-primary rounded-lg"
+              href={"/"}
+            >
+              <p>صفحه اصلی</p>
+              <ChevronLeft size={18} />
+            </Link>
+          </div>
         </div>
       ) : (
         <div className="flex flex-col items-start gap-10 w-full">
@@ -94,25 +112,10 @@ export default function Cart() {
                 </div>
               ))}
             </div>
-            <div className="flex flex-col gap-3 p-5 w-[400px] border border-gray-200 rounded-md h-fit">
-              <div className="flex flex-row justify-between">
-                <p className="text-sm">قیمت کالا:</p>
-                <p>{toPersianPrice(totalPrice)} تومان</p>
-              </div>
-              <div className="flex flex-row justify-between">
-                <p className="text-sm">هزینه ارسال:</p>
-                <p>{toPersianPrice(shippingPrice)} تومان</p>
-              </div>
-              <div className="flex flex-row justify-between text-primary">
-                <p className="text-sm">قیمت کل:</p>
-                <p className="font-medium text-lg">
-                  {toPersianPrice(totalPrice + shippingPrice)} تومان
-                </p>
-              </div>
-              <button className="bg-primary font-[Shabnam] p-3 rounded-md my-3 text-white">
-                تکمیل سفارش
-              </button>
-            </div>
+            <CartPricingInfo
+              shippingPrice={shippingPrice}
+              totalPrice={totalPrice}
+            />
           </div>
         </div>
       )}
