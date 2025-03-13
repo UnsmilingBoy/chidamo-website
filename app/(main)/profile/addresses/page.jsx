@@ -9,7 +9,6 @@ async function getUserInfo(id) {
 
 export default async function Addresses() {
   const cookieStore = await cookies();
-
   const token = cookieStore.get("token")?.value;
   let orders = null;
   let wpUser = null;

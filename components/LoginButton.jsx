@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { redirect } from "next/navigation";
+import { redirect, useSearchParams } from "next/navigation";
 import { useState } from "react";
 
 const loginUser = async (username, password) => {
@@ -23,12 +23,9 @@ const loginUser = async (username, password) => {
   }
 };
 
-export default function LoginButton({
-  username,
-  password,
-  setError,
-  returnPage,
-}) {
+export default function LoginButton({ username, password, setError }) {
+  const searchParams = useSearchParams();
+  const returnPage = searchParams.get("returnPage");
   const [loading, setLoading] = useState(false);
   return (
     <button
