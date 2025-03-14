@@ -5,6 +5,7 @@ import { ArrowRight, Truck } from "lucide-react";
 import { cookies } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 async function getUserInfo(id) {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
@@ -14,27 +15,23 @@ async function getUserInfo(id) {
 }
 
 export default async function Checkout() {
-  // const [selected, setSelected] = useState(0);
+  const cookieStore = await cookies();
+  const token = cookieStore.get("token")?.value;
+  let user = null;
+  let wpUser = null;
+  if (token) {
+    const res = await fetch(`${process.env.BASE_URL}/wp-json/wp/v2/users/me`, {
+      headers: { Authorization: `Bearer ${token}` },
+      cache: "no-store",
+    });
 
-  // const cookieStore = await cookies();
-  // const token = cookieStore.get("token")?.value;
-  // let user = null;
-  // let wpUser = null;
-  // if (token) {
-  //   const res = await fetch(`${process.env.BASE_URL}/wp-json/wp/v2/users/me`, {
-  //     headers: { Authorization: `Bearer ${token}` },
-  //     cache: "no-store",
-  //   });
-
-  //   if (res.ok) {
-  //     wpUser = await res.json();
-  //     // user = await getUserInfo(14);
-  //     return wpUser.id;
-  //   }
-  //   return "";
-  // } else {
-  //   redirect("/login");
-  // }
+    if (res.ok) {
+      wpUser = await res.json();
+      user = await getUserInfo(14); //TODO: TEST
+    }
+  } else {
+    redirect("/login");
+  }
 
   return (
     <div className="flex flex-col w-full m-auto max-w-[1250px] py-7 gap-5">
@@ -61,7 +58,7 @@ export default async function Checkout() {
             <Truck size={20} />
             <div className="flex flex-col gap-2">
               <p className="text-primary">ارسال به آدرس شما</p>
-              <p className="text-gray-500">ADDRESS</p>
+              <p className="text-gray-500">{user.billing["address_1"]}</p>
             </div>
           </div>
           <CheckOutInputFields />

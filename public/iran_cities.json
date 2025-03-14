@@ -1,0 +1,1408 @@
+[
+  {
+    "value": "Abadan",
+    "province": "Khuzestan",
+    "label": "آبادان"
+  },
+  {
+    "value": "Abadeh",
+    "province": "Fars",
+    "label": "آباده"
+  },
+  {
+    "value": "Abali",
+    "province": "Tehran",
+    "label": "آبعلی"
+  },
+  {
+    "value": "Abarkooh",
+    "province": "Yazd",
+    "label": "ابرکوه"
+  },
+  {
+    "value": "Abdanan",
+    "province": "Ilam",
+    "label": "آبدانان"
+  },
+  {
+    "value": "Abhar",
+    "province": "Zanjan",
+    "label": "ابهر"
+  },
+  {
+    "value": "Abyek",
+    "province": "Qazvin",
+    "label": "آبیک"
+  },
+  {
+    "value": "Aghajari",
+    "province": "Khuzestan",
+    "label": "آغاجاری"
+  },
+  {
+    "value": "Ahar",
+    "province": "East Azerbaijan",
+    "label": "اهر"
+  },
+  {
+    "value": "Ahvaz",
+    "province": "Khuzestan",
+    "label": "اهواز"
+  },
+  {
+    "value": "Ajabshir",
+    "province": "East Azerbaijan",
+    "label": "عجب‌شیر"
+  },
+  {
+    "value": "Akbarabad",
+    "province": "Fars",
+    "label": "اکبرآباد"
+  },
+  {
+    "value": "Alamut",
+    "province": "Qazvin",
+    "label": "الموت"
+  },
+  {
+    "value": "Alavicheh",
+    "province": "Isfahan",
+    "label": "علویجه"
+  },
+  {
+    "value": "Aligudarz",
+    "province": "Lorestan",
+    "label": "الیگودرز"
+  },
+  {
+    "value": "Alvand",
+    "province": "Qazvin",
+    "label": "الوند"
+  },
+  {
+    "value": "Amlash",
+    "province": "Gilan",
+    "label": "املش"
+  },
+  {
+    "value": "Amol",
+    "province": "Mazandaran",
+    "label": "آمل"
+  },
+  {
+    "value": "Andimeshk",
+    "province": "Khuzestan",
+    "label": "اندیمشک"
+  },
+  {
+    "value": "Andisheh",
+    "province": "Tehran",
+    "label": "اندیشه"
+  },
+  {
+    "value": "Arak",
+    "province": "Markazi",
+    "label": "اراک"
+  },
+  {
+    "value": "Ardabil",
+    "province": "Ardabil",
+    "label": "اردبیل"
+  },
+  {
+    "value": "Ardakan",
+    "province": "Yazd",
+    "label": "اردکان"
+  },
+  {
+    "value": "Ardestan",
+    "province": "Isfahan",
+    "label": "اردستان"
+  },
+  {
+    "value": "Asadabad",
+    "province": "Hamadan",
+    "label": "اسدآباد"
+  },
+  {
+    "value": "Asalem",
+    "province": "Gilan",
+    "label": "اسالم"
+  },
+  {
+    "value": "Ashkhaneh",
+    "province": "North Khorasan",
+    "label": "آشخانه"
+  },
+  {
+    "value": "Ashtian",
+    "province": "Markazi",
+    "label": "آشتیان"
+  },
+  {
+    "value": "Astaneh-ye Ashrafiyeh",
+    "province": "Gilan",
+    "label": "آستانه اشرفیه"
+  },
+  {
+    "value": "Astara",
+    "province": "Gilan",
+    "label": "آستارا"
+  },
+  {
+    "value": "Azadshahr",
+    "province": "Golestan",
+    "label": "آزادشهر"
+  },
+  {
+    "value": "Azarshahr",
+    "province": "East Azerbaijan",
+    "label": "آذرشهر"
+  },
+  {
+    "value": "Babolsar",
+    "province": "Mazandaran",
+    "label": "بابلسر"
+  },
+  {
+    "value": "Babol",
+    "province": "Mazandaran",
+    "label": "بابل"
+  },
+  {
+    "value": "Bafq",
+    "province": "Yazd",
+    "label": "بافق"
+  },
+  {
+    "value": "Baft",
+    "province": "Kerman",
+    "label": "بافت"
+  },
+  {
+    "value": "Baharestan",
+    "province": "Tehran",
+    "label": "بهارستان"
+  },
+  {
+    "value": "Bahmaei",
+    "province": "Kohgiluyeh and Boyer-Ahmad",
+    "label": "بهمئی"
+  },
+  {
+    "value": "Bahar",
+    "province": "Hamadan",
+    "label": "بهار"
+  },
+  {
+    "value": "Bam",
+    "province": "Kerman",
+    "label": "بم"
+  },
+  {
+    "value": "Bandar Abbas",
+    "province": "Hormozgan",
+    "label": "بندرعباس"
+  },
+  {
+    "value": "Bandar Anzali",
+    "province": "Gilan",
+    "label": "بندر انزلی"
+  },
+  {
+    "value": "Bandar Charak",
+    "province": "Hormozgan",
+    "label": "بندر چارک"
+  },
+  {
+    "value": "Bandar Deylam",
+    "province": "Bushehr",
+    "label": "بندر دیلم"
+  },
+  {
+    "value": "Bandar Emam Khomeyni",
+    "province": "Khuzestan",
+    "label": "بندر امام خمینی"
+  },
+  {
+    "value": "Bandar Ganaveh",
+    "province": "Bushehr",
+    "label": "بندر گناوه"
+  },
+  {
+    "value": "Bandar Kangan",
+    "province": "Bushehr",
+    "label": "بندر کنگان"
+  },
+  {
+    "value": "Bandar Lengeh",
+    "province": "Hormozgan",
+    "label": "بندر لنگه"
+  },
+  {
+    "value": "Bandar Mahshahr",
+    "province": "Khuzestan",
+    "label": "بندر ماهشهر"
+  },
+  {
+    "value": "Bandar Torkaman",
+    "province": "Golestan",
+    "label": "بندر ترکمن"
+  },
+  {
+    "value": "Bardaskan",
+    "province": "Razavi Khorasan",
+    "label": "بردسکن"
+  },
+  {
+    "value": "Bastak",
+    "province": "Hormozgan",
+    "label": "بستک"
+  },
+  {
+    "value": "Behbahan",
+    "province": "Khuzestan",
+    "label": "بهبهان"
+  },
+  {
+    "value": "Behshahr",
+    "province": "Mazandaran",
+    "label": "بهشهر"
+  },
+  {
+    "value": "Bijar",
+    "province": "Kurdistan",
+    "label": "بیجار"
+  },
+  {
+    "value": "Birjand",
+    "province": "South Khorasan",
+    "label": "بیرجند"
+  },
+  {
+    "value": "Bojnord",
+    "province": "North Khorasan",
+    "label": "بجنورد"
+  },
+  {
+    "value": "Bonab",
+    "province": "East Azerbaijan",
+    "label": "بناب"
+  },
+  {
+    "value": "Borazjan",
+    "province": "Bushehr",
+    "label": "برازجان"
+  },
+  {
+    "value": "Borujerd",
+    "province": "Lorestan",
+    "label": "بروجرد"
+  },
+  {
+    "value": "Bukan",
+    "province": "West Azerbaijan",
+    "label": "بوکان"
+  },
+  {
+    "value": "Bushehr",
+    "province": "Bushehr",
+    "label": "بوشهر"
+  },
+  {
+    "value": "Chahbahar",
+    "province": "Sistan and Baluchestan",
+    "label": "چابهار"
+  },
+  {
+    "value": "Chalus",
+    "province": "Mazandaran",
+    "label": "چالوس"
+  },
+  {
+    "value": "Damavand",
+    "province": "Tehran",
+    "label": "دماوند"
+  },
+  {
+    "value": "Damghan",
+    "province": "Semnan",
+    "label": "دامغان"
+  },
+  {
+    "value": "Darab",
+    "province": "Fars",
+    "label": "داراب"
+  },
+  {
+    "value": "Dargaz",
+    "province": "Razavi Khorasan",
+    "label": "درگز"
+  },
+  {
+    "value": "Darrehshahr",
+    "province": "Ilam",
+    "label": "دره‌شهر"
+  },
+  {
+    "value": "Dehloran",
+    "province": "Ilam",
+    "label": "دهلران"
+  },
+  {
+    "value": "Delijan",
+    "province": "Markazi",
+    "label": "دلیجان"
+  },
+  {
+    "value": "Deylam",
+    "province": "Bushehr",
+    "label": "دیلم"
+  },
+  {
+    "value": "Dezful",
+    "province": "Khuzestan",
+    "label": "دزفول"
+  },
+  {
+    "value": "Dogonbadan",
+    "province": "Kohgiluyeh and Boyer-Ahmad",
+    "label": "دوگنبدان"
+  },
+  {
+    "value": "Doroud",
+    "province": "Lorestan",
+    "label": "دورود"
+  },
+  {
+    "value": "Eghlid",
+    "province": "Fars",
+    "label": "اقلید"
+  },
+  {
+    "value": "Esfarayen",
+    "province": "North Khorasan",
+    "label": "اسفراین"
+  },
+  {
+    "value": "Eslamabad-e Gharb",
+    "province": "Kermanshah",
+    "label": "اسلام‌آباد غرب"
+  },
+  {
+    "value": "Eslamshahr",
+    "province": "Tehran",
+    "label": "اسلامشهر"
+  },
+  {
+    "value": "Estahban",
+    "province": "Fars",
+    "label": "استهبان"
+  },
+  {
+    "value": "Eyvan",
+    "province": "Ilam",
+    "label": "ایوان"
+  },
+  {
+    "value": "Farahan",
+    "province": "Markazi",
+    "label": "فراهان"
+  },
+  {
+    "value": "Fariman",
+    "province": "Razavi Khorasan",
+    "label": "فریمان"
+  },
+  {
+    "value": "Fasa",
+    "province": "Fars",
+    "label": "فسا"
+  },
+  {
+    "value": "Ferdows",
+    "province": "South Khorasan",
+    "label": "فردوس"
+  },
+  {
+    "value": "Firouzabad",
+    "province": "Fars",
+    "label": "فیروزآباد"
+  },
+  {
+    "value": "Firuzeh",
+    "province": "Razavi Khorasan",
+    "label": "فیروزه"
+  },
+  {
+    "value": "Firuzkooh",
+    "province": "Tehran",
+    "label": "فیروزکوه"
+  },
+  {
+    "value": "Fouman",
+    "province": "Gilan",
+    "label": "فومن"
+  },
+  {
+    "value": "Gachsaran",
+    "province": "Kohgiluyeh and Boyer-Ahmad",
+    "label": "گچساران"
+  },
+  {
+    "value": "Galugah",
+    "province": "Mazandaran",
+    "label": "گلوگاه"
+  },
+  {
+    "value": "Gerash",
+    "province": "Fars",
+    "label": "گراش"
+  },
+  {
+    "value": "Gonabad",
+    "province": "Razavi Khorasan",
+    "label": "گناباد"
+  },
+  {
+    "value": "Gonbad-e Kavus",
+    "province": "Golestan",
+    "label": "گنبد کاووس"
+  },
+  {
+    "value": "Gorgan",
+    "province": "Golestan",
+    "label": "گرگان"
+  },
+  {
+    "value": "Hamadan",
+    "province": "Hamadan",
+    "label": "همدان"
+  },
+  {
+    "value": "Hashtgerd",
+    "province": "Alborz",
+    "label": "هشتگرد"
+  },
+  {
+    "value": "Hendijan",
+    "province": "Khuzestan",
+    "label": "هندیجان"
+  },
+  {
+    "value": "Herat",
+    "province": "Yazd",
+    "label": "هرات"
+  },
+  {
+    "value": "Hidaj",
+    "province": "Zanjan",
+    "label": "هیدج"
+  },
+  {
+    "value": "Hirmand",
+    "province": "Sistan and Baluchestan",
+    "label": "هیرمند"
+  },
+  {
+    "value": "Ilam",
+    "province": "Ilam",
+    "label": "ایلام"
+  },
+  {
+    "value": "Iranshahr",
+    "province": "Sistan and Baluchestan",
+    "label": "ایران"
+  },
+
+  {
+    "value": "Isfahan",
+    "province": "Isfahan",
+    "label": "اصفهان"
+  },
+  {
+    "value": "Islamabad",
+    "province": "Tehran",
+    "label": "اسلام‌آباد"
+  },
+  {
+    "value": "Ivan",
+    "province": "Ilam",
+    "label": "ایوان"
+  },
+  {
+    "value": "Jajarm",
+    "province": "North Khorasan",
+    "label": "جاجرم"
+  },
+  {
+    "value": "Javanrud",
+    "province": "Kermanshah",
+    "label": "جوانرود"
+  },
+  {
+    "value": "Jahrom",
+    "province": "Fars",
+    "label": "جهرم"
+  },
+  {
+    "value": "Jask",
+    "province": "Hormozgan",
+    "label": "جاسک"
+  },
+  {
+    "value": "Jiroft",
+    "province": "Kerman",
+    "label": "جیرفت"
+  },
+  {
+    "value": "Jolfa",
+    "province": "East Azerbaijan",
+    "label": "جلفا"
+  },
+  {
+    "value": "Kahnuj",
+    "province": "Kerman",
+    "label": "کهنوج"
+  },
+  {
+    "value": "Kaleybar",
+    "province": "East Azerbaijan",
+    "label": "کلیبر"
+  },
+  {
+    "value": "Kalat",
+    "province": "Razavi Khorasan",
+    "label": "کلات"
+  },
+  {
+    "value": "Kamiaran",
+    "province": "Kurdistan",
+    "label": "کامیاران"
+  },
+  {
+    "value": "Kandovan",
+    "province": "East Azerbaijan",
+    "label": "کندوان"
+  },
+  {
+    "value": "Kangan",
+    "province": "Bushehr",
+    "label": "کنگان"
+  },
+  {
+    "value": "Kangavar",
+    "province": "Kermanshah",
+    "label": "کنگاور"
+  },
+  {
+    "value": "Karaj",
+    "province": "Alborz",
+    "label": "کرج"
+  },
+  {
+    "value": "Kashan",
+    "province": "Isfahan",
+    "label": "کاشان"
+  },
+  {
+    "value": "Kashmar",
+    "province": "Razavi Khorasan",
+    "label": "کاشمر"
+  },
+  {
+    "value": "Kerend-e Gharb",
+    "province": "Kermanshah",
+    "label": "کرند غرب"
+  },
+  {
+    "value": "Kerman",
+    "province": "Kerman",
+    "label": "کرمان"
+  },
+  {
+    "value": "Kermanshah",
+    "province": "Kermanshah",
+    "label": "کرمانشاه"
+  },
+  {
+    "value": "Khaf",
+    "province": "Razavi Khorasan",
+    "label": "خواف"
+  },
+  {
+    "value": "Khalkhal",
+    "province": "Ardabil",
+    "label": "خلخال"
+  },
+  {
+    "value": "Khalkhāl",
+    "province": "Ardabil",
+    "label": "خلخال"
+  },
+  {
+    "value": "Khash",
+    "province": "Sistan and Baluchestan",
+    "label": "خاش"
+  },
+  {
+    "value": "Khomein",
+    "province": "Markazi",
+    "label": "خمین"
+  },
+  {
+    "value": "Khomeynishahr",
+    "province": "Isfahan",
+    "label": "خمینی‌شهر"
+  },
+  {
+    "value": "Khonj",
+    "province": "Fars",
+    "label": "خنج"
+  },
+  {
+    "value": "Khonsar",
+    "province": "Isfahan",
+    "label": "خوانسار"
+  },
+  {
+    "value": "Khorasan",
+    "province": "Razavi Khorasan",
+    "label": "خراسان"
+  },
+  {
+    "value": "Khorramabad",
+    "province": "Lorestan",
+    "label": "خرم‌آباد"
+  },
+  {
+    "value": "Khorramdarreh",
+    "province": "Zanjan",
+    "label": "خرمدره"
+  },
+  {
+    "value": "Khorramshahr",
+    "province": "Khuzestan",
+    "label": "خرمشهر"
+  },
+  {
+    "value": "Khoy",
+    "province": "West Azerbaijan",
+    "label": "خوی"
+  },
+  {
+    "value": "Kiasar",
+    "province": "Mazandaran",
+    "label": "کیاسر"
+  },
+  {
+    "value": "Kish",
+    "province": "Hormozgan",
+    "label": "کیش"
+  },
+  {
+    "value": "Koker",
+    "province": "Sistan and Baluchestan",
+    "label": "کوکر"
+  },
+  {
+    "value": "Koohbanan",
+    "province": "Kerman",
+    "label": "کوهبنان"
+  },
+  {
+    "value": "Kuhdasht",
+    "province": "Lorestan",
+    "label": "کوهدشت"
+  },
+  {
+    "value": "Lahijan",
+    "province": "Gilan",
+    "label": "لاهیجان"
+  },
+  {
+    "value": "Langarud",
+    "province": "Gilan",
+    "label": "لنگرود"
+  },
+  {
+    "value": "Lar",
+    "province": "Fars",
+    "label": "لار"
+  },
+  {
+    "value": "Larestan",
+    "province": "Fars",
+    "label": "لارستان"
+  },
+  {
+    "value": "Latian",
+    "province": "Tehran",
+    "label": "لتیان"
+  },
+  {
+    "value": "Lavasan",
+    "province": "Tehran",
+    "label": "لواسان"
+  },
+  {
+    "value": "Mahabad",
+    "province": "West Azerbaijan",
+    "label": "مهاباد"
+  },
+  {
+    "value": "Mahallat",
+    "province": "Markazi",
+    "label": "محلات"
+  },
+  {
+    "value": "Mahmudabad",
+    "province": "Mazandaran",
+    "label": "محمودآباد"
+  },
+  {
+    "value": "Maku",
+    "province": "West Azerbaijan",
+    "label": "ماکو"
+  },
+  {
+    "value": "Malard",
+    "province": "Tehran",
+    "label": "ملارد"
+  },
+  {
+    "value": "Malayer",
+    "province": "Hamadan",
+    "label": "ملایر"
+  },
+  {
+    "value": "Malekan",
+    "province": "East Azerbaijan",
+    "label": "ملکان"
+  },
+  {
+    "value": "Maman",
+    "province": "Hamadan",
+    "label": "مامان"
+  },
+  {
+    "value": "Maragheh",
+    "province": "East Azerbaijan",
+    "label": "مراغه"
+  },
+  {
+    "value": "Marand",
+    "province": "East Azerbaijan",
+    "label": "مرند"
+  },
+  {
+    "value": "Marivan",
+    "province": "Kurdistan",
+    "label": "مریوان"
+  },
+  {
+    "value": "Marvdasht",
+    "province": "Fars",
+    "label": "مرودشت"
+  },
+  {
+    "value": "Masal",
+    "province": "Gilan",
+    "label": "ماسال"
+  },
+  {
+    "value": "Mashhad",
+    "province": "Razavi Khorasan",
+    "label": "مشهد"
+  },
+  {
+    "value": "Masjed Soleyman",
+    "province": "Khuzestan",
+    "label": "مسجد سلیمان"
+  },
+  {
+    "value": "Mehran",
+    "province": "Ilam",
+    "label": "مهران"
+  },
+  {
+    "value": "Meshginshahr",
+    "province": "Ardabil",
+    "label": "مشگین‌شهر"
+  },
+  {
+    "value": "Meybod",
+    "province": "Yazd",
+    "label": "میبد"
+  },
+  {
+    "value": "Mianeh",
+    "province": "East Azerbaijan",
+    "label": "میانه"
+  },
+  {
+    "value": "Miandoab",
+    "province": "West Azerbaijan",
+    "label": "میاندوآب"
+  },
+  {
+    "value": "Mianrahan",
+    "province": "Fars",
+    "label": "میانرهان"
+  },
+  {
+    "value": "Minab",
+    "province": "Hormozgan",
+    "label": "میناب"
+  },
+  {
+    "value": "Minoodasht",
+    "province": "Golestan",
+    "label": "مینودشت"
+  },
+  {
+    "value": "Mobarakeh",
+    "province": "Isfahan",
+    "label": "مبارکه"
+  },
+  {
+    "value": "Moghan",
+    "province": "Ardabil",
+    "label": "مغان"
+  },
+  {
+    "value": "Mohr",
+    "province": "Fars",
+    "label": "مهر"
+  },
+  {
+    "value": "Mollasani",
+    "province": "Khuzestan",
+    "label": "ملاثانی"
+  },
+  {
+    "value": "Mombin",
+    "province": "Khuzestan",
+    "label": "ممبین"
+  },
+  {
+    "value": "Murghan",
+    "province": "Bushehr",
+    "label": "مورغان"
+  },
+  {
+    "value": "Naeen",
+    "province": "Isfahan",
+    "label": "نائین"
+  },
+  {
+    "value": "Nahavand",
+    "province": "Hamadan",
+    "label": "نهاوند"
+  },
+  {
+    "value": "Nain",
+    "province": "Isfahan",
+    "label": "نایین"
+  },
+  {
+    "value": "Najafabad",
+    "province": "Isfahan",
+    "label": "نجف‌آباد"
+  },
+  {
+    "value": "Namin",
+    "province": "Ardabil",
+    "label": "نمین"
+  },
+  {
+    "value": "Naqadeh",
+    "province": "West Azerbaijan",
+    "label": "نقده"
+  },
+  {
+    "value": "Natanz",
+    "province": "Isfahan",
+    "label": "نطنز"
+  },
+  {
+    "value": "Nashtarood",
+    "province": "Mazandaran",
+    "label": "نشتارود"
+  },
+  {
+    "value": "Nazarabad",
+    "province": "Alborz",
+    "label": "نظرآباد"
+  },
+  {
+    "value": "Neyshabur",
+    "province": "Razavi Khorasan",
+    "label": "نیشابور"
+  },
+  {
+    "value": "Nikshahr",
+    "province": "Sistan and Baluchestan",
+    "label": "نیکشهر"
+  },
+  {
+    "value": "Nur",
+    "province": "Mazandaran",
+    "label": "نور"
+  },
+  {
+    "value": "Nurabad",
+    "province": "Fars",
+    "label": "نورآباد"
+  },
+  {
+    "value": "Omidiyeh",
+    "province": "Khuzestan",
+    "label": "امیدیه"
+  },
+  {
+    "value": "Oshnavieh",
+    "province": "West Azerbaijan",
+    "label": "اشنویه"
+  },
+  {
+    "value": "Osku",
+    "province": "East Azerbaijan",
+    "label": "اسکو"
+  },
+  {
+    "value": "Pakdasht",
+    "province": "Tehran",
+    "label": "پاکدشت"
+  },
+  {
+    "value": "Parand",
+    "province": "Tehran",
+    "label": "پرند"
+  },
+  {
+    "value": "Parsabad",
+    "province": "Ardabil",
+    "label": "پارس‌آباد"
+  },
+  {
+    "value": "Paveh",
+    "province": "Kermanshah",
+    "label": "پاوه"
+  },
+  {
+    "value": "Piranshahr",
+    "province": "West Azerbaijan",
+    "label": "پیرانشهر"
+  },
+  {
+    "value": "Pishva",
+    "province": "Tehran",
+    "label": "پیشوا"
+  },
+  {
+    "value": "Poldasht",
+    "province": "West Azerbaijan",
+    "label": "پلدشت"
+  },
+  {
+    "value": "Qaenat",
+    "province": "South Khorasan",
+    "label": "قائنات"
+  },
+  {
+    "value": "Qaemshahr",
+    "province": "Mazandaran",
+    "label": "قائم‌شهر"
+  },
+  {
+    "value": "Qamsar",
+    "province": "Isfahan",
+    "label": "قمصر"
+  },
+  {
+    "value": "Qarchak",
+    "province": "Tehran",
+    "label": "قرچک"
+  },
+  {
+    "value": "Qazvin",
+    "province": "Qazvin",
+    "label": "قزوین"
+  },
+  {
+    "value": "Qeshm",
+    "province": "Hormozgan",
+    "label": "قشم"
+  },
+  {
+    "value": "Qir and Karzin",
+    "province": "Fars",
+    "label": "قیر و کارزین"
+  },
+  {
+    "value": "Qods",
+    "province": "Tehran",
+    "label": "قدس"
+  },
+  {
+    "value": "Qom",
+    "province": "Qom",
+    "label": "قم"
+  },
+  {
+    "value": "Qorveh",
+    "province": "Kurdistan",
+    "label": "قروه"
+  },
+  {
+    "value": "Quchan",
+    "province": "Razavi Khorasan",
+    "label": "قوچان"
+  },
+  {
+    "value": "Rafsanjan",
+    "province": "Kerman",
+    "label": "رفسنجان"
+  },
+  {
+    "value": "Ramin",
+    "province": "Khuzestan",
+    "label": "رامین"
+  },
+  {
+    "value": "Ramhormoz",
+    "province": "Khuzestan",
+    "label": "رامهرمز"
+  },
+  {
+    "value": "Ramian",
+    "province": "Golestan",
+    "label": "رامیان"
+  },
+  {
+    "value": "Ramsar",
+    "province": "Mazandaran",
+    "label": "رامسر"
+  },
+  {
+    "value": "Rasht",
+    "province": "Gilan",
+    "label": "رشت"
+  },
+  {
+    "value": "Ravansar",
+    "province": "Kermanshah",
+    "label": "روانسر"
+  },
+  {
+    "value": "Razan",
+    "province": "Hamadan",
+    "label": "رزن"
+  },
+  {
+    "value": "Rezvanshahr",
+    "province": "Gilan",
+    "label": "رضوانشهر"
+  },
+  {
+    "value": "Robat Karim",
+    "province": "Tehran",
+    "label": "رباط کریم"
+  },
+  {
+    "value": "Roodbar",
+    "province": "Gilan",
+    "label": "رودبار"
+  },
+  {
+    "value": "Roodsar",
+    "province": "Gilan",
+    "label": "رودسر"
+  },
+  {
+    "value": "Rudehen",
+    "province": "Tehran",
+    "label": "رودهن"
+  },
+  {
+    "value": "Sabzevar",
+    "province": "Razavi Khorasan",
+    "label": "سبزوار"
+  },
+  {
+    "value": "Sadra",
+    "province": "Fars",
+    "label": "صدرا"
+  },
+  {
+    "value": "Sahand",
+    "province": "East Azerbaijan",
+    "label": "سهند"
+  },
+  {
+    "value": "Salmas",
+    "province": "West Azerbaijan",
+    "label": "سلماس"
+  },
+  {
+    "value": "Sanandaj",
+    "province": "Kurdistan",
+    "label": "سنندج"
+  },
+  {
+    "value": "Sari",
+    "province": "Mazandaran",
+    "label": "ساری"
+  },
+  {
+    "value": "Sarableh",
+    "province": "Ilam",
+    "label": "سرابله"
+  },
+  {
+    "value": "Sarakhs",
+    "province": "Razavi Khorasan",
+    "label": "سرخس"
+  },
+  {
+    "value": "Savadkuh",
+    "province": "Mazandaran",
+    "label": "سوادکوه"
+  },
+  {
+    "value": "Saveh",
+    "province": "Markazi",
+    "label": "ساوه"
+  },
+  {
+    "value": "Semirom",
+    "province": "Isfahan",
+    "label": "سمیرم"
+  },
+  {
+    "value": "Semnan",
+    "province": "Semnan",
+    "label": "سمنان"
+  },
+  {
+    "value": "Shaft",
+    "province": "Gilan",
+    "label": "شفت"
+  },
+  {
+    "value": "Shabestar",
+    "province": "East Azerbaijan",
+    "label": "شبستر"
+  },
+  {
+    "value": "Shadegan",
+    "province": "Khuzestan",
+    "label": "شادگان"
+  },
+  {
+    "value": "Shaft",
+    "province": "Gilan",
+    "label": "شفت"
+  },
+  {
+    "value": "Shahin Dezh",
+    "province": "West Azerbaijan",
+    "label": "شاهین دژ"
+  },
+  {
+    "value": "Shahin Shahr",
+    "province": "Isfahan",
+    "label": "شاهین شهر"
+  },
+  {
+    "value": "Shahrekord",
+    "province": "Chaharmahal and Bakhtiari",
+    "label": "شهرکرد"
+  },
+  {
+    "value": "Shahrud",
+    "province": "Semnan",
+    "label": "شاهرود"
+  },
+  {
+    "value": "Shahriar",
+    "province": "Tehran",
+    "label": "شهریار"
+  },
+  {
+    "value": "Shahreza",
+    "province": "Isfahan",
+    "label": "شهرضا"
+  },
+  {
+    "value": "Shazand",
+    "province": "Markazi",
+    "label": "شازند"
+  },
+  {
+    "value": "Shiraz",
+    "province": "Fars",
+    "label": "شیراز"
+  },
+  {
+    "value": "Shirvan",
+    "province": "North Khorasan",
+    "label": "شیروان"
+  },
+  {
+    "value": "Shosh",
+    "province": "Khuzestan",
+    "label": "شوش"
+  },
+  {
+    "value": "Shushtar",
+    "province": "Khuzestan",
+    "label": "شوشتر"
+  },
+  {
+    "value": "Siahkal",
+    "province": "Gilan",
+    "label": "سیاهکل"
+  },
+  {
+    "value": "Sirjan",
+    "province": "Kerman",
+    "label": "سیرجان"
+  },
+  {
+    "value": "Sonqor",
+    "province": "Kermanshah",
+    "label": "سنقر"
+  },
+  {
+    "value": "Sowme'eh Sara",
+    "province": "Gilan",
+    "label": "صومعه سرا"
+  },
+  {
+    "value": "Susa",
+    "province": "Khuzestan",
+    "label": "سوسا"
+  },
+  {
+    "value": "Tabas",
+    "province": "South Khorasan",
+    "label": "طبس"
+  },
+  {
+    "value": "Tabriz",
+    "province": "East Azerbaijan",
+    "label": "تبریز"
+  },
+  {
+    "value": "Tafresh",
+    "province": "Markazi",
+    "label": "تفرش"
+  },
+  {
+    "value": "Taft",
+    "province": "Yazd",
+    "label": "تفت"
+  },
+  {
+    "value": "Takab",
+    "province": "West Azerbaijan",
+    "label": "تکاب"
+  },
+  {
+    "value": "Takestan",
+    "province": "Qazvin",
+    "label": "تاکستان"
+  },
+  {
+    "value": "Taleqan",
+    "province": "Alborz",
+    "label": "طالقان"
+  },
+  {
+    "value": "Tehran",
+    "province": "Tehran",
+    "label": "تهران"
+  },
+  {
+    "value": "Tonekabon",
+    "province": "Mazandaran",
+    "label": "تنکابن"
+  },
+  {
+    "value": "Torbat-e Heydarieh",
+    "province": "Razavi Khorasan",
+    "label": "تربت حیدریه"
+  },
+  {
+    "value": "Torbat-e Jam",
+    "province": "Razavi Khorasan",
+    "label": "تربت جام"
+  },
+  {
+    "value": "Tuyserkan",
+    "province": "Hamadan",
+    "label": "تویسرکان"
+  },
+  {
+    "value": "Urmia",
+    "province": "West Azerbaijan",
+    "label": "ارومیه"
+  },
+  {
+    "value": "Varamin",
+    "province": "Tehran",
+    "label": "ورامین"
+  },
+  {
+    "value": "Varzaneh",
+    "province": "Isfahan",
+    "label": "ورزنه"
+  },
+  {
+    "value": "Varzaqan",
+    "province": "East Azerbaijan",
+    "label": "ورزقان"
+  },
+  {
+    "value": "Yasuj",
+    "province": "Kohgiluyeh and Boyer-Ahmad",
+    "label": "یاسوج"
+  },
+  {
+    "value": "Yazd",
+    "province": "Yazd",
+    "label": "یزد"
+  },
+  {
+    "value": "Zabol",
+    "province": "Sistan and Baluchestan",
+    "label": "زابل"
+  },
+  {
+    "value": "Zahedan",
+    "province": "Sistan and Baluchestan",
+    "label": "زاهدان"
+  },
+  {
+    "value": "Zanjan",
+    "province": "Zanjan",
+    "label": "زنجان"
+  },
+  {
+    "value": "Zarrin Shahr",
+    "province": "Isfahan",
+    "label": "زرین شهر"
+  },
+  {
+    "value": "Zarand",
+    "province": "Kerman",
+    "label": "زرند"
+  },
+  {
+    "value": "Zarqan",
+    "province": "Fars",
+    "label": "زرقان"
+  }
+]
