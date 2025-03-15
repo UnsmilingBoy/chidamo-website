@@ -5,7 +5,12 @@ import HeadlessSwitch from "../Switch";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import {
+  redirect,
+  usePathname,
+  useRouter,
+  useSearchParams,
+} from "next/navigation";
 
 export default function CategoryFilters() {
   const [expandPriceFilter, setExpandPriceFilter] = useState(false);
@@ -38,7 +43,7 @@ export default function CategoryFilters() {
       params.set("available", "instock");
     }
 
-    router.push(`${pathName}?${params.toString()}`);
+    redirect(`${pathName}?${params.toString()}`);
   }
 
   useEffect(() => {

@@ -3,7 +3,6 @@
 import { useCart } from "@/context/CartContext";
 import { toPersianNumber, toPersianPrice } from "@/utils/toPersianNumber";
 import {
-  Delete,
   Minus,
   Plus,
   SettingsIcon,
@@ -12,9 +11,7 @@ import {
   Trash,
 } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import { redirect } from "next/navigation";
-import { useEffect, useState } from "react";
 
 export default function PricingOverview({ product, isSticky }) {
   const { addToCart, cart, updateQuantity, removeFromCart } = useCart();
@@ -95,7 +92,7 @@ export default function PricingOverview({ product, isSticky }) {
         </div>
       </div>
 
-      {cart.length != 0 && cart[cartIndex].quantity > 0 ? (
+      {cart.length != 0 && cart[cartIndex]?.quantity > 0 ? (
         <div className="flex flex-row justify-center gap-3 w-full items-center">
           <div className="flex flex-row items-center gap-3 shadow-md p-2 rounded-md">
             <Plus
@@ -104,9 +101,9 @@ export default function PricingOverview({ product, isSticky }) {
               size={18}
             />
             <p className="text-lg select-none">
-              {toPersianNumber(cart[cartIndex].quantity)}
+              {toPersianNumber(cart[cartIndex]?.quantity)}
             </p>
-            {cart[cartIndex].quantity == 1 ? (
+            {cart[cartIndex]?.quantity == 1 ? (
               <Trash
                 onClick={() => {
                   removeFromCart(product.id);
@@ -118,7 +115,7 @@ export default function PricingOverview({ product, isSticky }) {
             ) : (
               <Minus
                 onClick={() => {
-                  updateQuantity(product.id, cart[cartIndex].quantity - 1);
+                  updateQuantity(product.id, cart[cartIndex]?.quantity - 1);
                 }}
                 className="cursor-pointer"
                 size={18}
