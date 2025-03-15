@@ -6,7 +6,7 @@ export default function ProductGallery({ photosArray }) {
       <div className="w-96 h-96 rounded-lg">
         <Image
           className="w-full h-full object-cover rounded-md"
-          src={photosArray[0]}
+          src={photosArray[0] || "/images/atr.jpg"}
           alt="Product picture"
           width={300}
           height={300}

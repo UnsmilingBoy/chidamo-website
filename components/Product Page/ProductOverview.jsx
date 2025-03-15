@@ -69,7 +69,7 @@ export default function ProductOverview({ product }) {
         <p className="font-medium">ویژگی های اصلی</p>
         <ProductAttributes attributesList={productAttributes} />
       </div>
-      <ProductGallery photosArray={[product.images[0].src]} />
+      <ProductGallery photosArray={[product?.images[0]?.src]} />
     </div>
   );
 }
