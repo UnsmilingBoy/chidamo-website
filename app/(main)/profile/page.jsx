@@ -53,7 +53,7 @@ export default async function profile() {
       }
     }
   } else {
-    redirect("/login");
+    redirect("/login?returnPage=profile");
   }
 
   const tiles = [

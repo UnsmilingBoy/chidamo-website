@@ -30,7 +30,7 @@ export default async function Checkout({ searchParams }) {
       user = await getUserInfo(14); //TODO: TEST
     }
   } else {
-    redirect("/login");
+    redirect("/login?returnPage=checkout");
   }
 
   const searchParam = await searchParams;
@@ -55,17 +55,19 @@ export default async function Checkout({ searchParams }) {
       </div>
       <div className="flex gap-5">
         <div className="flex flex-col w-full border border-[#DEDEDE] gap-2 p-5 rounded-lg">
-          <div
-            className={`flex border-2 w-full cursor-pointer items-center ${
-              address == "custom" ? "border-primary" : "border-[#DEDEDE]"
-            } py-3 px-5 gap-4 rounded-lg`}
-          >
-            <Truck size={20} />
-            <div className="flex flex-col gap-2">
-              <p className="text-primary">ارسال به آدرس شما</p>
-              <p className="text-gray-500">{user.billing["address_1"]}</p>
+          <Link href={"/checkout"}>
+            <div
+              className={`flex border-2 w-full cursor-pointer items-center ${
+                address != "custom" ? "border-primary" : "border-[#DEDEDE]"
+              } py-3 px-5 gap-4 rounded-lg`}
+            >
+              <Truck size={20} />
+              <div className="flex flex-col gap-2">
+                <p className="text-primary">ارسال به آدرس شما</p>
+                <p className="text-gray-500">{user.billing["address_1"]}</p>
+              </div>
             </div>
-          </div>
+          </Link>
           <CheckOutInputFields isSelected={address} />
         </div>
         <CartPricingInfo />
