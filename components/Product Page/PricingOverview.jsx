@@ -44,7 +44,7 @@ export default function PricingOverview({ product, isSticky }) {
           </div>
           <div className="flex flex-row gap-2 items-center">
             <Image
-              src={"/Images/box-icon.svg"}
+              src={"/images/box-icon.svg"}
               width={20}
               height={20}
               alt="Box icon"
