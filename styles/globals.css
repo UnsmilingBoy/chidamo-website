@@ -49,7 +49,7 @@
 }
 
 body {
-  font-family: "Shabnam";
+  font-family: "Shabnam", sans-serif !important;
 }
 
 #nprogress .bar {
