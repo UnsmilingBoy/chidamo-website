@@ -15,7 +15,8 @@ export function AuthProvider({ children, initialUser }) {
           const data = await res.json();
           if (data.isAuthenticated) setUser(data.user);
         } catch (error) {
-          console.error("Error fetching user:", error);
+          // console.error("Error fetching user:", error);
+          setUser("");
         } finally {
           setLoading(false);
         }
