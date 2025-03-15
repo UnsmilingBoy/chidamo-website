@@ -4,13 +4,6 @@
 
 @font-face {
   font-family: "Shabnam";
-  src: url("/fonts/Shabnam-FD.ttf") format("ttf");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Shabnam";
   src: url("/fonts/Shabnam-Medium-FD.ttf") format("ttf");
   font-weight: 500;
   font-style: medium;
@@ -49,7 +42,7 @@
 }
 
 body {
-  font-family: "Shabnam", sans-serif !important;
+  font-family: var(--font-shabnam), sans-serif !important;
 }
 
 #nprogress .bar {
