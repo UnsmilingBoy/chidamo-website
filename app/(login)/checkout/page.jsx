@@ -14,7 +14,7 @@ async function getUserInfo(id) {
   return data;
 }
 
-export default async function Checkout() {
+export default async function Checkout({ searchParams }) {
   const cookieStore = await cookies();
   const token = cookieStore.get("token")?.value;
   let user = null;
@@ -32,6 +32,9 @@ export default async function Checkout() {
   } else {
     redirect("/login");
   }
+
+  const searchParam = await searchParams;
+  const address = searchParam.address || "";
 
   return (
     <div className="flex flex-col w-full m-auto max-w-[1250px] py-7 gap-5">
@@ -53,7 +56,9 @@ export default async function Checkout() {
       <div className="flex gap-5">
         <div className="flex flex-col w-full border border-[#DEDEDE] gap-2 p-5 rounded-lg">
           <div
-            className={`flex border-2 w-full cursor-pointer items-center border-[#DEDEDE] py-3 px-5 gap-4 rounded-lg`}
+            className={`flex border-2 w-full cursor-pointer items-center ${
+              address == "custom" ? "border-primary" : "border-[#DEDEDE]"
+            } py-3 px-5 gap-4 rounded-lg`}
           >
             <Truck size={20} />
             <div className="flex flex-col gap-2">
@@ -61,7 +66,7 @@ export default async function Checkout() {
               <p className="text-gray-500">{user.billing["address_1"]}</p>
             </div>
           </div>
-          <CheckOutInputFields />
+          <CheckOutInputFields isSelected={address} />
         </div>
         <CartPricingInfo />
       </div>

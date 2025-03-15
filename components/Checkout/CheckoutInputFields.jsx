@@ -4,7 +4,7 @@ import { MapPinHouse } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-export default function CheckOutInputFields() {
+export default function CheckOutInputFields({ isSelected }) {
   useEffect(() => {
     fetch("/iran_cities.json")
       .then((res) => res.json())
@@ -75,10 +75,6 @@ export default function CheckOutInputFields() {
   const handleProvinceSelection = (e) => {
     setSelectedProvince(e.target.value);
   };
-
-  const searchParams = new useSearchParams();
-  const address = searchParams.get("address");
-  console.log(address);
 
   return (
     <div

@@ -4,28 +4,28 @@
 
 @font-face {
   font-family: "Shabnam";
-  src: url("../public/fonts/Shabnam-FD.ttf") format("ttf");
+  src: url("/fonts/Shabnam-FD.ttf") format("ttf");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Shabnam";
-  src: url("../public/fonts/Shabnam-Medium-FD.ttf") format("ttf");
+  src: url("/fonts/Shabnam-Medium-FD.ttf") format("ttf");
   font-weight: 500;
   font-style: medium;
 }
 
 @font-face {
   font-family: "Shabnam";
-  src: url("../public/fonts/Shabnam-Bold-FD.ttf") format("ttf");
+  src: url("/fonts/Shabnam-Bold-FD.ttf") format("ttf");
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
   font-family: "ShabnamWOL";
-  src: url("../public/fonts/Shabnam-FD-WOL.ttf") format("ttf");
+  src: url("/fonts/Shabnam-FD-WOL.ttf") format("ttf");
   font-weight: 400;
   font-style: normal;
 }
