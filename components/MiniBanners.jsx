@@ -11,7 +11,7 @@ export default function MiniBanner() {
   ];
 
   return (
-    <section className="flex flex-row justify-between my-12">
+    <section className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-10 justify-items-center my-12">
       {banners.map((item, index) => (
         <Image
           className="select-none cursor-pointer"

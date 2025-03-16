@@ -48,7 +48,7 @@ export default function SalesBox({ products }) {
           تخفیفات زمستانه چیدامو
         </div>
         <div className="flex flex-row gap-3">
-          نمایش همه
+          <p className="hidden lg:block">نمایش همه</p>
           <Image
             src="/images/left-arrow.svg"
             alt="Left arrow"
@@ -58,7 +58,15 @@ export default function SalesBox({ products }) {
         </div>
       </div>
       <div className="relative w-full cursor-grab py-5 select-none">
-        <Swiper spaceBetween={10} slidesPerView={6}>
+        <Swiper
+          spaceBetween={10}
+          breakpoints={{
+            320: { slidesPerView: 2 }, // 1 slide for small screens
+            600: { slidesPerView: 3 },
+            768: { slidesPerView: 4 }, // 2 slides for tablets
+            1024: { slidesPerView: 6 }, // 3 slides for desktops
+          }}
+        >
           {products.map((item, index) => (
             <SwiperSlide key={index}>
               <div className="flex gap-[10px] items-center">

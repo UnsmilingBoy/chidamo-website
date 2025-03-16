@@ -7,7 +7,7 @@ import Ad from "./Ad";
 import Link from "next/link";
 import CategoryDropdownItem from "./CategoryDropdownItem";
 import { usePathname, useRouter } from "next/navigation";
-import { SearchIcon } from "lucide-react";
+import { LogInIcon, SearchIcon, User } from "lucide-react";
 import UserDropDown from "../UserDropDown";
 import { useAuth } from "@/context/AuthContext";
 import { useCart } from "@/context/CartContext";
@@ -67,9 +67,9 @@ export default function Header({ categories }) {
       <div
         className={`${
           isFixed ? "py-3" : "py-5"
-        } bg-white w-full flex flex-col px-16 gap-6`}
+        } bg-white hidden w-full lg:flex flex-col px-16 gap-6`}
       >
-        <div className="flex flex-row justify-between w-full m-auto max-w-[1600px]">
+        <div className="flex flex-row justify-between w-full m-auto xl:max-w-[1600px]">
           <div className="flex flex-row items-center">
             <Link href="/">
               <Image
@@ -96,11 +96,12 @@ export default function Header({ categories }) {
               <UserDropDown user={user} />
             ) : (
               <Link href={`/login?returnPage=${pathname}`}>
-                <button className="flex flex-row items-center gap-4 border border-[#adadad] rounded-xl px-5 py-2 mx-2">
+                <button className="hidden xl:flex flex-row items-center gap-4 border border-[#adadad] rounded-xl px-5 py-2 mx-2">
                   <p>ورود</p>
                   <div className="w-[1.5px] h-5 bg-[#666]"></div>
-                  <p>ثبت نام</p>
+                  <p className="">ثبت نام</p>
                 </button>
+                <LogInIcon className="xl:hidden" size={32} color="#666666" />
               </Link>
             )}
             <div className="w-[1px] h-7 bg-[#d3d3d3]"></div>

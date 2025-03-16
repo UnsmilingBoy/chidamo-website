@@ -15,7 +15,7 @@ export default function StoriesSection() {
   ];
 
   return (
-    <section className="flex flex-row justify-between my-10">
+    <section className="flex flex-row justify-between my-10 w-full overflow-scroll gap-5 scrollbar-none">
       {data.map((item, index) => (
         <div key={index} className="flex flex-col items-center gap-2">
           <div className="rounded-full w-24 h-24 overflow-hidden border-[3px] border-primary p-[3px]">
