@@ -7,15 +7,17 @@ import Ad from "./Ad";
 import Link from "next/link";
 import CategoryDropdownItem from "./CategoryDropdownItem";
 import { usePathname, useRouter } from "next/navigation";
-import { LogInIcon, SearchIcon, User } from "lucide-react";
+import { LogIn, LogInIcon, Menu, SearchIcon, User } from "lucide-react";
 import UserDropDown from "../UserDropDown";
 import { useAuth } from "@/context/AuthContext";
-import { useCart } from "@/context/CartContext";
 import CartDropDown from "./CartDropDown";
+import { useMediaQuery } from "react-responsive";
 
 export default function Header({ categories }) {
   const pathname = usePathname();
   const router = useRouter();
+
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
 
   const [inputValue, setInputValue] = useState("");
   function searchFunction(e) {
@@ -58,91 +60,115 @@ export default function Header({ categories }) {
   if (loading) return null;
 
   return (
-    <header
-      className={`${
-        isFixed ? "fixed" : "absolute"
-      } flex flex-col w-full z-40 border-b border-[#dcdcdc]`}
-    >
-      <Ad />
-      <div
+    <>
+      <header
         className={`${
-          isFixed ? "py-3" : "py-5"
-        } bg-white hidden w-full lg:flex flex-col px-16 gap-6`}
+          isFixed ? "fixed" : "absolute"
+        } flex flex-col w-full z-40 border-b border-[#dcdcdc]`}
       >
-        <div className="flex flex-row justify-between w-full m-auto xl:max-w-[1600px]">
-          <div className="flex flex-row items-center">
+        <Ad />
+        <div className="py-3 flex flex-col px-10 bg-white md:hidden">
+          <div className="w-full flex justify-between items-center">
+            <Menu color="#666666" size={27} />
             <Link href="/">
               <Image
                 src={logoPicker()}
                 alt="Logo with leaf"
-                width={135}
+                width={120}
                 height={100}
               />
             </Link>
-            <div className="flex flex-row mx-5 bg-[#F0F0F0] rounded-xl items-center px-5 h-12">
-              <SearchIcon className="text-[#9C9D9E]" />
-              <input
-                onKeyDown={searchFunction}
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-                type="text"
-                placeholder="محصول، برند یا دسته مورد نظرتان را جستجو کنید."
-                className="text-sm bg-[#F0F0F0] outline-none text-black px-2  w-[500px]"
-              />
-            </div>
-          </div>
-          <div className="flex flex-row items-center gap-5 text-[#313131]">
-            {user ? (
-              <UserDropDown user={user} />
-            ) : (
-              <Link href={`/login?returnPage=${pathname}`}>
-                <button className="hidden xl:flex flex-row items-center gap-4 border border-[#adadad] rounded-xl px-5 py-2 mx-2">
-                  <p>ورود</p>
-                  <div className="w-[1.5px] h-5 bg-[#666]"></div>
-                  <p className="">ثبت نام</p>
-                </button>
-                <LogInIcon className="xl:hidden" size={32} color="#666666" />
-              </Link>
-            )}
-            <div className="w-[1px] h-7 bg-[#d3d3d3]"></div>
-
-            <CartDropDown />
+            <Link href={`/login?returnPage=${pathname}`}>
+              <LogIn color="#666666" size={27} />{" "}
+            </Link>
           </div>
         </div>
-        {!isFixed && (
-          <div
-            className={`flex flex-row items-center gap-8 w-full m-auto max-w-[1600px]`}
-          >
-            <div className="relative group">
-              <CategoryItem
-                title="دسته بندی محصولات"
-                image="/images/category.svg"
-              />
-              <div className="absolute w-[600px] right-0 opacity-0 pointer-events-none pt-6 group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-100 delay-150">
-                <ul className="grid grid-cols-3 bg-white shadow-md rounded-md overflow-hidden">
-                  {categoryDropdownItems.map((item, index) => (
-                    <CategoryDropdownItem
-                      key={index}
-                      title={item}
-                      id={categoryIds[index]}
-                    />
-                  ))}
-                </ul>
+        <div
+          className={`${
+            isFixed ? "py-3" : "py-5"
+          } bg-white hidden w-full md:flex flex-col px-10 md:px-16 gap-6`}
+        >
+          <div className="flex flex-row justify-between w-full m-auto xl:max-w-[1600px]">
+            <div className="flex flex-row w-full md:w-auto items-center">
+              <Link href="/">
+                <Image
+                  src={logoPicker()}
+                  alt="Logo with leaf"
+                  width={isMobile ? 100 : 135}
+                  height={100}
+                />
+              </Link>
+              <div className="hidden md:flex flex-row mx-5 bg-[#F0F0F0] rounded-xl items-center px-5 h-12">
+                <SearchIcon className="text-[#9C9D9E]" />
+                <input
+                  onKeyDown={searchFunction}
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
+                  type="text"
+                  placeholder="محصول، برند یا دسته مورد نظرتان را جستجو کنید."
+                  className="text-sm bg-[#F0F0F0] outline-none text-black px-2 md:w-[300px] lg:w-[500px]"
+                />
               </div>
             </div>
-            <div className="w-[1px] h-4 bg-[#b9b9b9]"></div>
-            <CategoryItem
-              title="محصولات تخفیف دار"
-              image="/images/sales-icon.svg"
-            />
-            <CategoryItem
-              title="پرفروش ترین ها"
-              image="/images/fire-icon.svg"
-            />
-            <CategoryItem title="فروشنده شو!" image="/images/seller-icon.svg" />
+            <div className="flex flex-row items-center gap-5 text-[#313131]">
+              {user ? (
+                <UserDropDown user={user} />
+              ) : (
+                <Link href={`/login?returnPage=${pathname}`}>
+                  <button className="hidden xl:flex flex-row items-center gap-4 border border-[#adadad] rounded-xl px-5 py-2 mx-2">
+                    <p>ورود</p>
+                    <div className="w-[1.5px] h-5 bg-[#666]"></div>
+                    <p className="">ثبت نام</p>
+                  </button>
+                  <LogInIcon
+                    className="xl:hidden"
+                    size={isMobile ? 24 : 32}
+                    color="#666666"
+                  />
+                </Link>
+              )}
+              <div className="w-[1px] h-7 bg-[#d3d3d3]"></div>
+              <CartDropDown />
+            </div>
           </div>
-        )}
-      </div>
-    </header>
+          {!isFixed && (
+            <div
+              className={`hidden md:flex flex-row items-center gap-8 w-full m-auto max-w-[1600px]`}
+            >
+              <div className="relative group">
+                <CategoryItem
+                  title="دسته بندی محصولات"
+                  image="/images/category.svg"
+                />
+                <div className="absolute w-[600px] right-0 opacity-0 pointer-events-none pt-6 group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-100 delay-150">
+                  <ul className="grid grid-cols-3 bg-white shadow-md rounded-md overflow-hidden">
+                    {categoryDropdownItems.map((item, index) => (
+                      <CategoryDropdownItem
+                        key={index}
+                        title={item}
+                        id={categoryIds[index]}
+                      />
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              <div className="w-[1px] h-4 bg-[#b9b9b9]"></div>
+              <CategoryItem
+                title="محصولات تخفیف دار"
+                image="/images/sales-icon.svg"
+              />
+              <CategoryItem
+                title="پرفروش ترین ها"
+                image="/images/fire-icon.svg"
+              />
+              <CategoryItem
+                title="فروشنده شو!"
+                image="/images/seller-icon.svg"
+              />
+            </div>
+          )}
+        </div>
+      </header>
+    </>
   );
 }

@@ -34,7 +34,7 @@ export default async function RootLayout({ children }) {
   return (
     <AuthProvider initialUser={user}>
       <Header categories={categories} />
-      <main className="pt-[183px]">{children}</main>
+      <main className="pt-[141px] md:pt-[183px]">{children}</main>
       <ExpandCollapseText />
       <Footer categories={categories} />
     </AuthProvider>

@@ -4,11 +4,14 @@ import { ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { useMediaQuery } from "react-responsive";
 
 export default function CartDropDown() {
   const { cart, removeFromCart } = useCart();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
+
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -26,7 +29,7 @@ export default function CartDropDown() {
     <div className="relative" ref={dropdownRef}>
       {/* Cart Icon */}
       <button onClick={() => setIsOpen((prev) => !prev)} className="relative">
-        <ShoppingCart color="#666666" size="35" />
+        <ShoppingCart color="#666666" size={isMobile ? 24 : 35} />
         {cart.length > 0 && (
           <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
             {toPersianNumber(

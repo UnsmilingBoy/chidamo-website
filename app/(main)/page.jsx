@@ -1,6 +1,4 @@
 import BannerSlider from "@/components/BannerSlider";
-import Footer from "@/components/Footer/Footer";
-import ExpandCollapseText from "@/components/HomeExpandableText";
 import MiniBanner from "@/components/MiniBanners";
 import ProductsCatalog from "@/components/ProductsCatalog";
 import SalesBox from "@/components/SalesBox/SalesBox";
