@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/image";
 import CategoryItem from "./CategoryItem";
-import { logoPicker } from "@/utils/SeasonChanger";
-import { useEffect, useState } from "react";
+import { chLogoPicker, logoPicker } from "@/utils/SeasonChanger";
+import { useEffect, useRef, useState } from "react";
 import Ad from "./Ad";
 import Link from "next/link";
 import CategoryDropdownItem from "./CategoryDropdownItem";
@@ -14,6 +14,7 @@ import {
   SearchIcon,
   ShoppingCart,
   User,
+  X,
 } from "lucide-react";
 import UserDropDown from "../UserDropDown";
 import { useAuth } from "@/context/AuthContext";
@@ -23,6 +24,9 @@ import { useMediaQuery } from "react-responsive";
 export default function Header({ categories }) {
   const pathname = usePathname();
   const router = useRouter();
+  const [isOpen, setIsOpen] = useState(false);
+  const sidebarRef = useRef(null);
+  const [expandSidebarCategory, setExpandSidebarCategory] = useState(false);
 
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
 
@@ -64,6 +68,23 @@ export default function Header({ categories }) {
     }
   }, [pathname]);
 
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+        setIsOpen(false);
+        setExpandSidebarCategory(false);
+      }
+    }
+
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen]);
+
   if (loading) return null;
 
   return (
@@ -76,7 +97,7 @@ export default function Header({ categories }) {
         <Ad />
         <div className="py-3 flex flex-col gap-3 px-6 md:px-10 bg-white md:hidden">
           <div className="w-full flex justify-between items-center">
-            <Menu color="#666666" size={24} />
+            <Menu onClick={() => setIsOpen(true)} color="#666666" size={24} />
             <Link href="/">
               <Image
                 src={logoPicker()}
@@ -89,6 +110,76 @@ export default function Header({ categories }) {
               <LogIn color="#666666" size={24} />{" "}
             </Link>
           </div>
+          {true && (
+            <div
+              className={`fixed inset-0 bg-black bg-opacity-50 z-50 transition-opacity duration-300 ${
+                isOpen ? "opacity-100 visible" : "opacity-0 invisible"
+              }`}
+            >
+              <div
+                ref={sidebarRef}
+                className={`fixed right-0 top-0 h-full w-64 bg-white shadow-lg p-5 transform transition-transform duration-300 ${
+                  isOpen ? "translate-x-0" : "translate-x-full"
+                }`}
+              >
+                {/* Close Button */}
+                <div className="flex justify-between">
+                  <button
+                    className="mb-4 p-2 rounded-md hover:bg-gray-200 transition"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <X className="w-6 h-6" />
+                  </button>
+                  <Image
+                    src={chLogoPicker()}
+                    width={40}
+                    height={40}
+                    alt="Chidamo Logo"
+                  />
+                </div>
+
+                {/* Sidebar Links */}
+                <nav className="flex flex-col gap-4 mt-5">
+                  <CategoryItem
+                    onClick={() =>
+                      setExpandSidebarCategory(!expandSidebarCategory)
+                    }
+                    title="دسته بندی محصولات"
+                    image="/images/category.svg"
+                  />
+                  {expandSidebarCategory && (
+                    <div className="flex flex-col gap-2">
+                      {categoryDropdownItems.map((item, index) => (
+                        <Link
+                          key={index}
+                          href={`category/${categoryIds[index]}`}
+                          onClick={() => setIsOpen(false)}
+                        >
+                          <p>{item}</p>
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                  <div className="w-full h-[1px] bg-[#BEBEBE]"></div>
+                  <CategoryItem
+                    title="محصولات تخفیف دار"
+                    image="/images/sales-icon.svg"
+                  />
+                  <div className="w-full h-[1px] bg-[#BEBEBE]"></div>
+                  <CategoryItem
+                    title="پرفروش ترین ها"
+                    image="/images/fire-icon.svg"
+                  />
+                  <div className="w-full h-[1px] bg-[#BEBEBE]"></div>
+                  <CategoryItem
+                    title="فروشنده شو!"
+                    image="/images/seller-icon.svg"
+                  />
+                </nav>
+              </div>
+            </div>
+          )}
+
           <div className="flex items-center gap-5">
             <div className="flex flex-row w-full bg-[#F0F0F0] rounded-xl items-center px-3 h-10">
               <SearchIcon className="text-[#9C9D9E]" />

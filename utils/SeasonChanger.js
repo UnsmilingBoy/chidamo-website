@@ -48,6 +48,18 @@ export function logoPicker() {
   }
 }
 
+export function chLogoPicker() {
+  if (month >= 2 && month <= 4) {
+    return "/images/ch-logo-spring.svg"; // Spring (March - May)
+  } else if (month >= 5 && month <= 7) {
+    return "/images/ch-logo-summer.svg"; // Summer (June - August)
+  } else if (month >= 8 && month <= 10) {
+    return "/images/ch-logo-fall.svg"; // Fall (September - November)
+  } else {
+    return "/images/ch-logo-winter.svg"; // Winter (December - February)
+  }
+}
+
 export function currentSeason() {
   if (month >= 2 && month <= 4) {
     return "spring"; // Spring (March - May)

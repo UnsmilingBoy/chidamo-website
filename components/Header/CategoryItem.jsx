@@ -1,6 +1,7 @@
-export default function CategoryItem({ title, image, className }) {
+export default function CategoryItem({ title, image, className, onClick }) {
   return (
     <div
+      onClick={onClick}
       className={`flex flex-row items-center gap-2 cursor-pointer ${className}`}
     >
       <img
