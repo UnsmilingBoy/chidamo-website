@@ -42,12 +42,12 @@ export default function ProductsCatalog({ products }) {
   return (
     <section className="flex flex-col gap-3 border border-[#b1b1b1] rounded-xl p-7">
       <div className="flex flex-row justify-between">
-        <p className="text-xl font-medium">انواع کیف در چیدامو</p>
+        <p className="text-lg md:text-xl font-medium">انواع کیف در چیدامو</p>
         <button className="flex flex-row items-center gap-2 px-2 bg-primary rounded-md">
-          <p className="text-white">مشاهده همه</p>
+          <p className="text-white text-sm md:text-base">مشاهده همه</p>
           <Image
             src="/images/left-arrow.svg"
-            width={7}
+            width={5}
             height={10}
             alt="Left Arrow"
           />

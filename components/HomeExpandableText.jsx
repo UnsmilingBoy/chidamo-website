@@ -6,13 +6,15 @@ export default function ExpandCollapseText() {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div className="my-10 mx-20">
+    <div className="max-w-[1400px] m-auto px-5 lg:px-10 my-7 lg:my-10">
       <div
         className={`transition-all flex flex-col gap-3 ${
           isExpanded ? "h-auto" : "h-16 overflow-hidden"
         }`}
       >
-        <h1 className="font-bold text-lg">فروشگاه اینترنتی چیدامو</h1>
+        <h1 className="font-bold text-base lg:text-lg">
+          فروشگاه اینترنتی چیدامو
+        </h1>
         <p>
           محصولات هنری را از فروشندگان محلی در سراسر کشور خریداری کنید. ما یک
           جامعه قوی متشکل از 100000 مشتری و بیش از 600 فروشنده هستیم که آرزوی

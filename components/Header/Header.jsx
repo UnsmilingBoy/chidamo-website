@@ -7,7 +7,14 @@ import Ad from "./Ad";
 import Link from "next/link";
 import CategoryDropdownItem from "./CategoryDropdownItem";
 import { usePathname, useRouter } from "next/navigation";
-import { LogIn, LogInIcon, Menu, SearchIcon, User } from "lucide-react";
+import {
+  LogIn,
+  LogInIcon,
+  Menu,
+  SearchIcon,
+  ShoppingCart,
+  User,
+} from "lucide-react";
 import UserDropDown from "../UserDropDown";
 import { useAuth } from "@/context/AuthContext";
 import CartDropDown from "./CartDropDown";
@@ -67,19 +74,35 @@ export default function Header({ categories }) {
         } flex flex-col w-full z-40 border-b border-[#dcdcdc]`}
       >
         <Ad />
-        <div className="py-3 flex flex-col px-10 bg-white md:hidden">
+        <div className="py-3 flex flex-col gap-3 px-6 md:px-10 bg-white md:hidden">
           <div className="w-full flex justify-between items-center">
-            <Menu color="#666666" size={27} />
+            <Menu color="#666666" size={24} />
             <Link href="/">
               <Image
                 src={logoPicker()}
                 alt="Logo with leaf"
-                width={120}
+                width={110}
                 height={100}
               />
             </Link>
             <Link href={`/login?returnPage=${pathname}`}>
-              <LogIn color="#666666" size={27} />{" "}
+              <LogIn color="#666666" size={24} />{" "}
+            </Link>
+          </div>
+          <div className="flex items-center gap-5">
+            <div className="flex flex-row w-full bg-[#F0F0F0] rounded-xl items-center px-3 h-10">
+              <SearchIcon className="text-[#9C9D9E]" />
+              <input
+                onKeyDown={searchFunction}
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                type="text"
+                placeholder="جستجو..."
+                className="text-sm bg-[#F0F0F0] outline-none text-black px-2 md:w-[300px] lg:w-[500px]"
+              />
+            </div>
+            <Link href={"/cart"}>
+              <ShoppingCart color="#666666" size={24} />
             </Link>
           </div>
         </div>

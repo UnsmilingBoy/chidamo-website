@@ -16,8 +16,8 @@ export default function ProductTile({
       target="_blank"
       rel="noopener noreferrer"
     >
-      <div className="flex flex-col items-center border gap-2 p-[15px] hover:bg-slate-50 h-full">
-        <div className="w-full aspect-square overflow-hidden p-2">
+      <div className="flex flex-col items-center border gap-2 p-1 md:p-[15px] hover:bg-slate-50 h-full">
+        <div className="w-full aspect-square overflow-hidden p-1">
           <Image
             src={image}
             width={200}

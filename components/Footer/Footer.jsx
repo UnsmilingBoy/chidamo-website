@@ -3,6 +3,7 @@ import { toPersianNumber } from "@/utils/toPersianNumber";
 import Image from "next/image";
 
 export default function Footer({ categories }) {
+  const isMobile = 0;
   const socialMediaImageLinks = [
     "/images/twitter-logo.svg",
     "/images/telegram-logo.svg",
@@ -46,30 +47,31 @@ export default function Footer({ categories }) {
 
   return (
     <footer className="flex flex-col m-5 text-white">
-      <div className="flex flex-col w-full py-10 px-20 bg-primary rounded-t-2xl">
+      <div className="flex flex-col w-full py-6 md:py-10 px-5 md:px-20 bg-primary rounded-t-2xl">
         <div className="flex justify-between items-center w-full">
           <Image
+            className="w-[120px] h-auto"
             src="/images/footer-logo.svg"
-            width={150}
+            width={isMobile ? 120 : 150}
             height={40}
             alt="Footer Logo"
           />
           <button
             onClick={scrollToTop}
-            className="flex flex-row items-center p-4 bg-white text-black rounded-lg gap-7"
+            className="flex flex-row items-center p-3 md:p-4 bg-white text-black rounded-lg gap-2 md:gap-7"
           >
             <p className="text-sm">بازگشت به بالا</p>
             <Image
               className="rotate-90"
               src="/images/left-arrow-black.svg"
-              width={15}
+              width={isMobile ? 10 : 15}
               height={15}
               alt="Arrow"
             />
           </button>
         </div>
         <div className="w-full h-[1px] my-7 bg-white"></div>
-        <div className="flex flex-row justify-evenly items-start">
+        <div className="flex flex-col gap-5 md:gap-5 md:flex-row justify-evenly items-start">
           <div className="flex flex-col gap-7">
             <p>تلفن: 011-42198210 - 011-421123123</p>
             <p>ایمیل: info@Chidamo.ir</p>
@@ -88,7 +90,6 @@ export default function Footer({ categories }) {
               </div>
             </div>
           </div>
-
           {footerTitles.map((title, i) => (
             <div key={`Key ${i}`} className="flex flex-col gap-1 ">
               <p className="mb-3 text-lg font-bold">{title}</p>
@@ -100,9 +101,8 @@ export default function Footer({ categories }) {
         </div>
       </div>
       <div className="flex justify-center items-center w-full h-14 bg-footer rounded-b-2xl">
-        <p className="text-sm">
-          {toPersianNumber(1403)} تمام حقوق مادی و معنوی این سایت متعلق به
-          چیدامو می‌باشد.
+        <p className="text-sm text-center">
+          1403 تمام حقوق مادی و معنوی این سایت متعلق به چیدامو می‌باشد.
         </p>
       </div>
     </footer>
