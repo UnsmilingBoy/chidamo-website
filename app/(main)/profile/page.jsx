@@ -23,6 +23,7 @@ export async function getUserOrders(id) {
 export default async function profile() {
   const cookieStore = await cookies();
   const token = cookieStore.get("token")?.value;
+  console.log("PROFILE PAGE'S TOKEN IS: " + token);
   let user = null;
   let wpUser = null;
   let orders = null;
