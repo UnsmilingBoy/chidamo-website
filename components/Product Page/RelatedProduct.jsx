@@ -2,11 +2,11 @@ import ProductTile from "../ProductTile";
 
 export default function RelatedProducts({ dataList }) {
   return (
-    <div className="flex flex-col gap-5">
+    <div className="w-full flex flex-col gap-5">
       <p className="font-bold text-lg">محصولات مشابه</p>
-      <div className="flex flex-row">
+      <div className="flex flex-row w-full overflow-scroll scrollbar-none">
         {dataList.map((product, index) => (
-          <div key={index} className="w-56">
+          <div key={index} className="w-44 md:w-56 flex-none">
             <ProductTile
               image={product?.images?.[0]?.src || "/images/atr.jpg"}
               title={product.name}

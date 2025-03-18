@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function ProductGallery({ photosArray }) {
   return (
     <div className="flex flex-col gap-5">
-      <div className="w-96 h-96 rounded-lg">
+      <div className="w-full h-auto sm:w-64 sm:h-64 md:w-96 md:h-96 rounded-lg">
         <Image
           className="w-full h-full object-cover rounded-md"
           src={photosArray[0] || "/images/atr.jpg"}

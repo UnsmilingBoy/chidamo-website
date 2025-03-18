@@ -3,7 +3,7 @@ import { toPersianPrice } from "@/utils/toPersianNumber";
 
 export default function CartPricingInfo({ totalPrice, shippingPrice }) {
   return (
-    <div className="flex flex-col gap-3 p-5 w-[400px] border border-gray-200 rounded-md h-fit">
+    <div className="flex flex-col gap-3 p-5 w-[330px] md:w-[400px] border border-gray-200 rounded-md h-fit">
       <div className="flex flex-row justify-between">
         <p className="text-sm">قیمت کالا:</p>
         <p>{toPersianPrice(totalPrice)} تومان</p>

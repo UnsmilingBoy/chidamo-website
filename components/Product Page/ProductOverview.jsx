@@ -24,7 +24,7 @@ export default function ProductOverview({ product }) {
   const [selectedColor, setSelectedColor] = useState(0);
 
   return (
-    <div className="flex flex-row p-8 rounded-lg gap-24 border border-[#D9D9D9] w-full">
+    <div className="flex flex-col-reverse sm:flex-row p-8 rounded-lg gap-24 border border-[#D9D9D9] w-full">
       <div className="flex flex-col gap-5 w-full">
         <h1 className="font-bold text-lg">{product.name}</h1>
         <div className="h-[1px] w-full bg-[#D9D9D9]"></div>

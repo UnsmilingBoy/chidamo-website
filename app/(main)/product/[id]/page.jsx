@@ -1,7 +1,9 @@
+import MobilePricingOverview from "@/components/Product Page/MobilePricingOverview";
 import PricingOverview from "@/components/Product Page/PricingOverview";
 import ProductDetails from "@/components/Product Page/ProductDetails";
 import ProductOverview from "@/components/Product Page/ProductOverview";
 import RelatedProducts from "@/components/Product Page/RelatedProduct";
+import StoriesSection from "@/components/StoriesSection/StoriesSection";
 import Image from "next/image";
 
 async function getProductData(id) {
@@ -42,17 +44,20 @@ export default async function productPage({ params }) {
 
   return (
     <div className="flex justify-center w-full p-6">
-      <div className="flex flex-col gap-20 h-full w-[1400px]">
+      <div className="flex flex-col gap-20 h-full w-full max-w-[1400px]">
         {/* PATH HERE (فروشگاه اینترنتی چیدامو / صنعت مد / کیف و کفش / کیف و کفش زنانه / کیف کج زنانه چرم طبیعی بز کد 01)  */}
 
         <section className="flex flex-row justify-between gap-10">
           {/*  Overview of the product (images, compact details and price) */}
           <ProductOverview product={data} />
-          <PricingOverview product={data} />
+          <PricingOverview display={"hidden xl:flex"} product={data} />
         </section>
         <div className="flex flex-row items-center justify-center w-full gap-12">
           {Object.keys(validations).map((key, index) => (
-            <div key={index} className="flex flex-row items-center gap-5 w-fit">
+            <div
+              key={index}
+              className="flex flex-col lg:flex-row items-center gap-5 w-fit"
+            >
               <Image
                 src={validations[key][0]}
                 width={validations[key][1]}
@@ -66,13 +71,18 @@ export default async function productPage({ params }) {
         <section className="flex flex-row gap-10">
           <ProductDetails product={data} />
           {/* <div className="sticky top-36 h-full w-[400px]"> */}
-          <PricingOverview isSticky={true} product={data} />
+          <PricingOverview
+            display={"hidden xl:flex"}
+            isSticky={true}
+            product={data}
+          />
           {/* </div> */}
         </section>
         <section>
           <RelatedProducts dataList={relatedProductsData} />
         </section>
       </div>
+      <MobilePricingOverview product={data} />
     </div>
   );
 }

@@ -44,7 +44,7 @@ export default function Cart() {
             <p className="text-primary font-medium">سبد خرید</p>
             <div className="bg-primary w-24 h-[3px]"></div>
           </div>
-          <div className="flex flex-row w-full gap-5 justify-between">
+          <div className="flex flex-col p-5 items-center md:items-start md:flex-row w-full gap-5 justify-between">
             <div className="flex flex-col w-full">
               {cart.map((item, index) => (
                 <div
