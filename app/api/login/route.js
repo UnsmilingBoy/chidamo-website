@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 
+export const runtime = "nodejs"; // Force Node.js runtime
+
 export async function POST(req) {
   try {
     const { username, password } = await req.json();
@@ -17,6 +19,7 @@ export async function POST(req) {
     const data = await response.json();
 
     if (response.ok && data.token) {
+      console.log("TOKEN SET: " + data.token);
       const cookieStore = await cookies();
       cookieStore.set("token", data.token, {
         httpOnly: true,
