@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
+export const runtime = "nodejs"; // Force Node.js runtime
+
 async function getUserInfo(id) {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   const res = await fetch(baseUrl + `/api/userinfo/${id}`);

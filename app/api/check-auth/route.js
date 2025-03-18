@@ -6,6 +6,7 @@ export const runtime = "nodejs"; // Force Node.js runtime
 export async function GET() {
   const cookieStore = await cookies();
   const token = cookieStore.get("token")?.value;
+  console.log("check-auth token is " + token);
 
   if (!token) {
     return NextResponse.json({ isAuthenticated: false }, { status: 401 });
