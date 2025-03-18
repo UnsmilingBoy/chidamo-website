@@ -23,9 +23,10 @@ export async function POST(req) {
       const cookieStore = await cookies();
       cookieStore.set("token", data.token, {
         httpOnly: true,
-        // secure: process.env.NODE_ENV === "production",
-        // sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
+        secure: process.env.NODE_ENV === "production",
+        sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
         path: "/",
+        domain: ".chidamo.com",
         maxAge: 3600, // 1 hour
       });
       console.log(
