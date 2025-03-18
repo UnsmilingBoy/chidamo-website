@@ -19,7 +19,7 @@ export async function POST(req) {
     const data = await response.json();
 
     if (response.ok && data.token) {
-      console.log("TOKEN SET: " + data.token);
+      // console.log("TOKEN SET: " + data.token);
       const cookieStore = await cookies();
       cookieStore.set("token", data.token, {
         httpOnly: true,
@@ -27,6 +27,9 @@ export async function POST(req) {
         path: "/",
         maxAge: 3600, // 1 hour
       });
+      console.log(
+        "THE ITEM IN THE COOKIE IS: " + cookieStore.get("token")?.value
+      );
 
       return NextResponse.json({ success: true });
     }
