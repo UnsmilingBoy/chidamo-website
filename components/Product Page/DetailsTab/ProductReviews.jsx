@@ -55,7 +55,7 @@ export default function ProdcutReviews({ reviews, product }) {
   return (
     <div className="flex flex-col xl:flex-row justify-between gap-10">
       <div className="flex flex-col gap-7 w-full">
-        <div className="flex flex-row gap-7 text-sm items-center bg-productPageLightPrimaryColor py-3 px-6 rounded-md">
+        <div className="hidden md:flex flex-row gap-7 text-sm items-center bg-productPageLightPrimaryColor py-3 px-6 rounded-md">
           <div className="flex flex-row gap-1 items-center">
             <ListFilter size={20} />
             <p className="font-medium">ترتیب:</p>
@@ -88,7 +88,7 @@ export default function ProdcutReviews({ reviews, product }) {
           </div>
         ))}
       </div>
-      <div className="flex flex-col gap-10 w-[500px]">
+      <div className="flex flex-col gap-10 w-full md:w-[500px]">
         <div className="flex flex-col gap-2 items-center">
           <p className="font-bold text-5xl text-primary">
             {toPersianNumber(product["average_rating"])}
