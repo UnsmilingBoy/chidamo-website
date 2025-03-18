@@ -53,7 +53,7 @@ export default function CategoryFilters() {
   }, [searchParams]);
 
   return (
-    <div className="flex flex-col items-start w-[300px] border border-[#BBB] rounded-md h-fit">
+    <div className="hidden md:flex flex-col items-start w-[400px] border border-[#BBB] rounded-md h-fit">
       <div className="flex flex-row p-4 w-full gap-2 items-center border-b border-[#BBB] font-medium text-[#4A4A4A]">
         <Image
           src="/images/filter-icon.svg"

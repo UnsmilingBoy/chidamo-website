@@ -1,3 +1,5 @@
+import CategoryFilters from "@/components/Category Page/CategoryFilters";
+import CategoryProducts from "@/components/Category Page/CategoryProducts";
 import ProductTile from "@/components/ProductTile";
 
 async function searchForProduct(query) {
@@ -11,22 +13,10 @@ export default async function searchResult({ params }) {
   const { query } = await params;
   const results = await searchForProduct(query);
   return (
-    <div className="p-6">
-      <p>Search result for {query}</p>
+    <div className="p-6 max-w-[1340px] m-auto">
       <div className="flex flex-row gap-10">
-        <div className="flex flex-row w-96 border border-[#BBB] rounded-md"></div>
-        <div className="grid w-full grid-cols-5">
-          {results.map((product, index) => (
-            <ProductTile
-              key={index}
-              title={product.name}
-              productId={product.id}
-              image="/images/atr.jpg"
-              price={product["regular_price"]}
-              onSalePrice={product["sale_price"]}
-            />
-          ))}
-        </div>
+        <CategoryFilters />
+        <CategoryProducts products={results} />
       </div>
     </div>
   );

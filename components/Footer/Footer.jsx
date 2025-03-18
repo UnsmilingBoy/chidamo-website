@@ -71,7 +71,7 @@ export default function Footer({ categories }) {
           </button>
         </div>
         <div className="w-full h-[1px] my-7 bg-white"></div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 w-full gap-5 justify-items-center">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 w-full gap-5 gap-y-16 justify-items-center">
           <div className="flex flex-col gap-7">
             <p>تلفن: 011-42198210 - 011-421123123</p>
             <p>ایمیل: info@Chidamo.ir</p>

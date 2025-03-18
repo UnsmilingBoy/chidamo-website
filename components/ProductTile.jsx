@@ -9,6 +9,7 @@ export default function ProductTile({
   price,
   productId,
   onSalePrice,
+  stockStatus,
 }) {
   return (
     <Link
@@ -35,15 +36,19 @@ export default function ProductTile({
               {toPersianPrice(onSalePrice) + " تومان"}
             </p>
           )}
-          <p
-            className={`w-full text-left font-bold ${
-              onSalePrice != ""
-                ? "text-gray-600 line-through"
-                : "text-primary text-lg"
-            }`}
-          >
-            {toPersianPrice(price) + " تومان"}
-          </p>
+          {stockStatus == "outofstock" ? (
+            <p>ناموجود</p>
+          ) : (
+            <p
+              className={`w-full text-left font-bold ${
+                onSalePrice != ""
+                  ? "text-gray-600 line-through"
+                  : "text-primary text-lg"
+              }`}
+            >
+              {toPersianPrice(price) + " تومان"}
+            </p>
+          )}
         </div>
       </div>
     </Link>
