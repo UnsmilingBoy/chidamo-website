@@ -106,9 +106,15 @@ export default function Header({ categories }) {
                 height={100}
               />
             </Link>
-            <Link href={`/login?returnPage=${pathname}`}>
-              <LogIn color="#666666" size={24} />{" "}
-            </Link>
+            {user ? (
+              <Link href={"/profile"}>
+                <User color="#666666" size={24} />
+              </Link>
+            ) : (
+              <Link href={`/login?returnPage=${pathname}`}>
+                <LogIn color="#666666" size={24} />
+              </Link>
+            )}
           </div>
           {true && (
             <div
