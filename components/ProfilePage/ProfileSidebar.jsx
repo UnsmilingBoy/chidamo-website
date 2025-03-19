@@ -54,7 +54,7 @@ export default function ProfileSidebar() {
               handleLogout();
             }
           }}
-          href={item.href}
+          href={item.href != "logout" ? item.href : "/"}
           key={index}
         >
           <div
