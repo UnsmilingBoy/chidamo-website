@@ -158,7 +158,7 @@ export default function Header({ categories }) {
                       {categoryDropdownItems.map((item, index) => (
                         <Link
                           key={index}
-                          href={`category/${categoryIds[index]}`}
+                          href={`/category/${categoryIds[index]}`}
                           onClick={() => setIsOpen(false)}
                         >
                           <p>{item}</p>
