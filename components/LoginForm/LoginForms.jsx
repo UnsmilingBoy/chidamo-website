@@ -3,6 +3,7 @@
 import LoginButton from "@/components/LoginButton";
 import { logoPicker } from "@/utils/SeasonChanger";
 import Image from "next/image";
+import Link from "next/link";
 import { Suspense, useState } from "react";
 
 export default function LoginPage() {
@@ -50,13 +51,13 @@ export default function LoginPage() {
               setError={setError}
             />
           </Suspense>
-          <div className="flex flex-row items-center gap-2">
+          {/* <div className="flex flex-row items-center gap-2">
             <div className="w-full h-[1px] bg-[#D9D9D9]"></div>
             <p className="text-sm text-[#6E6E6E]">یا</p>
             <div className="w-full h-[1px] bg-[#D9D9D9]"></div>
-          </div>
+          </div> */}
 
-          <button className="bg-white text-black w-full border border-[#E6E8E7] rounded-md py-3">
+          {/* <button className="bg-white text-black w-full border border-[#E6E8E7] rounded-md py-3">
             <div className="flex flex-row items-center justify-center gap-1">
               <Image
                 src="/images/google-logo.svg"
@@ -66,12 +67,12 @@ export default function LoginPage() {
               />
               <p>ورود با گوگل</p>
             </div>
-          </button>
+          </button> */}
         </div>
         <p className="text-sm text-[#767676]">
           حساب کاربری ندارید؟{" "}
           <span className="text-primary font-medium text-sm">
-            ساخت حساب کاربری چیدامو
+            <Link href={"/signup"}>ساخت حساب کاربری چیدامو</Link>
           </span>
         </p>
       </div>

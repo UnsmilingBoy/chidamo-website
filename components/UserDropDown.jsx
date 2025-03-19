@@ -42,7 +42,9 @@ export default function UserDropdown({ user }) {
             className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
           >
             <div className="flex gap-1 justify-between">
-              <p className="font-medium">{user["first_name"]}</p>
+              <p className="font-medium line-clamp-1">
+                {user["first_name"]} {user["last_name"]}
+              </p>
               <ChevronLeft size={20} />
             </div>
           </Link>
