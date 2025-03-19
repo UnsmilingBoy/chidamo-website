@@ -80,7 +80,7 @@ export default async function Orders() {
                 </p>
               </div>
               <div className="h-[1px] w-full bg-[#bebebe] my-3"></div>
-              <div className="flex flex-row justify-start w-full gap-5">
+              <div className="grid grid-cols-2 sm:grid-cols-4 justify-items-start w-full">
                 {order["line_items"].map((product, index) => (
                   <Image
                     key={index}

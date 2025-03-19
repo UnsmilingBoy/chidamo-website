@@ -105,6 +105,7 @@ export default async function OrderPage({ params }) {
               >
                 <Image
                   src={product.image.src}
+                  className="w-[100px] sm:w-[150px]"
                   width={150}
                   height={50}
                   alt="Product Image"

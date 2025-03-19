@@ -14,7 +14,7 @@ export default function CheckOutInputFields({ isSelected }) {
   const inputFields = [
     {
       placeholder: "آدرس",
-      span: 4,
+      span: 2,
     },
     {
       placeholder: "پلاک",
@@ -113,7 +113,7 @@ export default function CheckOutInputFields({ isSelected }) {
         {inputFields.map((item, index) => (
           <input
             key={index}
-            className={`col-span-${item.span} border border-[#e2e2e2] p-3 rounded-md outline-none`}
+            className={`col-span-1 sm:col-span-${item.span} border border-[#e2e2e2] p-3 rounded-md outline-none`}
             type="text"
             placeholder={item.placeholder}
           />

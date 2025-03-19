@@ -46,7 +46,7 @@ const tabs = [
 export default function ProfileSidebar() {
   const pathname = usePathname();
   return (
-    <div className="flex flex-col h-fit gap-1 border border-[#BEBEBE] rounded-md p-3 w-[400px] text-sm">
+    <div className="flex flex-row w-full sm:w-[400px] justify-evenly sm:flex-col h-fit gap-1 border border-[#BEBEBE] rounded-md p-1 sm:p-3 text-sm">
       {tabs.map((item, index) => (
         <Link
           onClick={() => {
@@ -58,7 +58,7 @@ export default function ProfileSidebar() {
           key={index}
         >
           <div
-            className={`flex flex-row items-center rounded-md gap-1 py-3 px-3 font-medium ${
+            className={`flex flex-row items-center rounded-md gap-1 p-3 font-medium ${
               item.href == "logout" && "text-red-700"
             }  ${
               pathname == item.href
@@ -69,7 +69,7 @@ export default function ProfileSidebar() {
             } `}
           >
             {item.icon}
-            {item.name}
+            <p className="hidden sm:block">{item.name}</p>
           </div>
         </Link>
       ))}

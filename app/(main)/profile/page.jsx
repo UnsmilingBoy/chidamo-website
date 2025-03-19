@@ -90,7 +90,7 @@ export default async function profile() {
             </div>
           </Link>
         </div>
-        <div className="grid grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
           <div className="flex flex-row items-center gap-2">
             <div className="p-3 bg-gray-100 rounded-full">
               <User2 />
@@ -137,7 +137,7 @@ export default async function profile() {
             </div>
           </Link>
         </div>
-        <div className="flex flex-row w-full justify-evenly">
+        <div className="flex flex-col sm:flex-row w-full justify-evenly">
           {tiles.map((item, index) => (
             <div
               key={index}
