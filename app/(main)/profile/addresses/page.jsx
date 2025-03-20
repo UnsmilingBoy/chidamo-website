@@ -21,7 +21,7 @@ export default async function Addresses() {
 
     if (res.ok) {
       wpUser = await res.json();
-      user = await getUserInfo(14);
+      user = await getUserInfo(wpUser.id);
     }
   } else {
     redirect("/login");

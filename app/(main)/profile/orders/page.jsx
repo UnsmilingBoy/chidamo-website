@@ -24,7 +24,7 @@ export default async function Orders() {
 
     if (res.ok) {
       user = await res.json();
-      orders = await getUserOrders(14);
+      orders = await getUserOrders(user.id);
     }
   } else {
     redirect("/login");
