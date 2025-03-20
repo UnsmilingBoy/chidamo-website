@@ -7,6 +7,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import ProductTile from "@/components/ProductTile";
+import Link from "next/link";
 
 export default function ProductsCatalog({ products }) {
   const offersData = [
@@ -42,8 +43,13 @@ export default function ProductsCatalog({ products }) {
   return (
     <section className="flex flex-col gap-3 border border-[#b1b1b1] rounded-xl p-7">
       <div className="flex flex-row justify-between">
-        <p className="text-lg md:text-xl font-medium">انواع کیف در چیدامو</p>
-        <button className="flex flex-row items-center gap-2 px-2 bg-primary rounded-md">
+        <p className="text-lg md:text-xl font-medium">
+          انواع اکسسوری در چیدامو
+        </p>
+        <Link
+          href={"/category/88"}
+          className="flex flex-row items-center gap-2 px-2 bg-primary rounded-md"
+        >
           <p className="text-white text-sm md:text-base">مشاهده همه</p>
           <Image
             src="/images/left-arrow.svg"
@@ -51,7 +57,7 @@ export default function ProductsCatalog({ products }) {
             height={10}
             alt="Left Arrow"
           />
-        </button>
+        </Link>
       </div>
       <div className="relative w-full cursor-grab py-5 select-none">
         <Swiper
