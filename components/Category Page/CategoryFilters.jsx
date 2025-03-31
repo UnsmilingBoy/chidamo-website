@@ -34,7 +34,7 @@ export default function CategoryFilters() {
 
   const sellers = ["چیدامو", "خلیل شاپ"];
 
-  function handleSwitch() {
+  function handleAvailability() {
     setIsLoading(true);
 
     if (params.get("available") === "instock") {
@@ -74,7 +74,7 @@ export default function CategoryFilters() {
           <HeadlessSwitch
             enable={enable}
             setEnable={setEnable}
-            handleSwitch={handleSwitch}
+            handleSwitch={handleAvailability}
           />
         )}
       </div>

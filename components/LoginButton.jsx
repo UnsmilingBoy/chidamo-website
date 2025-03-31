@@ -14,7 +14,7 @@ const loginUser = async (username, password) => {
     });
 
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
 
     localStorage.setItem("token", data.token); // Store token
     return [data, response.status];

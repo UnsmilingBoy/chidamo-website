@@ -62,7 +62,7 @@ export default function Footer({ categories }) {
           >
             <p className="text-sm">بازگشت به بالا</p>
             <Image
-              className="rotate-90"
+              className="rotate-90 hidden xl:block"
               src="/images/left-arrow-black.svg"
               width={isMobile ? 10 : 15}
               height={15}

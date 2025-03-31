@@ -33,8 +33,8 @@ export default async function Orders() {
   return (
     <div className="flex flex-col w-full gap-5">
       {!orders.length ? (
-        <div className="flex items-center justify-center w-full h-full">
-          <p>سفارشی پیدا نشد.</p>
+        <div className="flex items-center justify-center w-full h-[50vh]">
+          <p className="text-sm font-medium text-gray-500">سفارشی پیدا نشد.</p>
         </div>
       ) : (
         orders.map((order, index) => (

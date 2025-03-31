@@ -26,12 +26,14 @@ export async function POST(req) {
         secure: process.env.NODE_ENV === "production",
         sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
         path: "/",
-        domain: ".chidamo.com",
-        maxAge: 3600, // 1 hour
+        ...(process.env.NODE_ENV === "production" && {
+          domain: ".chidamo.com",
+        }), // Set domain only in production
+        maxAge: 3600,
       });
-      console.log(
-        "THE ITEM IN THE COOKIE IS: " + cookieStore.get("token")?.value
-      );
+      // console.log(
+      //   "THE ITEM IN THE COOKIE IS: " + cookieStore.get("token")?.value
+      // );
 
       return NextResponse.json({ success: true });
     }
