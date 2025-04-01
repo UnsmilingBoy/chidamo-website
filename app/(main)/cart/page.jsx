@@ -112,10 +112,7 @@ export default function Cart() {
                 </div>
               ))}
             </div>
-            <CartPricingInfo
-              shippingPrice={shippingPrice}
-              totalPrice={totalPrice}
-            />
+            <CartPricingInfo />
           </div>
         </div>
       )}

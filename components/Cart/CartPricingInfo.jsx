@@ -1,7 +1,18 @@
+"use client";
+
+import { useCart } from "@/context/CartContext";
 import { completeOrder } from "@/serverActions";
 import { toPersianPrice } from "@/utils/toPersianNumber";
 
-export default function CartPricingInfo({ totalPrice, shippingPrice }) {
+export default function CartPricingInfo() {
+  const { cart, removeFromCart, addToCart, updateQuantity } = useCart();
+
+  const totalPrice = cart.reduce(
+    (total, item) => total + parseInt(item["regular_price"]) * item.quantity,
+    0
+  );
+
+  const shippingPrice = 80000;
   return (
     <div className="flex flex-col gap-3 p-5 w-full md:w-[400px] border border-gray-200 rounded-md h-fit">
       <div className="flex flex-row justify-between">

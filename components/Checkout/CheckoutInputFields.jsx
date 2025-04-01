@@ -87,11 +87,11 @@ export default function CheckOutInputFields({ isSelected }) {
         <MapPinHouse size={20} />
         <p className="text-black">ارسال به آدرس دلخواه</p>
       </div>
-      <div className="w-full grid grid-cols-4 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 w-full gap-5">
         <select
           id="province-select"
           onChange={handleProvinceSelection}
-          className="border border-[#e2e2e2] rounded p-3 col-span-2 outline-none w-full"
+          className="border border-[#e2e2e2] rounded p-3 outline-none w-full"
         >
           {provinceList.map((option) => (
             <option key={option.value} value={option.value}>
@@ -102,7 +102,7 @@ export default function CheckOutInputFields({ isSelected }) {
         <select
           id="city-select"
           onChange={handleCitySelection}
-          className="border border-[#e2e2e2] rounded p-3 col-span-2 w-full outline-none"
+          className="border border-[#e2e2e2] rounded p-3 w-full outline-none"
         >
           {cities.map((option, index) => (
             <option key={index} value={option.value}>
@@ -110,10 +110,12 @@ export default function CheckOutInputFields({ isSelected }) {
             </option>
           ))}
         </select>
+      </div>
+      <div className="w-full grid grid-cols-1 md:grid-cols-4 gap-5">
         {inputFields.map((item, index) => (
           <input
             key={index}
-            className={`col-span-1 sm:col-span-${item.span} border border-[#e2e2e2] p-3 rounded-md outline-none`}
+            className={`col-span-1 sm:col-span-2 border border-[#e2e2e2] p-3 rounded-md outline-none`}
             type="text"
             placeholder={item.placeholder}
           />

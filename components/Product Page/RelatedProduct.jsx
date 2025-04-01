@@ -12,7 +12,7 @@ export default function RelatedProducts({ dataList }) {
               title={product.name}
               productId={product.id}
               onSalePrice={product["sale_price"]}
-              price={"regular_price"}
+              price={product["regular_price"]}
             />
           </div>
         ))}

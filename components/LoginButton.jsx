@@ -31,17 +31,21 @@ export default function LoginButton({ username, password, setError }) {
   return (
     <button
       onClick={async () => {
-        setLoading(true);
-        let response = await loginUser(username, password);
-        switch (response[1]) {
-          case 200:
-            redirect(returnPage || "/");
+        if (!username || !password) {
+          setError(true);
+        } else {
+          setLoading(true);
+          let response = await loginUser(username, password);
+          switch (response[1]) {
+            case 200:
+              redirect(returnPage || "/");
 
-          default:
-            setError(true);
-            break;
+            default:
+              setError(true);
+              break;
+          }
+          setLoading(false);
         }
-        setLoading(false);
       }}
       className="bg-primary flex justify-center text-white w-full rounded-md py-3"
     >

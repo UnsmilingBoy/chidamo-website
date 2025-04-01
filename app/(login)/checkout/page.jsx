@@ -2,6 +2,7 @@ import CartPricingInfo from "@/components/Cart/CartPricingInfo";
 import CheckOutInputFields from "@/components/Checkout/CheckoutInputFields";
 import { logoPicker } from "@/utils/SeasonChanger";
 import { ArrowRight, Truck } from "lucide-react";
+import { Span } from "next/dist/trace";
 import { cookies } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
@@ -27,7 +28,7 @@ export default async function Checkout({ searchParams }) {
 
     if (res.ok) {
       wpUser = await res.json();
-      user = await getUserInfo(14); //TODO: TEST
+      user = await getUserInfo(wpUser.id);
     }
   } else {
     redirect("/login?returnPage=checkout");
@@ -67,7 +68,9 @@ export default async function Checkout({ searchParams }) {
               <Truck size={20} />
               <div className="flex flex-col gap-2">
                 <p className="text-primary">ارسال به آدرس شما</p>
-                <p className="text-gray-500">{user.billing["address_1"]}</p>
+                <p className="text-gray-500">
+                  {user.billing["address_1"] || "آدرسی یافت نشد."}
+                </p>
               </div>
             </div>
           </Link>
