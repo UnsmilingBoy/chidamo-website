@@ -5,7 +5,7 @@ import Details from "./DetailsTab/Details";
 import ProdcutIntroduction from "./DetailsTab/ProductIntroduction";
 import ProdcutReviews from "./DetailsTab/ProductReviews";
 
-export default function ProductDetails({ product }) {
+export default function ProductDetails({ reviews, product }) {
   const [isSelected, setIsSelected] = useState(0);
   const contents = ["مشخصات", "معرفی", "نظرات کاربران"];
   return (
@@ -32,7 +32,9 @@ export default function ProductDetails({ product }) {
       {isSelected == 1 && (
         <div dangerouslySetInnerHTML={{ __html: product.description }} />
       )}
-      {isSelected == 2 && <ProdcutReviews product={product} />}
+      {isSelected == 2 && (
+        <ProdcutReviews reviews={reviews} product={product} />
+      )}
     </div>
   );
 }

@@ -20,6 +20,13 @@ async function getRelatedProducts(ids) {
   return relatedProducts;
 }
 
+async function getReviews(id) {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+  const res = await fetch(baseUrl + `/api/reviews?productId=${id}`);
+  const reviews = await res.json();
+  return reviews;
+}
+
 export default async function productPage({ params }) {
   const { id } = await params;
   const data = await getProductData(id);
@@ -35,6 +42,8 @@ export default async function productPage({ params }) {
 
   const relatedProductsData = await getRelatedProducts(relatedIds);
 
+  const reviews = await getReviews(id);
+
   const validations = {
     "7 روز ضمانت بازگشت کالا": ["/images/refund.png", 60],
     "پرداخت امن": ["/images/pardakhteamn.png", 60],
@@ -49,7 +58,7 @@ export default async function productPage({ params }) {
 
         <section className="flex flex-row justify-between gap-10">
           {/*  Overview of the product (images, compact details and price) */}
-          <ProductOverview product={data} />
+          <ProductOverview reviews={reviews} product={data} />
           <PricingOverview display={"hidden xl:flex"} product={data} />
         </section>
         <div className="flex flex-row items-center justify-center w-full gap-12">
@@ -69,7 +78,7 @@ export default async function productPage({ params }) {
           ))}
         </div>
         <section className="flex flex-row gap-10">
-          <ProductDetails product={data} />
+          <ProductDetails reviews={reviews} product={data} />
           {/* <div className="sticky top-36 h-full w-[400px]"> */}
           <PricingOverview
             display={"hidden xl:flex"}

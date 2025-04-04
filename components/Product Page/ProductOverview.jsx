@@ -7,7 +7,7 @@ import { toPersianNumber } from "@/utils/toPersianNumber";
 import { MessageSquare, StarIcon } from "lucide-react";
 import colorDict from "@/utils/colorsDict";
 
-export default function ProductOverview({ product }) {
+export default function ProductOverview({ reviews, product }) {
   const colors = [
     ["قهوه ای تیره", "#400000"],
     ["کرمی", "#FFC6A2"],
@@ -38,7 +38,7 @@ export default function ProductOverview({ product }) {
           </div>
           <div className="flex flex-row gap-1 items-center">
             <MessageSquare className="text-primary" size={20} />
-            <p>18 دیدگاه</p>
+            <p>{reviews.length} دیدگاه</p>
           </div>
         </div>
         <p className="font-medium">
