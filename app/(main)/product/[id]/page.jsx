@@ -6,43 +6,76 @@ import RelatedProducts from "@/components/Product Page/RelatedProduct";
 import StoriesSection from "@/components/StoriesSection/StoriesSection";
 import Image from "next/image";
 
-async function getProductData(id) {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-  const res = await fetch(baseUrl + `/api/products/${id}`);
-  const data = await res.json();
-  return data;
-}
+// async function getProductData(id) {
+//   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+//   const res = await fetch(baseUrl + `/api/products/${id}`);
+//   const data = await res.json();
+//   return data;
+// }
 
-async function getRelatedProducts(ids) {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-  const res = await fetch(baseUrl + `/api/products?include=${ids}`);
-  const relatedProducts = await res.json();
-  return relatedProducts;
-}
+// async function getRelatedProducts(ids) {
+//   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+//   const res = await fetch(baseUrl + `/api/products?include=${ids}`);
+//   const relatedProducts = await res.json();
+//   return relatedProducts;
+// }
 
-async function getReviews(id) {
+// async function getReviews(id) {
+//   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+//   const res = await fetch(baseUrl + `/api/reviews?productId=${id}`);
+//   const reviews = await res.json();
+//   return reviews;
+// }
+
+async function getProductPageData(productId) {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-  const res = await fetch(baseUrl + `/api/reviews?productId=${id}`);
-  const reviews = await res.json();
-  return reviews;
+
+  const productUrl = `${baseUrl}/api/products/${productId}`;
+  const reviewsUrl = `${baseUrl}/api/reviews?productId=${productId}`;
+
+  // Fetch product first to get related IDs
+  const productRes = await fetch(productUrl);
+  const product = await productRes.json();
+
+  const relatedIds = product.relatedIds?.join(",") || "";
+  const relatedUrl = `${baseUrl}/api/products?include=${relatedIds}`;
+
+  // Fetch related products and reviews in parallel
+  const [relatedRes, reviewsRes] = await Promise.all([
+    fetch(relatedUrl),
+    fetch(reviewsUrl),
+  ]);
+
+  const [relatedProducts, reviews] = await Promise.all([
+    relatedRes.json(),
+    reviewsRes.json(),
+  ]);
+
+  return {
+    product,
+    relatedProducts,
+    reviews,
+  };
 }
 
 export default async function productPage({ params }) {
   const { id } = await params;
-  const data = await getProductData(id);
+  // const data = await getProductData(id);
 
-  let relatedIds = "";
-  for (let i = 0; i < data["related_ids"].length; i++) {
-    if (i != data["related_ids"].length - 1) {
-      relatedIds += `${data["related_ids"][i]},`;
-    } else {
-      relatedIds += data["related_ids"][i];
-    }
-  }
+  // let relatedIds = "";
+  // for (let i = 0; i < data["related_ids"].length; i++) {
+  //   if (i != data["related_ids"].length - 1) {
+  //     relatedIds += `${data["related_ids"][i]},`;
+  //   } else {
+  //     relatedIds += data["related_ids"][i];
+  //   }
+  // }
 
-  const relatedProductsData = await getRelatedProducts(relatedIds);
+  // const relatedProductsData = await getRelatedProducts(relatedIds);
 
-  const reviews = await getReviews(id);
+  // const reviews = await getReviews(id);
+
+  const { product, relatedProducts, reviews } = await getProductPageData(id);
 
   const validations = {
     "7 روز ضمانت بازگشت کالا": ["/images/refund.png", 60],
@@ -58,8 +91,8 @@ export default async function productPage({ params }) {
 
         <section className="flex flex-row justify-between gap-10">
           {/*  Overview of the product (images, compact details and price) */}
-          <ProductOverview reviews={reviews} product={data} />
-          <PricingOverview display={"hidden xl:flex"} product={data} />
+          <ProductOverview reviews={reviews} product={product} />
+          <PricingOverview display={"hidden xl:flex"} product={product} />
         </section>
         <div className="flex flex-row items-center justify-center w-full gap-12">
           {Object.keys(validations).map((key, index) => (
@@ -78,20 +111,20 @@ export default async function productPage({ params }) {
           ))}
         </div>
         <section className="flex flex-row gap-10">
-          <ProductDetails reviews={reviews} product={data} />
+          <ProductDetails reviews={reviews} product={product} />
           {/* <div className="sticky top-36 h-full w-[400px]"> */}
           <PricingOverview
             display={"hidden xl:flex"}
             isSticky={true}
-            product={data}
+            product={product}
           />
           {/* </div> */}
         </section>
         <section>
-          <RelatedProducts dataList={relatedProductsData} />
+          <RelatedProducts dataList={relatedProducts} />
         </section>
       </div>
-      <MobilePricingOverview product={data} />
+      <MobilePricingOverview product={product} />
     </div>
   );
 }
