@@ -2,6 +2,7 @@
 import { Edit, Info, X } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
+import StarRating from "./StarRating";
 
 const addReview = async (id, name, email, rating, review) => {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
@@ -38,13 +39,17 @@ export default function AddAReview({ button, id }) {
   const inputList = [
     ["نام", inputReviewer, setReviewer],
     ["ایمیل", inputEmail, setEmail],
-    ["امتیاز", inputRating, setRating],
+
     ["دیدگاه", inputReview, setReview],
   ];
 
   async function submitForm() {
-    console.log("RATING IS " + inputRating);
-    if (inputReviewer == "" || inputReview == "" || inputEmail == "") {
+    if (
+      inputReviewer == "" ||
+      inputReview == "" ||
+      inputEmail == "" ||
+      inputRating == 0
+    ) {
       setError("لطفا همه ی فیلد ها را کامل کنید.");
     } else {
       setLoading(true);
@@ -69,7 +74,6 @@ export default function AddAReview({ button, id }) {
     setReview("");
     setReviewer("");
     setError("");
-
     setOverlay(false);
   }
 
@@ -118,6 +122,7 @@ export default function AddAReview({ button, id }) {
                   )}
                 </div>
               ))}
+              <StarRating onRatingSelect={(rating) => setRating(rating)} />
               {error && (
                 <div className="flex items-center gap-1 my-2">
                   <Info className="text-red-600" size={20} />

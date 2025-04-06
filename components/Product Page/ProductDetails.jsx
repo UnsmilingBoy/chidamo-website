@@ -28,7 +28,7 @@ export default function ProductDetails({ reviews, product }) {
           </div>
         ))}
       </div>
-      {isSelected == 0 && <Details />}
+      {isSelected == 0 && <Details attributes={product["attributes"]} />}
       {isSelected == 1 && (
         <div dangerouslySetInnerHTML={{ __html: product.description }} />
       )}

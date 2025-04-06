@@ -67,7 +67,7 @@ export default function ProductOverview({ reviews, product }) {
         </div>
         <div className="h-[1px] w-full bg-[#D9D9D9]"></div>
         <p className="font-medium">ویژگی های اصلی</p>
-        <ProductAttributes attributesList={productAttributes} />
+        <ProductAttributes attributesList={product["attributes"]} />
       </div>
       <ProductGallery photosArray={[product?.images[0]?.src]} />
     </div>
