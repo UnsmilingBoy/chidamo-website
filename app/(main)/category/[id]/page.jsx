@@ -2,11 +2,18 @@ import CategoryFilters from "@/components/Category Page/CategoryFilters";
 import CategoryProducts from "@/components/Category Page/CategoryProducts";
 import Link from "next/link";
 
-async function getProducts(id, available) {
+async function getProducts(id, params) {
+  const { available, min_price, max_price } = await params;
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   const res = await fetch(
-    baseUrl + `/api/products?category=${id}&stock_status=${available || ""}`
+    baseUrl +
+      `/api/products?category=${id}&${
+        available ? "stock_status=" + available + "&" : ""
+      }${min_price ? "min_price=" + min_price + "&" : ""}${
+        max_price ? "max_price=" + max_price : ""
+      }`
   );
+
   const products = await res.json();
   return products;
 }
@@ -20,9 +27,11 @@ async function getCategoryInfo(id) {
 
 export default async function CategoryPage({ params, searchParams }) {
   const { id } = await params;
-  const { available } = await searchParams;
+  // const { available } = await searchParams;
+  // const { min_price } = await searchParams;
+  // const { max_price } = await searchParams;
 
-  const products = await getProducts(id, available);
+  const products = await getProducts(id, searchParams);
   const category = await getCategoryInfo(id);
 
   return (

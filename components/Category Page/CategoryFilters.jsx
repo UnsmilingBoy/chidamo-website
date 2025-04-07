@@ -13,12 +13,15 @@ import {
 } from "next/navigation";
 
 export default function CategoryFilters() {
-  const [expandPriceFilter, setExpandPriceFilter] = useState(false);
+  const [expandPriceFilter, setExpandPriceFilter] = useState(true);
   const [expandColorFilter, setExpandColorFilter] = useState(false);
   const [expandSellerFilter, setExpandSellerFilter] = useState(false);
 
   const [enable, setEnable] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(0);
 
   const pathName = usePathname();
   const router = useRouter();
@@ -42,6 +45,14 @@ export default function CategoryFilters() {
     } else {
       params.set("available", "instock");
     }
+
+    redirect(`${pathName}?${params.toString()}`);
+  }
+
+  function handlePriceFilter() {
+    setIsLoading(true);
+    params.set("min_price", minPrice);
+    params.set("max_price", maxPrice);
 
     redirect(`${pathName}?${params.toString()}`);
   }
@@ -79,17 +90,19 @@ export default function CategoryFilters() {
         )}
       </div>
       <div
-        onClick={() => setExpandPriceFilter(!expandPriceFilter)}
-        className="flex flex-row w-full items-center justify-between p-3 cursor-pointer"
+        // onClick={() => setExpandPriceFilter(!expandPriceFilter)}
+        className="flex flex-row w-full items-center justify-between p-3"
       >
         <p>بر اساس قیمت</p>
-        {expandPriceFilter ? <ChevronUp /> : <ChevronDown />}
+        {/* {expandPriceFilter ? <ChevronUp /> : <ChevronDown />} */}
       </div>
       {expandPriceFilter && (
         <div className="flex flex-col gap-3 w-full items-center py-4">
           <div className="flex flex-col">
             <p className="text-sm text-[#575757]">از قیمت:</p>
             <input
+              value={minPrice}
+              onChange={(e) => setMinPrice(e.target.value)}
               type="text"
               className="bg-[#F0F0F0] outline-none rounded-md p-2"
             />
@@ -97,13 +110,24 @@ export default function CategoryFilters() {
           <div className="flex flex-col">
             <p className="text-sm text-[#575757]">تا قیمت:</p>
             <input
+              value={maxPrice}
+              onChange={(e) => setMaxPrice(e.target.value)}
               className="bg-[#F0F0F0] outline-none rounded-md p-2"
               type="text"
             />
           </div>
+          <button
+            disabled={isLoading}
+            onClick={() => handlePriceFilter()}
+            className={`px-3 py-2 my-2 rounded-md text-white text-sm ${
+              isLoading ? "bg-primary/60" : "bg-primary"
+            }`}
+          >
+            اعمال فیلتر
+          </button>
         </div>
       )}
-      <div
+      {/* <div
         onClick={() => setExpandColorFilter(!expandColorFilter)}
         className="flex flex-row w-full items-center justify-between p-3 cursor-pointer"
       >
@@ -144,7 +168,7 @@ export default function CategoryFilters() {
       <div className="flex flex-row w-full items-center justify-between p-3 cursor-pointer">
         <p>جنس</p>
         <ChevronDown />
-      </div>
+      </div> */}
     </div>
   );
 }

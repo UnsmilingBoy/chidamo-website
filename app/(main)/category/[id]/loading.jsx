@@ -5,7 +5,7 @@ import LoadingProductTile from "@/components/Category Page/LoadingProductTile";
 
 export default function Loading() {
   return (
-    <div className="flex flex-col items-center p-6 gap-7">
+    <div className="flex flex-col justify-center items-center p-6 gap-7 max-w-[1400px] m-auto">
       <div className="w-full px-10 bg-[#EEEEEE] h-8 rounded-sm"></div>
       <div className="flex flex-row justify-center w-full gap-10 ">
         <CategoryFilters />
