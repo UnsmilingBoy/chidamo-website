@@ -1,6 +1,7 @@
 "use client";
 import { toPersianNumber } from "@/utils/toPersianNumber";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Footer({ categories }) {
   const isMobile = 0;
@@ -19,16 +20,16 @@ export default function Footer({ categories }) {
   ];
 
   const quickAccess = [
-    "بلاگ",
-    "خرید پوشاک",
-    "محصولات هنری",
-    "هنر های تجسمی",
-    "هنر های دستی",
-    "صنعت مد",
-    "زیور آلات",
-    "عطر و ادکلن",
-    "محصولات پرفروش",
-    "فروشنده شو!",
+    ["بلاگ", "/category/88"],
+    ["خرید پوشاک", "/category/84"],
+    ["محصولات هنری", "/category/84"],
+    ["هنر های تجسمی", "/category/84"],
+    ["هنر های دستی", "/category/84"],
+    ["صنعت مد", "/category/84"],
+    ["زیور آلات", "/category/84"],
+    ["عطر و ادکلن", "/category/84"],
+    ["محصولات پرفروش", "/category/84"],
+    ["فروشنده شو!", "/category/84"],
   ];
 
   const aboutUs = ["بلاگ", "سوالات متداول", "فروشگاه حضوری", "تماس با ما"];
@@ -93,9 +94,15 @@ export default function Footer({ categories }) {
           {footerTitles.map((title, i) => (
             <div key={`Key ${i}`} className="flex flex-col gap-1 ">
               <p className="mb-3 text-lg font-bold">{title}</p>
-              {footerChilds[i].map((item, index) => (
-                <p key={index}>{item}</p>
-              ))}
+              {footerChilds[i].map((item, index) =>
+                title == "دسترسی سریع" ? (
+                  <Link key={index} href={item[1]}>
+                    <p>{item[0]}</p>
+                  </Link>
+                ) : (
+                  <p key={index}>{item}</p>
+                )
+              )}
             </div>
           ))}
         </div>
