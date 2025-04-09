@@ -34,7 +34,9 @@ async function getProductPageData(productId) {
   const reviewsUrl = `${baseUrl}/api/reviews?productId=${productId}`;
 
   // Fetch product first to get related IDs
-  const productRes = await fetch(productUrl);
+  const productRes = await fetch(productUrl, {
+    cache: "force-cache",
+  });
   const product = await productRes.json();
 
   const relatedIds = product.relatedIds?.join(",") || "";
@@ -42,8 +44,12 @@ async function getProductPageData(productId) {
 
   // Fetch related products and reviews in parallel
   const [relatedRes, reviewsRes] = await Promise.all([
-    fetch(relatedUrl),
-    fetch(reviewsUrl),
+    fetch(relatedUrl, {
+      cache: "force-cache",
+    }),
+    fetch(reviewsUrl, {
+      cache: "force-cache",
+    }),
   ]);
 
   const [relatedProducts, reviews] = await Promise.all([
