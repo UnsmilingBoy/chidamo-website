@@ -12,7 +12,7 @@ import {
   useSearchParams,
 } from "next/navigation";
 
-export default function CategoryFilters() {
+export default function CategoryFilters({ overlayVersion, setOverlay }) {
   const [expandPriceFilter, setExpandPriceFilter] = useState(true);
   const [expandColorFilter, setExpandColorFilter] = useState(false);
   const [expandSellerFilter, setExpandSellerFilter] = useState(false);
@@ -46,7 +46,7 @@ export default function CategoryFilters() {
       params.set("available", "instock");
     }
 
-    redirect(`${pathName}?${params.toString()}`);
+    router.push(`${pathName}?${params.toString()}`);
   }
 
   function handlePriceFilter() {
@@ -60,20 +60,29 @@ export default function CategoryFilters() {
   useEffect(() => {
     const isInStock = searchParams.get("available") === "instock";
     setEnable(isInStock);
+
     setIsLoading(false);
   }, [searchParams]);
 
   return (
-    <div className="hidden md:flex flex-col items-start w-[400px] border border-[#BBB] rounded-md h-fit">
-      <div className="flex flex-row p-4 w-full gap-2 items-center border-b border-[#BBB] font-medium text-[#4A4A4A]">
-        <Image
-          src="/images/filter-icon.svg"
-          width={20}
-          height={20}
-          alt="Filter icon"
-        />
-        <p>فیلتر ها</p>
-      </div>
+    <div
+      className={`${
+        overlayVersion ? "flex" : "hidden"
+      } md:flex flex-col items-start ${
+        overlayVersion ? "w-full" : "w-[400px]"
+      } border border-[#BBB] rounded-md h-fit`}
+    >
+      {!overlayVersion && (
+        <div className="flex flex-row p-4 w-full gap-2 items-center border-b border-[#BBB] font-medium text-[#4A4A4A]">
+          <Image
+            src="/images/filter-icon.svg"
+            width={20}
+            height={20}
+            alt="Filter icon"
+          />
+          <p>فیلتر ها</p>
+        </div>
+      )}
       <div className="flex flex-row w-full items-center justify-between p-3 cursor-pointer">
         <p>فقط کالا های موجود</p>
 

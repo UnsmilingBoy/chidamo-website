@@ -1,5 +1,4 @@
 export default function Details({ attributes }) {
-  console.log(attributes);
   // const detailsList = {
   //   جنس: "چرم",
   //   "بند و دستگیره": "بند دوشی",
