@@ -38,8 +38,12 @@ async function getCategoryAndProducts(id, params) {
   const categoryUrl = `${baseUrl}/api/categories/${id}`;
 
   const [productsRes, categoryRes] = await Promise.all([
-    fetch(productUrl),
-    fetch(categoryUrl),
+    fetch(productUrl, {
+      cache: "force-cache",
+    }),
+    fetch(categoryUrl, {
+      cache: "force-cache",
+    }),
   ]);
 
   const [products, category] = await Promise.all([
