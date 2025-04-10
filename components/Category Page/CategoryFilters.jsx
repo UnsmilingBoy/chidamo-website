@@ -12,7 +12,11 @@ import {
   useSearchParams,
 } from "next/navigation";
 
-export default function CategoryFilters({ setLoading }) {
+export default function CategoryFilters({
+  setLoading,
+  overlayVersion,
+  setOverlay,
+}) {
   const [expandPriceFilter, setExpandPriceFilter] = useState(true);
   const [expandColorFilter, setExpandColorFilter] = useState(false);
   const [expandSellerFilter, setExpandSellerFilter] = useState(false);

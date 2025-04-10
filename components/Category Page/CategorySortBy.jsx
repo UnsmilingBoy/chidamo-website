@@ -9,6 +9,8 @@ export default function CategorySortBy({ setLoading }) {
   const searchParams = useSearchParams();
   const params = new URLSearchParams(searchParams.toString());
 
+  const [overlay, setOverlay] = useState(false);
+
   const sortBy = [
     ["جدیدترین", "desc", "date"],
     ["قدیمی ترین", "asc", "date"],
