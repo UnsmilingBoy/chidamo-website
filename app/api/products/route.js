@@ -17,6 +17,8 @@ export async function GET(request) {
   const stock_status = searchParams.get("stock_status");
   const min_price = searchParams.get("min_price");
   const max_price = searchParams.get("max_price");
+  const order = searchParams.get("order");
+  const orderBy = searchParams.get("orderBy");
 
   // Build query string dynamically
   let queryParams = new URLSearchParams();
@@ -26,6 +28,8 @@ export async function GET(request) {
   if (stock_status) queryParams.append("stock_status", stock_status);
   if (min_price) queryParams.append("min_price", min_price);
   if (max_price) queryParams.append("max_price", max_price);
+  if (order) queryParams.append("order", order);
+  if (orderBy) queryParams.append("orderBy", orderBy);
 
   try {
     // Construct the WooCommerce API URL with the category filter if provided

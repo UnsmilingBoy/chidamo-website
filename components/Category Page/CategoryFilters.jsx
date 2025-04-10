@@ -12,7 +12,7 @@ import {
   useSearchParams,
 } from "next/navigation";
 
-export default function CategoryFilters() {
+export default function CategoryFilters({ setLoading }) {
   const [expandPriceFilter, setExpandPriceFilter] = useState(true);
   const [expandColorFilter, setExpandColorFilter] = useState(false);
   const [expandSellerFilter, setExpandSellerFilter] = useState(false);
@@ -21,7 +21,9 @@ export default function CategoryFilters() {
   const [isLoading, setIsLoading] = useState(false);
 
   const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(0);
+  const [minPriceError, setMinPriceError] = useState(false);
+  const [maxPrice, setMaxPrice] = useState(200000);
+  const [maxPriceError, setMaxPriceError] = useState(false);
 
   const pathName = usePathname();
   const router = useRouter();
@@ -37,7 +39,11 @@ export default function CategoryFilters() {
 
   const sellers = ["چیدامو", "خلیل شاپ"];
 
+  const maxAllowedPrice = 20000000;
+  const minAllowedPrice = 0;
+
   function handleAvailability() {
+    setLoading(true);
     setIsLoading(true);
 
     if (params.get("available") === "instock") {
@@ -46,15 +52,24 @@ export default function CategoryFilters() {
       params.set("available", "instock");
     }
 
-    redirect(`${pathName}?${params.toString()}`);
+    router.push(`${pathName}?${params.toString()}`);
   }
 
   function handlePriceFilter() {
-    setIsLoading(true);
-    params.set("min_price", minPrice);
-    params.set("max_price", maxPrice);
+    if (minPrice < minAllowedPrice || minPrice > maxAllowedPrice) {
+      setMinPriceError(true);
+      setMinPrice(minAllowedPrice);
+    } else if (maxPrice > maxAllowedPrice || maxPrice < minAllowedPrice) {
+      setMaxPriceError(true);
+      setMaxPrice(maxAllowedPrice);
+    } else {
+      setLoading(true);
+      setIsLoading(true);
+      params.set("min_price", minPrice);
+      params.set("max_price", maxPrice);
 
-    redirect(`${pathName}?${params.toString()}`);
+      router.push(`${pathName}?${params.toString()}`);
+    }
   }
 
   useEffect(() => {
@@ -103,17 +118,21 @@ export default function CategoryFilters() {
             <input
               value={minPrice}
               onChange={(e) => setMinPrice(e.target.value)}
-              type="text"
-              className="bg-[#F0F0F0] outline-none rounded-md p-2"
+              type="number"
+              className={`${
+                minPriceError && "outline-red-700"
+              } bg-[#F0F0F0] outline-none rounded-md p-2`}
             />
           </div>
           <div className="flex flex-col">
             <p className="text-sm text-[#575757]">تا قیمت:</p>
             <input
               value={maxPrice}
+              type="number"
               onChange={(e) => setMaxPrice(e.target.value)}
-              className="bg-[#F0F0F0] outline-none rounded-md p-2"
-              type="text"
+              className={`bg-[#F0F0F0] ${
+                maxPriceError && "outline-red-700"
+              } outline-none rounded-md p-2 w-full`}
             />
           </div>
           <button

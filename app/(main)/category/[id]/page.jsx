@@ -27,10 +27,12 @@ import Link from "next/link";
 
 async function getCategoryAndProducts(id, params) {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-  const { available, min_price, max_price } = await params;
+  const { available, min_price, max_price, order, orderBy } = await params;
 
   const productUrl =
     `${baseUrl}/api/products?category=${id}` +
+    `${order ? `&order=${order}` : ""}` +
+    `${orderBy ? `&orderBy=${orderBy}` : ""}` +
     `${available ? `&stock_status=${available}` : ""}` +
     `${min_price ? `&min_price=${min_price}` : ""}` +
     `${max_price ? `&max_price=${max_price}` : ""}`;
@@ -78,10 +80,7 @@ export default async function CategoryPage({ params, searchParams }) {
               </Link>
             }
           </p>
-          <div className="flex flex-row gap-10">
-            <CategoryFilters />
-            <CategoryProducts products={products} />
-          </div>
+          <CategoryProducts products={products} />
         </div>
       )}
     </div>
