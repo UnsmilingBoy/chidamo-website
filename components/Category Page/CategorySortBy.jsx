@@ -1,4 +1,4 @@
-import { ListFilter, Settings2Icon } from "lucide-react";
+import { ListFilter, Settings2Icon, X } from "lucide-react";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import CategoryFilters from "./CategoryFilters";
@@ -46,7 +46,11 @@ export default function CategorySortBy({ setLoading }) {
               <p className="font-bold text-lg">فیلتر محصولات</p>
               <X onClick={() => setOverlay(false)} />
             </div>
-            <CategoryFilters overlayVersion={true} setOverlay={setOverlay} />
+            <CategoryFilters
+              overlayVersion={true}
+              setOverlay={setOverlay}
+              setLoading={setLoading}
+            />
           </div>
         </div>
       )}
