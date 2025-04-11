@@ -25,7 +25,7 @@ export default function StoriesSection() {
                 alt={`Image id ${index}`}
               />
             </div>
-            <p className="text-sm">{item[0]}</p>
+            <p className="text-sm text-center">{item[0]}</p>
           </div>
         </Link>
       ))}

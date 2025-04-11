@@ -2,15 +2,8 @@
 
 import Image from "next/image";
 import HeadlessSwitch from "../Switch";
-import { ChevronDown, ChevronUp } from "lucide-react";
 import { useEffect, useState } from "react";
-import Link from "next/link";
-import {
-  redirect,
-  usePathname,
-  useRouter,
-  useSearchParams,
-} from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 export default function CategoryFilters({
   setLoading,
@@ -18,8 +11,6 @@ export default function CategoryFilters({
   setOverlay,
 }) {
   const [expandPriceFilter, setExpandPriceFilter] = useState(true);
-  const [expandColorFilter, setExpandColorFilter] = useState(false);
-  const [expandSellerFilter, setExpandSellerFilter] = useState(false);
 
   const [enable, setEnable] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -35,18 +26,14 @@ export default function CategoryFilters({
 
   const params = new URLSearchParams(searchParams.toString());
 
-  const colors = {
-    red: "قرمز",
-    blue: "آبی",
-    brown: "قهوه ای",
-  };
-
-  const sellers = ["چیدامو", "خلیل شاپ"];
+  const initMinPrice = params.get("min_price");
+  const initMaxPrice = params.get("max_price");
 
   const maxAllowedPrice = 20000000;
   const minAllowedPrice = 0;
 
   function handleAvailability() {
+    setOverlay(false);
     setLoading(true);
     setIsLoading(true);
 
@@ -60,13 +47,16 @@ export default function CategoryFilters({
   }
 
   function handlePriceFilter() {
-    if (minPrice < minAllowedPrice || minPrice > maxAllowedPrice) {
+    if (initMaxPrice == maxPrice && initMinPrice == minPrice) {
+      setOverlay(false);
+    } else if (minPrice < minAllowedPrice || minPrice > maxAllowedPrice) {
       setMinPriceError(true);
       setMinPrice(minAllowedPrice);
     } else if (maxPrice > maxAllowedPrice || maxPrice < minAllowedPrice) {
       setMaxPriceError(true);
       setMaxPrice(maxAllowedPrice);
     } else {
+      setOverlay(false);
       setLoading(true);
       setIsLoading(true);
       params.set("min_price", minPrice);
@@ -159,48 +149,6 @@ export default function CategoryFilters({
           </button>
         </div>
       )}
-      {/* <div
-        onClick={() => setExpandColorFilter(!expandColorFilter)}
-        className="flex flex-row w-full items-center justify-between p-3 cursor-pointer"
-      >
-        <p>رنگ</p>
-        {expandColorFilter ? <ChevronUp /> : <ChevronDown />}
-      </div>
-      {expandColorFilter && (
-        <div className="flex flex-col gap-3 w-full items-start text-sm px-6 py-4">
-          {Object.keys(colors).map((color, index) => (
-            <div key={index} className="flex flex-row items-center gap-2">
-              <input type="checkbox" />
-              <div
-                style={{ backgroundColor: color }}
-                className="p-2 w-2 h-2 rounded-full"
-              ></div>
-              <p className="text-[#4A4A4A]">{colors[color]}</p>
-            </div>
-          ))}
-        </div>
-      )}
-      <div
-        onClick={() => setExpandSellerFilter(!expandSellerFilter)}
-        className="flex flex-row w-full items-center justify-between p-3 cursor-pointer"
-      >
-        <p>فروشنده</p>
-        {expandSellerFilter ? <ChevronUp /> : <ChevronDown />}
-      </div>
-      {expandSellerFilter && (
-        <div className="flex flex-col gap-3 w-full items-start px-6 py-2">
-          {sellers.map((seller, index) => (
-            <div key={index} className="flex flex-row items-center gap-2">
-              <input type="checkbox" />
-              <p className="text-[#4A4A4A] text-sm">{seller}</p>
-            </div>
-          ))}
-        </div>
-      )}
-      <div className="flex flex-row w-full items-center justify-between p-3 cursor-pointer">
-        <p>جنس</p>
-        <ChevronDown />
-      </div> */}
     </div>
   );
 }

@@ -21,7 +21,7 @@ export default function CategoryProducts({ products }) {
       <div className="flex w-full flex-col gap-5">
         <CategorySortBy setLoading={setLoading} />
         {loading ? (
-          <div className="grid grid-cols-2 w-fit md:grid-cols-3 lg:grid-cols-4 3xl:grid-cols-5">
+          <div className="m-auto w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 3xl:grid-cols-5">
             {Array.from({ length: 16 }).map((_, index) => (
               <LoadingProductTile key={index} />
             ))}

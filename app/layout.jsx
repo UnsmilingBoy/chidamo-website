@@ -4,9 +4,20 @@ import { CartProvider } from "@/context/CartContext";
 import "@/styles/globals.css";
 
 const shabnam = localFont({
-  src: "../public/fonts/Shabnam-FD.ttf",
-  display: "swap", // Ensures smooth loading
-  variable: "--font-shabnam", // Defines a global CSS variable
+  src: [
+    {
+      path: "../public/fonts/Shabnam-FD.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/Shabnam-Medium-FD.ttf",
+      weight: "500",
+      style: "normal",
+    },
+  ],
+  display: "swap",
+  variable: "--font-shabnam",
 });
 
 export const metadata = {
@@ -17,7 +28,7 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
   return (
-    <html lang="fa" dir="rtl" className={shabnam.variable}>
+    <html lang="fa" dir="rtl" className={`${shabnam.variable}`}>
       <body>
         <MiniLoader />
         <CartProvider>{children}</CartProvider>
