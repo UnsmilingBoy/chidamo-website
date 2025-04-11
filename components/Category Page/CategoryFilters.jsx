@@ -33,7 +33,9 @@ export default function CategoryFilters({
   const minAllowedPrice = 0;
 
   function handleAvailability() {
-    setOverlay(false);
+    if (setOverlay) {
+      setOverlay(false);
+    }
     setLoading(true);
     setIsLoading(true);
 
@@ -48,7 +50,11 @@ export default function CategoryFilters({
 
   function handlePriceFilter() {
     if (initMaxPrice == maxPrice && initMinPrice == minPrice) {
-      setOverlay(false);
+      if (setOverlay) {
+        setOverlay(false);
+      } else {
+        return "";
+      }
     } else if (minPrice < minAllowedPrice || minPrice > maxAllowedPrice) {
       setMinPriceError(true);
       setMinPrice(minAllowedPrice);
@@ -56,7 +62,9 @@ export default function CategoryFilters({
       setMaxPriceError(true);
       setMaxPrice(maxAllowedPrice);
     } else {
-      setOverlay(false);
+      if (setOverlay) {
+        setOverlay(false);
+      }
       setLoading(true);
       setIsLoading(true);
       params.set("min_price", minPrice);
