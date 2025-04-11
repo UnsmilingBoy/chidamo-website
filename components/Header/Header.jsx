@@ -284,6 +284,7 @@ export default function Header({ categories }) {
               <CategoryItem
                 title="فروشنده شو!"
                 image="/images/seller-icon.svg"
+                path={"https://seller.chidamo.com/"}
               />
             </div>
           )}

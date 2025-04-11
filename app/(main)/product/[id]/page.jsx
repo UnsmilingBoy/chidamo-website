@@ -39,7 +39,7 @@ async function getProductPageData(productId) {
   });
   const product = await productRes.json();
 
-  const relatedIds = product.relatedIds?.join(",") || "";
+  const relatedIds = product["related_ids"]?.join(",") || "";
   const relatedUrl = `${baseUrl}/api/products?include=${relatedIds}`;
 
   // Fetch related products and reviews in parallel
