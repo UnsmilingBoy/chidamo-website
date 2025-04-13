@@ -178,6 +178,7 @@ export default function Header({ categories }) {
                   />
                   <div className="w-full h-[1px] bg-[#BEBEBE]"></div>
                   <CategoryItem
+                    path={"https://seller.chidamo.com/"}
                     title="فروشنده شو!"
                     image="/images/seller-icon.svg"
                   />

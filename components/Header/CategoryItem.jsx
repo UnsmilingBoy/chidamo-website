@@ -1,8 +1,14 @@
 import Link from "next/link";
 
-export default function CategoryItem({ title, image, className, path }) {
+export default function CategoryItem({
+  title,
+  image,
+  className,
+  path,
+  onClick,
+}) {
   return path ? (
-    <Link href={path}>
+    <Link target="_blank" rel="noopener noreferrer" href={path}>
       <div
         className={`flex flex-row items-center gap-2 cursor-pointer ${className}`}
       >
@@ -16,6 +22,7 @@ export default function CategoryItem({ title, image, className, path }) {
     </Link>
   ) : (
     <div
+      onClick={onClick}
       className={`flex flex-row items-center gap-2 cursor-pointer ${className}`}
     >
       <img
