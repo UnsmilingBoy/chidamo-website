@@ -27,7 +27,7 @@ export default function ProductTile({
             alt="Product image"
           />
         </div>
-        <div className="flex flex-col justify-between w-full h-20">
+        <div className="flex flex-col justify-between w-full h-21">
           <p className="w-full line-clamp-2 text-right text-sm font-medium text-[#3a3a3a]">
             {title}
           </p>

@@ -4,6 +4,7 @@ import ProductDetails from "@/components/Product Page/ProductDetails";
 import ProductOverview from "@/components/Product Page/ProductOverview";
 import RelatedProducts from "@/components/Product Page/RelatedProduct";
 import StoriesSection from "@/components/StoriesSection/StoriesSection";
+import { getProductPageData } from "@/lib/fetchProducts";
 import Image from "next/image";
 
 // async function getProductData(id) {
@@ -26,43 +27,6 @@ import Image from "next/image";
 //   const reviews = await res.json();
 //   return reviews;
 // }
-
-async function getProductPageData(productId) {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-
-  const productUrl = `${baseUrl}/api/products/${productId}`;
-  const reviewsUrl = `${baseUrl}/api/reviews?productId=${productId}`;
-
-  // Fetch product first to get related IDs
-  const productRes = await fetch(productUrl, {
-    cache: "force-cache",
-  });
-  const product = await productRes.json();
-
-  const relatedIds = product["related_ids"]?.join(",") || "";
-  const relatedUrl = `${baseUrl}/api/products?include=${relatedIds}`;
-
-  // Fetch related products and reviews in parallel
-  const [relatedRes, reviewsRes] = await Promise.all([
-    fetch(relatedUrl, {
-      cache: "force-cache",
-    }),
-    fetch(reviewsUrl, {
-      cache: "force-cache",
-    }),
-  ]);
-
-  const [relatedProducts, reviews] = await Promise.all([
-    relatedRes.json(),
-    reviewsRes.json(),
-  ]);
-
-  return {
-    product,
-    relatedProducts,
-    reviews,
-  };
-}
 
 export default async function productPage({ params }) {
   const { id } = await params;

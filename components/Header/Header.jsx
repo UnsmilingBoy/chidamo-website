@@ -168,11 +168,13 @@ export default function Header({ categories }) {
                   )}
                   <div className="w-full h-[1px] bg-[#BEBEBE]"></div>
                   <CategoryItem
+                    path={"/onsale"}
                     title="محصولات تخفیف دار"
                     image="/images/sales-icon.svg"
                   />
                   <div className="w-full h-[1px] bg-[#BEBEBE]"></div>
                   <CategoryItem
+                    path={"/mostpopular"}
                     title="پرفروش ترین ها"
                     image="/images/fire-icon.svg"
                   />
@@ -275,10 +277,12 @@ export default function Header({ categories }) {
               </div>
               <div className="w-[1px] h-4 bg-[#b9b9b9]"></div>
               <CategoryItem
+                path={"/onsale"}
                 title="محصولات تخفیف دار"
                 image="/images/sales-icon.svg"
               />
               <CategoryItem
+                path={"/mostpopular"}
                 title="پرفروش ترین ها"
                 image="/images/fire-icon.svg"
               />

@@ -26,7 +26,7 @@ export default function CategorySortBy({ setLoading }) {
       setLoading(true);
       setIsSelected(index);
       params.set("order", sort);
-      params.set("orderBy", sortBy);
+      params.set("orderby", sortBy);
 
       router.push(`${pathName}?${params.toString()}`);
     }

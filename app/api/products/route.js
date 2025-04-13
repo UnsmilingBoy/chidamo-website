@@ -11,6 +11,8 @@ export async function GET(request) {
 
   // Extract category from request URL
   const { searchParams } = new URL(request.url);
+  const page = searchParams.get("page");
+  const per_page = searchParams.get("per_page");
   const category = searchParams.get("category");
   const search = searchParams.get("search");
   const include = searchParams.get("include");
@@ -18,7 +20,8 @@ export async function GET(request) {
   const min_price = searchParams.get("min_price");
   const max_price = searchParams.get("max_price");
   const order = searchParams.get("order");
-  const orderBy = searchParams.get("orderBy");
+  const on_sale = searchParams.get("on_sale");
+  const orderBy = searchParams.get("orderby");
 
   // Build query string dynamically
   let queryParams = new URLSearchParams();
@@ -30,6 +33,9 @@ export async function GET(request) {
   if (max_price) queryParams.append("max_price", max_price);
   if (order) queryParams.append("order", order);
   if (orderBy) queryParams.append("orderBy", orderBy);
+  if (page) queryParams.append("page", page);
+  if (per_page) queryParams.append("per_page", per_page);
+  if (on_sale) queryParams.append("on_sale", on_sale);
 
   try {
     // Construct the WooCommerce API URL with the category filter if provided
@@ -42,6 +48,7 @@ export async function GET(request) {
       headers: {
         Authorization: `Basic ${auth}`,
       },
+      cache: "no-store",
     });
 
     if (!res.ok) {
@@ -54,7 +61,13 @@ export async function GET(request) {
     }
 
     const products = await res.json();
-    return NextResponse.json(products);
+    const totalPages = parseInt(res.headers.get("X-WP-TotalPages"), 10);
+    const totalProducts = parseInt(res.headers.get("X-WP-Total"), 10);
+    return NextResponse.json({
+      products,
+      totalPages,
+      totalProducts,
+    });
   } catch (error) {
     console.error("Error fetching WooCommerce products:", error);
     return NextResponse.json(

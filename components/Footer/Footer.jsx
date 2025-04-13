@@ -28,8 +28,8 @@ export default function Footer({ categories }) {
     ["صنعت مد", "/category/84"],
     ["زیور آلات", "/category/88"],
     ["عطر و ادکلن", "/category/84"],
-    ["محصولات پرفروش", "/"],
-    ["فروشنده شو!", "/"],
+    ["محصولات پرفروش", "/mostpopular"],
+    ["فروشنده شو!", "https://seller.chidamo.com/"],
   ];
 
   const aboutUs = ["بلاگ", "سوالات متداول", "فروشگاه حضوری", "تماس با ما"];
