@@ -8,7 +8,7 @@ export default function CategoryItem({
   onClick,
 }) {
   return path ? (
-    <Link target="_blank" rel="noopener noreferrer" href={path}>
+    <Link href={path}>
       <div
         className={`flex flex-row items-center gap-2 cursor-pointer ${className}`}
       >

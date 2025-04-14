@@ -43,7 +43,11 @@ export default function CategoryProducts({
       <CategoryFilters setLoading={setLoading} />
       <div className="flex w-full flex-col gap-5 items-center">
         {!hideSort && <CategorySortBy setLoading={setLoading} />}
-        {loading ? (
+        {!products.length ? (
+          <div className="flex justify-center items-center w-full h-[50vh]">
+            <p>کالایی یافت نشد.</p>
+          </div>
+        ) : loading ? (
           <div className="m-auto w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 3xl:grid-cols-5">
             {Array.from({ length: 16 }).map((_, index) => (
               <LoadingProductTile key={index} />

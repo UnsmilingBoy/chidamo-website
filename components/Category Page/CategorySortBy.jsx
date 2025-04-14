@@ -14,7 +14,8 @@ export default function CategorySortBy({ setLoading }) {
 
   const sortBy = [
     ["جدیدترین", "desc", "date"],
-    ["قدیمی ترین", "asc", "date"],
+    ["ارزان ترین", "asc", "price"],
+    ["گران ترین", "desc", "price"],
     ["بیشترین امتیاز", "desc", "rating"],
     ["محبوب ترین", "desc", "popularity"],
   ];

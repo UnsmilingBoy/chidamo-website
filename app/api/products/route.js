@@ -32,7 +32,7 @@ export async function GET(request) {
   if (min_price) queryParams.append("min_price", min_price);
   if (max_price) queryParams.append("max_price", max_price);
   if (order) queryParams.append("order", order);
-  if (orderBy) queryParams.append("orderBy", orderBy);
+  if (orderBy) queryParams.append("orderby", orderBy);
   if (page) queryParams.append("page", page);
   if (per_page) queryParams.append("per_page", per_page);
   if (on_sale) queryParams.append("on_sale", on_sale);

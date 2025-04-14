@@ -17,7 +17,7 @@ export default function CategoryFilters({
 
   const [minPrice, setMinPrice] = useState(0);
   const [minPriceError, setMinPriceError] = useState(false);
-  const [maxPrice, setMaxPrice] = useState(200000);
+  const [maxPrice, setMaxPrice] = useState(20000000);
   const [maxPriceError, setMaxPriceError] = useState(false);
 
   const pathName = usePathname();
@@ -55,6 +55,8 @@ export default function CategoryFilters({
       } else {
         return "";
       }
+    } else if (minPrice > maxPrice) {
+      setMinPriceError(true);
     } else if (minPrice < minAllowedPrice || minPrice > maxAllowedPrice) {
       setMinPriceError(true);
       setMinPrice(minAllowedPrice);
