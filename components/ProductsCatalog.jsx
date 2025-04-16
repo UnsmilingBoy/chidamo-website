@@ -41,9 +41,9 @@ export default function ProductsCatalog({ products }) {
     ],
   ];
   return (
-    <section className="flex flex-col gap-3 border border-[#b1b1b1] rounded-xl p-7">
+    <section className="flex flex-col gap-3 border border-[#b1b1b1] rounded-xl sm:p-7 p-4">
       <div className="flex flex-row justify-between">
-        <p className="text-lg md:text-xl font-medium">
+        <p className="text-base md:text-xl font-medium">
           انواع اکسسوری در چیدامو
         </p>
         <Link
@@ -78,6 +78,9 @@ export default function ProductsCatalog({ products }) {
                   title={item.name}
                   price={item["regular_price"]}
                   onSalePrice={item["sale_price"]}
+                  stockStatus={item["stock_status"]}
+                  rating={item["average_rating"]}
+                  ratingCount={item["rating_count"]}
                 />
                 {/* {index < products.length - 1 && (
                   <div className="w-[1px] bg-[#dadada] h-[280px]"></div>

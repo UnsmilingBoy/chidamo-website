@@ -76,6 +76,9 @@ export default function SalesBox({ products }) {
                   title={item.name}
                   price={item["regular_price"]}
                   onSalePrice={item["sale_price"]}
+                  stockStatus={item["stock_status"]}
+                  rating={item["average_rating"]}
+                  ratingCount={item["rating_count"]}
                 />
 
                 {/* {index < products.length - 1 && (

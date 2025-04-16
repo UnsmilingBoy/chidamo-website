@@ -12,7 +12,9 @@ export default function CategoryFilters({
 }) {
   const [expandPriceFilter, setExpandPriceFilter] = useState(true);
 
-  const [enable, setEnable] = useState(false);
+  const [enableAvailability, setEnableAvailability] = useState(false);
+  const [enableOnSale, setEnableOnSale] = useState(false);
+
   const [isLoading, setIsLoading] = useState(false);
 
   const [minPrice, setMinPrice] = useState(0);
@@ -32,17 +34,17 @@ export default function CategoryFilters({
   const maxAllowedPrice = 20000000;
   const minAllowedPrice = 0;
 
-  function handleAvailability() {
+  function handleBoolFilter(paramName, paramValue) {
     if (setOverlay) {
       setOverlay(false);
     }
     setLoading(true);
     setIsLoading(true);
 
-    if (params.get("available") === "instock") {
-      params.delete("available");
+    if (params.get(paramName) === paramValue) {
+      params.delete(paramName);
     } else {
-      params.set("available", "instock");
+      params.set(paramName, paramValue);
     }
 
     router.push(`${pathName}?${params.toString()}`);
@@ -78,7 +80,9 @@ export default function CategoryFilters({
 
   useEffect(() => {
     const isInStock = searchParams.get("available") === "instock";
-    setEnable(isInStock);
+    const isOnSale = searchParams.get("on_sale") === "true";
+    setEnableAvailability(isInStock);
+    setEnableOnSale(isOnSale);
 
     setIsLoading(false);
   }, [searchParams]);
@@ -89,7 +93,7 @@ export default function CategoryFilters({
         overlayVersion ? "flex" : "hidden"
       } md:flex flex-col items-start ${
         overlayVersion ? "w-full" : "w-[400px]"
-      } border border-[#BBB] rounded-md h-fit`}
+      } border border-[#d3d3d3] rounded-md h-fit`}
     >
       {!overlayVersion && (
         <div className="flex flex-row p-4 w-full gap-2 items-center border-b border-[#BBB] font-medium text-[#4A4A4A]">
@@ -111,9 +115,24 @@ export default function CategoryFilters({
           </div>
         ) : (
           <HeadlessSwitch
-            enable={enable}
-            setEnable={setEnable}
-            handleSwitch={handleAvailability}
+            enable={enableAvailability}
+            setEnable={setEnableAvailability}
+            handleSwitch={() => handleBoolFilter("available", "instock")}
+          />
+        )}
+      </div>
+      <div className="flex flex-row w-full items-center justify-between p-3 cursor-pointer">
+        <p>کالا های تخفیف دار</p>
+
+        {isLoading ? (
+          <div className=" px-2">
+            <div className="w-5 h-5 border-2 border-t-transparent border-[#4A4A4A] rounded-full animate-spin"></div>
+          </div>
+        ) : (
+          <HeadlessSwitch
+            enable={enableOnSale}
+            setEnable={setEnableOnSale}
+            handleSwitch={() => handleBoolFilter("on_sale", "true")}
           />
         )}
       </div>
