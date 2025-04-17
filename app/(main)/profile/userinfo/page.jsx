@@ -8,15 +8,16 @@ import {
 } from "lucide-react";
 import { cookies } from "next/headers";
 import EditUserInfoButton from "./components/EditUserInfoButton";
+import { getUserInfo } from "@/lib/fetchUserInfo";
 
-async function getUserInfo(id) {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-  const res = await fetch(baseUrl + `/api/userinfo/${id}`, {
-    cache: "no-store",
-  });
-  const data = await res.json();
-  return data;
-}
+// async function getUserInfo(id) {
+//   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+//   const res = await fetch(baseUrl + `/api/userinfo/${id}`, {
+//     cache: "no-store",
+//   });
+//   const data = await res.json();
+//   return data;
+// }
 
 export default async function UserInfo() {
   const cookieStore = await cookies();

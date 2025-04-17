@@ -7,44 +7,8 @@ import StoriesSection from "@/components/StoriesSection/StoriesSection";
 import { getProductPageData } from "@/lib/fetchProducts";
 import Image from "next/image";
 
-// async function getProductData(id) {
-//   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-//   const res = await fetch(baseUrl + `/api/products/${id}`);
-//   const data = await res.json();
-//   return data;
-// }
-
-// async function getRelatedProducts(ids) {
-//   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-//   const res = await fetch(baseUrl + `/api/products?include=${ids}`);
-//   const relatedProducts = await res.json();
-//   return relatedProducts;
-// }
-
-// async function getReviews(id) {
-//   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-//   const res = await fetch(baseUrl + `/api/reviews?productId=${id}`);
-//   const reviews = await res.json();
-//   return reviews;
-// }
-
 export default async function productPage({ params }) {
   const { id } = await params;
-  // const data = await getProductData(id);
-
-  // let relatedIds = "";
-  // for (let i = 0; i < data["related_ids"].length; i++) {
-  //   if (i != data["related_ids"].length - 1) {
-  //     relatedIds += `${data["related_ids"][i]},`;
-  //   } else {
-  //     relatedIds += data["related_ids"][i];
-  //   }
-  // }
-
-  // const relatedProductsData = await getRelatedProducts(relatedIds);
-
-  // const reviews = await getReviews(id);
-
   const { product, relatedProducts, reviews } = await getProductPageData(id);
 
   const validations = {
@@ -76,7 +40,9 @@ export default async function productPage({ params }) {
                 height={60}
                 alt="key"
               />
-              <p className="text-[#414141] text-sm">{key}</p>
+              <p className="text-[#414141] text-xs md:text-base text-center">
+                {key}
+              </p>
             </div>
           ))}
         </div>

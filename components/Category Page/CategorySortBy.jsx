@@ -1,6 +1,6 @@
 import { ListFilter, Settings2Icon, X } from "lucide-react";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CategoryFilters from "./CategoryFilters";
 
 export default function CategorySortBy({ setLoading }) {
@@ -19,7 +19,16 @@ export default function CategorySortBy({ setLoading }) {
     ["بیشترین امتیاز", "desc", "rating"],
     ["محبوب ترین", "desc", "popularity"],
   ];
+
   const [isSelected, setIsSelected] = useState(0);
+
+  useEffect(() => {
+    sortBy.forEach((item, index) => {
+      if (params.get("orderby") == item[2] && params.get("order") == item[1]) {
+        setIsSelected(index);
+      }
+    });
+  }, []);
 
   function handleSort(index, sort, sortBy) {
     if (index != isSelected) {
@@ -28,6 +37,7 @@ export default function CategorySortBy({ setLoading }) {
       setIsSelected(index);
       params.set("order", sort);
       params.set("orderby", sortBy);
+      params.delete("page");
 
       router.push(`${pathName}?${params.toString()}`);
     }

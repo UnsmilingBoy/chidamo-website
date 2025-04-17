@@ -1,15 +1,16 @@
 import { Edit, Trash } from "lucide-react";
 import { cookies } from "next/headers";
 import EditAddressButton from "./components/EditAddressButton";
+import { getUserInfo } from "@/lib/fetchUserInfo";
 
-async function getUserInfo(id) {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-  const res = await fetch(baseUrl + `/api/userinfo/${id}`, {
-    cache: "no-store",
-  });
-  const data = await res.json();
-  return data;
-}
+// async function getUserInfo(id) {
+//   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+//   const res = await fetch(baseUrl + `/api/userinfo/${id}`, {
+//     cache: "no-store",
+//   });
+//   const data = await res.json();
+//   return data;
+// }
 
 export default async function Addresses() {
   const cookieStore = await cookies();

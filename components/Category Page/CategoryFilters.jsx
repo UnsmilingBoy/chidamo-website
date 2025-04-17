@@ -45,6 +45,7 @@ export default function CategoryFilters({
       params.delete(paramName);
     } else {
       params.set(paramName, paramValue);
+      params.delete("page");
     }
 
     router.push(`${pathName}?${params.toString()}`);
@@ -73,6 +74,7 @@ export default function CategoryFilters({
       setIsLoading(true);
       params.set("min_price", minPrice);
       params.set("max_price", maxPrice);
+      params.delete("page");
 
       router.push(`${pathName}?${params.toString()}`);
     }

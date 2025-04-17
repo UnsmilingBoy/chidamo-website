@@ -16,27 +16,33 @@ export default function MobilePricingOverview({ product }) {
 
   return (
     <div className="flex flex-col px-6 py-2 gap-3 border-t bg-white xl:hidden w-full fixed bottom-0">
-      <div
-        className={` flex w-full gap-10 ${
-          product["stock_quantity"] < 10 ? "justify-between" : "justify-end"
-        }  items-center`}
-      >
-        {product["stock_quantity"] < 10 ? (
-          <div className="flex flex-row gap-2 items-center">
-            <TimerIcon />
-            <p className="text-xs font-bold text-red-600">
-              2 عدد در انبار باقی مانده
+      {product["stock_quantity"] != 0 && (
+        <div
+          className={` flex w-full gap-10 ${
+            product["stock_quantity"] < 10 ? "justify-between" : "justify-end"
+          }  items-center`}
+        >
+          {product["stock_quantity"] < 10 ? (
+            <div className="flex flex-row gap-2 items-center">
+              <TimerIcon />
+              <p className="text-xs font-bold text-red-600">
+                2 عدد در انبار باقی مانده
+              </p>
+            </div>
+          ) : (
+            <div className="w-36"></div>
+          )}
+          <div className="flex flex-row justify-end items-center gap-2">
+            <p className="font-bold text-2xl">
+              {toPersianPrice(product.price)}
             </p>
+            <p className="text-sm">تومان</p>
           </div>
-        ) : (
-          <div className="w-36"></div>
-        )}
-        <div className="flex flex-row justify-end items-center gap-2">
-          <p className="font-bold text-2xl">{toPersianPrice(product.price)}</p>
-          <p className="text-sm">تومان</p>
         </div>
-      </div>
-      {cart.length != 0 && cart[cartIndex]?.quantity > 0 ? (
+      )}
+      {product["stock_quantity"] == 0 ? (
+        <p className="text-center font-bold text-gray-500 p-2">نا موجود</p>
+      ) : cart.length != 0 && cart[cartIndex]?.quantity > 0 ? (
         <div className="flex flex-row justify-center gap-3 w-full items-center">
           <div className="flex flex-row items-center gap-3 shadow-md p-2 rounded-md">
             <Plus

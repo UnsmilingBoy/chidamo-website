@@ -1,5 +1,6 @@
 import CartPricingInfo from "@/components/Cart/CartPricingInfo";
 import CheckOutInputFields from "@/components/Checkout/CheckoutInputFields";
+import { getUserInfo } from "@/lib/fetchUserInfo";
 import { logoPicker } from "@/utils/SeasonChanger";
 import { ArrowRight, Truck } from "lucide-react";
 import { Span } from "next/dist/trace";
@@ -8,12 +9,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
-async function getUserInfo(id) {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-  const res = await fetch(baseUrl + `/api/userinfo/${id}`);
-  const data = await res.json();
-  return data;
-}
+// async function getUserInfo(id) {
+//   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+//   const res = await fetch(baseUrl + `/api/userinfo/${id}`);
+//   const data = await res.json();
+//   return data;
+// }
 
 export default async function Checkout({ searchParams }) {
   const cookieStore = await cookies();

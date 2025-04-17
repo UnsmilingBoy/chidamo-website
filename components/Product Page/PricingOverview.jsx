@@ -74,25 +74,35 @@ export default function PricingOverview({ product, isSticky, display }) {
           product["stock_quantity"] < 10 ? "justify-between" : "justify-end"
         }  items-center`}
       >
-        {product["stock_quantity"] < 10 ? (
+        {product["stock_quantity"] < 10 && product["stock_quantity"] != 0 ? (
           <div className="flex flex-row gap-2 items-center">
             <TimerIcon />
             <p className="text-xs font-bold text-red-600">
-              2 عدد در انبار باقی مانده
+              {product["stock_quantity"]} عدد در انبار باقی مانده
             </p>
           </div>
         ) : (
           <div className="w-36"></div>
         )}
-        <div className="flex flex-row justify-end items-center gap-2">
-          <p className="font-medium text-2xl">
-            {toPersianPrice(product.price)}
-          </p>
-          <p className="text-sm">تومان</p>
-        </div>
+        {product["stock_quantity"] != 0 && (
+          <div className="flex flex-row justify-end items-center gap-2">
+            <p className="font-medium text-2xl">
+              {toPersianPrice(product.price)}
+            </p>
+            <p className="text-sm">تومان</p>
+          </div>
+        )}
       </div>
 
-      {cart.length != 0 && cart[cartIndex]?.quantity > 0 ? (
+      {product["stock_quantity"] == 0 ? (
+        <button className="bg-gray-200 cursor-default font-[Shabnam] p-6 rounded-md my-3 text-gray-500 font-bold text-xl">
+          <div className="flex flex-row-reverse relative w-full">
+            <p className="absolute inset-0 flex items-center justify-center">
+              نا موجود
+            </p>
+          </div>
+        </button>
+      ) : cart.length != 0 && cart[cartIndex]?.quantity > 0 ? (
         <div className="flex flex-row justify-center gap-3 w-full items-center">
           <div className="flex flex-row items-center gap-3 shadow-md p-2 rounded-md">
             <Plus
