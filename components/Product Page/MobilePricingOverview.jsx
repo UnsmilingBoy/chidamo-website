@@ -26,7 +26,7 @@ export default function MobilePricingOverview({ product }) {
             <div className="flex flex-row gap-2 items-center">
               <TimerIcon />
               <p className="text-xs font-bold text-red-600">
-                2 عدد در انبار باقی مانده
+                {product["stock_quantity"]} عدد در انبار باقی مانده
               </p>
             </div>
           ) : (

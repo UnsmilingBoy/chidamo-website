@@ -8,19 +8,6 @@ import { MessageSquare, StarIcon } from "lucide-react";
 import colorDict from "@/utils/colorsDict";
 
 export default function ProductOverview({ reviews, product }) {
-  const colors = [
-    ["قهوه ای تیره", "#400000"],
-    ["کرمی", "#FFC6A2"],
-    ["مشکی", "#181818"],
-  ];
-
-  const productAttributes = [
-    ["جنس", "چرم طبیعی بز"],
-    ["بند و دستگیره", "بند دوشی، تک بند"],
-    ["نحوه بسته شدن", "زیپ"],
-    ["جنس قفل", "فلز آبکاری"],
-  ];
-
   const [selectedColor, setSelectedColor] = useState(0);
 
   return (
@@ -44,7 +31,7 @@ export default function ProductOverview({ reviews, product }) {
         <p className="font-medium">
           رنگ:{" "}
           {product["attributes"].length != 0
-            ? colorDict[product["attributes"][0].options[selectedColor]]
+            ? product["attributes"][0].options[selectedColor]
             : "بدون رنگ"}
         </p>
         <div className="flex flex-row gap-2 text-sm items-center">
@@ -58,10 +45,10 @@ export default function ProductOverview({ reviews, product }) {
                 }`}
               >
                 <div
-                  style={{ backgroundColor: color }}
+                  style={{ backgroundColor: colorDict[color] }}
                   className={`rounded-full w-5 h-5`}
                 ></div>
-                <p>{colorDict[color]}</p>
+                <p>{color}</p>
               </div>
             ))}
         </div>
