@@ -4,6 +4,7 @@ import Footer from "@/components/Footer/Footer";
 import { AuthProvider } from "@/context/AuthContext";
 import { cookies } from "next/headers";
 import ExpandCollapseText from "@/components/HomeExpandableText";
+import { CartProvider } from "@/context/CartContext";
 
 async function getCategories() {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
@@ -32,11 +33,13 @@ export default async function RootLayout({ children }) {
 
   const categories = await getCategories();
   return (
-    <AuthProvider initialUser={user}>
-      <Header categories={categories} />
-      <main className="pt-[168px] md:pt-[183px]">{children}</main>
-      <ExpandCollapseText />
-      <Footer categories={categories} />
-    </AuthProvider>
+    <CartProvider useApi={!!user} userId={user?.id}>
+      <AuthProvider initialUser={user}>
+        <Header categories={categories} />
+        <main className="pt-[168px] md:pt-[183px]">{children}</main>
+        <ExpandCollapseText />
+        <Footer categories={categories} />
+      </AuthProvider>
+    </CartProvider>
   );
 }

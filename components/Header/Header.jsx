@@ -27,8 +27,13 @@ export default function Header({ categories }) {
   const [isOpen, setIsOpen] = useState(false);
   const sidebarRef = useRef(null);
   const [expandSidebarCategory, setExpandSidebarCategory] = useState(false);
+  const [mounted, setMounted] = useState(false); // Add this
 
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const [inputValue, setInputValue] = useState("");
   function searchFunction(e) {
@@ -87,6 +92,10 @@ export default function Header({ categories }) {
 
   if (loading) return null;
 
+  if (!mounted) {
+    return null;
+  }
+
   return (
     <>
       <header
@@ -106,7 +115,12 @@ export default function Header({ categories }) {
                 height={100}
               />
             </Link>
-            {user ? (
+
+            {isFixed ? (
+              <Link href={"/cart"}>
+                <ShoppingCart color="#666666" size={24} />
+              </Link>
+            ) : user ? (
               <Link href={"/profile"}>
                 <User color="#666666" size={24} />
               </Link>
@@ -116,95 +130,96 @@ export default function Header({ categories }) {
               </Link>
             )}
           </div>
-          {true && (
+
+          <div
+            className={`fixed inset-0 bg-black bg-opacity-50 z-50 transition-opacity duration-300 ${
+              isOpen ? "opacity-100 visible" : "opacity-0 invisible"
+            }`}
+          >
             <div
-              className={`fixed inset-0 bg-black bg-opacity-50 z-50 transition-opacity duration-300 ${
-                isOpen ? "opacity-100 visible" : "opacity-0 invisible"
+              ref={sidebarRef}
+              className={`fixed right-0 top-0 h-full w-64 bg-white shadow-lg p-5 transform transition-transform duration-300 ${
+                isOpen ? "translate-x-0" : "translate-x-full"
               }`}
             >
-              <div
-                ref={sidebarRef}
-                className={`fixed right-0 top-0 h-full w-64 bg-white shadow-lg p-5 transform transition-transform duration-300 ${
-                  isOpen ? "translate-x-0" : "translate-x-full"
-                }`}
-              >
-                {/* Close Button */}
-                <div className="flex justify-between">
-                  <button
-                    className="mb-4 p-2 rounded-md hover:bg-gray-200 transition"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <X className="w-6 h-6" />
-                  </button>
-                  <Image
-                    src={chLogoPicker()}
-                    width={40}
-                    height={40}
-                    alt="Chidamo Logo"
-                  />
-                </div>
-
-                {/* Sidebar Links */}
-                <nav className="flex flex-col gap-4 mt-5">
-                  <CategoryItem
-                    onClick={() =>
-                      setExpandSidebarCategory(!expandSidebarCategory)
-                    }
-                    title="دسته بندی محصولات"
-                    image="/images/category.svg"
-                  />
-                  {expandSidebarCategory && (
-                    <div className="flex flex-col gap-2">
-                      {categoryDropdownItems.map((item, index) => (
-                        <Link
-                          key={index}
-                          href={`/category/${categoryIds[index]}`}
-                          onClick={() => setIsOpen(false)}
-                        >
-                          <p>{item}</p>
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                  <div className="w-full h-[1px] bg-[#BEBEBE]"></div>
-                  <CategoryItem
-                    path={"/onsale"}
-                    title="محصولات تخفیف دار"
-                    image="/images/sales-icon.svg"
-                  />
-                  <div className="w-full h-[1px] bg-[#BEBEBE]"></div>
-                  <CategoryItem
-                    path={"/mostpopular"}
-                    title="پرفروش ترین ها"
-                    image="/images/fire-icon.svg"
-                  />
-                  <div className="w-full h-[1px] bg-[#BEBEBE]"></div>
-                  <CategoryItem
-                    path={"https://seller.chidamo.com/"}
-                    title="فروشنده شو!"
-                    image="/images/seller-icon.svg"
-                  />
-                </nav>
+              {/* Close Button */}
+              <div className="flex justify-between">
+                <button
+                  className="mb-4 p-2 rounded-md hover:bg-gray-200 transition"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <X className="w-6 h-6" />
+                </button>
+                <Image
+                  src={chLogoPicker()}
+                  width={40}
+                  height={40}
+                  alt="Chidamo Logo"
+                />
               </div>
+
+              {/* Sidebar Links */}
+              <nav className="flex flex-col gap-4 mt-5">
+                <CategoryItem
+                  onClick={() =>
+                    setExpandSidebarCategory(!expandSidebarCategory)
+                  }
+                  title="دسته بندی محصولات"
+                  image="/images/category.svg"
+                />
+                {expandSidebarCategory && (
+                  <div className="flex flex-col gap-2">
+                    {categoryDropdownItems.map((item, index) => (
+                      <Link
+                        key={index}
+                        href={`/category/${categoryIds[index]}`}
+                        onClick={() => setIsOpen(false)}
+                      >
+                        <p>{item}</p>
+                      </Link>
+                    ))}
+                  </div>
+                )}
+                <div className="w-full h-[1px] bg-[#BEBEBE]"></div>
+                <CategoryItem
+                  path={"/onsale"}
+                  title="محصولات تخفیف دار"
+                  image="/images/sales-icon.svg"
+                />
+                <div className="w-full h-[1px] bg-[#BEBEBE]"></div>
+                <CategoryItem
+                  path={"/mostpopular"}
+                  title="پرفروش ترین ها"
+                  image="/images/fire-icon.svg"
+                />
+                <div className="w-full h-[1px] bg-[#BEBEBE]"></div>
+                <CategoryItem
+                  path={"https://seller.chidamo.com/"}
+                  title="فروشنده شو!"
+                  image="/images/seller-icon.svg"
+                />
+              </nav>
+            </div>
+          </div>
+
+          {!isFixed && (
+            <div className="flex items-center gap-5">
+              <div className="flex flex-row w-full bg-[#F0F0F0] rounded-xl items-center px-3 h-10">
+                <SearchIcon className="text-[#9C9D9E]" />
+                <input
+                  onKeyDown={searchFunction}
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
+                  type="text"
+                  placeholder="جستجو..."
+                  className="text-sm bg-[#F0F0F0] outline-none text-black px-2 md:w-[300px] lg:w-[500px]"
+                />
+              </div>
+              <Link href={"/cart"}>
+                <ShoppingCart color="#666666" size={24} />
+              </Link>
             </div>
           )}
-
-          <div className="flex items-center gap-5">
-            <div className="flex flex-row w-full bg-[#F0F0F0] rounded-xl items-center px-3 h-10">
-              <SearchIcon className="text-[#9C9D9E]" />
-              <input
-                onKeyDown={searchFunction}
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-                type="text"
-                placeholder="جستجو..."
-                className="text-sm bg-[#F0F0F0] outline-none text-black px-2 md:w-[300px] lg:w-[500px]"
-              />
-            </div>
-            <Link href={"/cart"}>
-              <ShoppingCart color="#666666" size={24} />
-            </Link>
-          </div>
         </div>
         <div
           className={`${
@@ -251,7 +266,7 @@ export default function Header({ categories }) {
                 </Link>
               )}
               <div className="w-[1px] h-7 bg-[#d3d3d3]"></div>
-              <CartDropDown />
+              <CartDropDown user={user} />
             </div>
           </div>
           {!isFixed && (

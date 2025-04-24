@@ -31,7 +31,7 @@ export default async function RootLayout({ children }) {
     <html lang="fa" dir="rtl" className={`${shabnam.variable}`}>
       <body>
         <MiniLoader />
-        <CartProvider>{children}</CartProvider>
+        {children}
       </body>
     </html>
   );

@@ -35,7 +35,7 @@ export async function POST(req) {
       //   "THE ITEM IN THE COOKIE IS: " + cookieStore.get("token")?.value
       // );
 
-      return NextResponse.json({ success: true });
+      return NextResponse.json({ success: true, token: data.token });
     }
 
     return NextResponse.json(

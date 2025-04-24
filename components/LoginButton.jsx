@@ -1,13 +1,15 @@
 "use client";
 
+import { useCart } from "@/context/CartContext";
+import { baseUrl } from "@/lib/baseUrl";
 import Image from "next/image";
 import { redirect, useSearchParams } from "next/navigation";
 import { useState } from "react";
 
 const loginUser = async (username, password) => {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   try {
-    const response = await fetch(`${baseUrl}/api/login`, {
+    const baseLocalUrl = process.env.NEXT_PUBLIC_BASE_URL;
+    const response = await fetch(`${baseLocalUrl}/api/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, password }),
@@ -17,7 +19,19 @@ const loginUser = async (username, password) => {
     // console.log(data);
 
     localStorage.setItem("token", data.token); // Store token
-    return [data, response.status];
+    const res = await fetch(`${baseUrl}/wp-json/wp/v2/users/me`, {
+      headers: { Authorization: `Bearer ${data.token}` },
+      cache: "no-store",
+    });
+    let user = null;
+    if (res.ok) {
+      user = await res.json();
+    }
+    return {
+      data: data,
+      status: response.status,
+      id: user.id,
+    };
   } catch (error) {
     console.error("Login error:", error.message);
     return null;
@@ -28,6 +42,8 @@ export default function LoginButton({ username, password, setError }) {
   const searchParams = useSearchParams();
   const returnPage = searchParams.get("returnPage");
   const [loading, setLoading] = useState(false);
+  const { migrateCartToApi } = useCart();
+
   return (
     <button
       onClick={async () => {
@@ -35,9 +51,11 @@ export default function LoginButton({ username, password, setError }) {
           setError(true);
         } else {
           setLoading(true);
-          let response = await loginUser(username, password);
-          switch (response[1]) {
+          let { status, id } = await loginUser(username, password);
+          switch (status) {
             case 200:
+              console.log(id);
+              await migrateCartToApi(null, id);
               redirect(returnPage || "/");
 
             default:

@@ -2,11 +2,12 @@
 
 import { useCart } from "@/context/CartContext";
 import { completeOrder } from "@/serverActions";
+import LoadingSpinner from "@/utils/loadingSpinner";
 import { toPersianPrice } from "@/utils/toPersianNumber";
 
 export default function CartPricingInfo() {
-  const { cart, removeFromCart, addToCart, updateQuantity } = useCart();
-
+  const { addToCart, cart, updateQuantity, removeFromCart, isLoading } =
+    useCart();
   const totalPrice = cart.reduce(
     (total, item) => total + parseInt(item["regular_price"]) * item.quantity,
     0
@@ -17,7 +18,11 @@ export default function CartPricingInfo() {
     <div className="flex flex-col gap-3 p-5 w-full md:w-[400px] border border-gray-200 rounded-md h-fit">
       <div className="flex flex-row justify-between">
         <p className="text-sm">قیمت کالا:</p>
-        <p>{toPersianPrice(totalPrice)} تومان</p>
+        {isLoading.initialLoad ? (
+          <LoadingSpinner color={"primary"} size={20} border={3} />
+        ) : (
+          <p>{toPersianPrice(totalPrice)} تومان</p>
+        )}
       </div>
       <div className="flex flex-row justify-between">
         <p className="text-sm">هزینه ارسال:</p>
@@ -25,9 +30,13 @@ export default function CartPricingInfo() {
       </div>
       <div className="flex flex-row justify-between text-primary">
         <p className="text-sm">قیمت کل:</p>
-        <p className="font-medium text-lg">
-          {toPersianPrice(totalPrice + shippingPrice)} تومان
-        </p>
+        {isLoading.initialLoad ? (
+          <LoadingSpinner color={"primary"} size={20} border={3} />
+        ) : (
+          <p className="font-medium text-lg">
+            {toPersianPrice(totalPrice + shippingPrice)} تومان
+          </p>
+        )}
       </div>
       <button
         onClick={completeOrder}

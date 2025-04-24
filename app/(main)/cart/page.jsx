@@ -8,7 +8,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Cart() {
-  const { cart, removeFromCart, addToCart, updateQuantity } = useCart();
+  const { cart, removeFromCart, addToCart, updateQuantity, isLoading } =
+    useCart();
 
   const totalPrice = cart.reduce(
     (total, item) => total + parseInt(item["regular_price"]) * item.quantity,
@@ -19,7 +20,13 @@ export default function Cart() {
 
   return (
     <div className="max-w-[1340px] m-auto py-5">
-      {cart.length == 0 ? (
+      {isLoading.initialLoad ? (
+        <div className="flex justify-center items-center h-[50vh] w-full">
+          <div className="flex items-center justify-center">
+            <div className="inline-block h-8 w-8 animate-spin rounded-full border-[3px] border-primary border-t-transparent" />
+          </div>
+        </div>
+      ) : cart.length == 0 ? (
         <div className="flex justify-center items-center h-[50vh] w-full">
           <div className="flex flex-col gap-7 font-medium items-center text-xl">
             <Image
@@ -63,40 +70,49 @@ export default function Cart() {
                         className="object-cover w-full h-full"
                       />
                     </div>
-                    <div className="flex flex-row items-center gap-3 border border-gray-200 p-2 rounded-md">
-                      <Plus
-                        onClick={() => addToCart(item)}
-                        className="cursor-pointer text-primary"
-                        size={18}
-                      />
-                      <p className="text-lg select-none">
-                        {toPersianNumber(item.quantity)}
-                      </p>
-                      {item.quantity == 1 ? (
-                        <Trash
-                          onClick={() => {
-                            removeFromCart(item.id);
-                          }}
-                          className="cursor-pointer"
+
+                    {isLoading.isProductLoading(item.id) ? (
+                      <div className="flex items-center justify-center">
+                        <div className="inline-block h-8 w-8 animate-spin rounded-full border-[3px] border-primary border-t-transparent" />
+                      </div>
+                    ) : (
+                      <div className="flex flex-row items-center justify-between gap-3 border border-gray-200 p-2 rounded-md">
+                        <Plus
+                          onClick={() => addToCart(item)}
+                          className="cursor-pointer text-primary"
                           size={18}
-                          color="red"
                         />
-                      ) : (
-                        <Minus
-                          onClick={() => {
-                            updateQuantity(item.id, item.quantity - 1);
-                          }}
-                          className="cursor-pointer"
-                          size={18}
-                          color="red"
-                        />
-                      )}
-                    </div>
+                        <p className="text-lg select-none">
+                          {toPersianNumber(item.quantity)}
+                        </p>
+                        {item.quantity == 1 ? (
+                          <Trash
+                            onClick={() => {
+                              removeFromCart(item.id);
+                            }}
+                            className="cursor-pointer"
+                            size={18}
+                            color="red"
+                          />
+                        ) : (
+                          <Minus
+                            onClick={() => {
+                              updateQuantity(item.id, item.quantity - 1);
+                            }}
+                            className="cursor-pointer"
+                            size={18}
+                            color="red"
+                          />
+                        )}
+                      </div>
+                    )}
                   </div>
                   <div className="flex flex-col gap-3 text-gray-500">
-                    <p className="text-black font-medium text-lg">
-                      {item.name}
-                    </p>
+                    <Link href={`/product/${item.id}`}>
+                      <p className="text-black font-medium text-lg">
+                        {item.name}
+                      </p>
+                    </Link>
                     <div className="flex flex-col gap-2">
                       <div className="flex gap-1 items-center">
                         <div className="w-1 h-1 p-[6px] bg-green-600 rounded-full"></div>

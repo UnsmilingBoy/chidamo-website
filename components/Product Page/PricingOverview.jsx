@@ -1,6 +1,7 @@
 "use client";
 
 import { useCart } from "@/context/CartContext";
+import LoadingSpinner from "@/utils/loadingSpinner";
 import { toPersianNumber, toPersianPrice } from "@/utils/toPersianNumber";
 import {
   Minus,
@@ -14,7 +15,8 @@ import Image from "next/image";
 import { redirect } from "next/navigation";
 
 export default function PricingOverview({ product, isSticky, display }) {
-  const { addToCart, cart, updateQuantity, removeFromCart } = useCart();
+  const { addToCart, cart, updateQuantity, removeFromCart, isLoading } =
+    useCart();
 
   // const inCartQuantity = cart.reduce((total, item) => total + item.quantity, 0);
 
@@ -24,6 +26,8 @@ export default function PricingOverview({ product, isSticky, display }) {
       cartIndex = i;
     }
   }
+
+  console.log(product["stock_quantity"] + "WWWW");
 
   return (
     <div
@@ -104,35 +108,39 @@ export default function PricingOverview({ product, isSticky, display }) {
         </button>
       ) : cart.length != 0 && cart[cartIndex]?.quantity > 0 ? (
         <div className="flex flex-row justify-center gap-3 w-full items-center">
-          <div className="flex flex-row items-center gap-3 shadow-md p-2 rounded-md">
-            <Plus
-              onClick={() => addToCart(product)}
-              className="cursor-pointer text-primary"
-              size={18}
-            />
-            <p className="text-lg select-none">
-              {toPersianNumber(cart[cartIndex]?.quantity)}
-            </p>
-            {cart[cartIndex]?.quantity == 1 ? (
-              <Trash
-                onClick={() => {
-                  removeFromCart(product.id);
-                }}
-                className="cursor-pointer"
+          {isLoading.isProductLoading(product.id) ? (
+            <LoadingSpinner size={25} />
+          ) : (
+            <div className="flex flex-row items-center gap-3 shadow-md p-2 rounded-md">
+              <Plus
+                onClick={() => addToCart(product)}
+                className="cursor-pointer text-primary"
                 size={18}
-                color="red"
               />
-            ) : (
-              <Minus
-                onClick={() => {
-                  updateQuantity(product.id, cart[cartIndex]?.quantity - 1);
-                }}
-                className="cursor-pointer"
-                size={18}
-                color="red"
-              />
-            )}
-          </div>
+              <p className="text-lg select-none">
+                {toPersianNumber(cart[cartIndex]?.quantity)}
+              </p>
+              {cart[cartIndex]?.quantity == 1 ? (
+                <Trash
+                  onClick={() => {
+                    removeFromCart(product.id);
+                  }}
+                  className="cursor-pointer"
+                  size={18}
+                  color="red"
+                />
+              ) : (
+                <Minus
+                  onClick={() => {
+                    updateQuantity(product.id, cart[cartIndex]?.quantity - 1);
+                  }}
+                  className="cursor-pointer"
+                  size={18}
+                  color="red"
+                />
+              )}
+            </div>
+          )}
 
           <button
             onClick={() => redirect("/cart")}
@@ -146,12 +154,16 @@ export default function PricingOverview({ product, isSticky, display }) {
           onClick={() => addToCart(product)}
           className="bg-primary font-[Shabnam] p-3 rounded-md my-3 text-white"
         >
-          <div className="flex flex-row-reverse relative w-full">
-            <p className="absolute inset-0 flex items-center justify-center">
-              افزودن به سبد خرید
-            </p>
-            <ShoppingCartIcon size={24} />
-          </div>
+          {isLoading.isProductLoading(product.id) ? (
+            <LoadingSpinner color="white" size={25} />
+          ) : (
+            <div className="flex flex-row-reverse relative w-full">
+              <p className="absolute inset-0 flex items-center justify-center">
+                افزودن به سبد خرید
+              </p>
+              <ShoppingCartIcon size={24} />
+            </div>
+          )}
         </button>
       )}
     </div>

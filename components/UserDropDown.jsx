@@ -1,10 +1,12 @@
 "use client";
+import { useCart } from "@/context/CartContext";
 import { ChevronDown, ChevronLeft, LogOut, UserRound } from "lucide-react";
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 
 async function handleLogout() {
   await fetch("/api/logout", { method: "POST" });
+  localStorage.setItem("cart", []);
   window.location.reload(); // Refresh to clear auth state
 }
 
