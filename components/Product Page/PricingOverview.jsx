@@ -27,8 +27,6 @@ export default function PricingOverview({ product, isSticky, display }) {
     }
   }
 
-  console.log(product["stock_quantity"] + "WWWW");
-
   return (
     <div
       className={`flex ${display} flex-col gap-5 text-sm rounded-lg border shadow-md border-[#D9D9D9] p-5 w-[520px] h-fit text-nowrap ${
