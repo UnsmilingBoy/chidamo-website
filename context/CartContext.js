@@ -4,8 +4,6 @@ import { createContext, useContext, useEffect, useState } from "react";
 const CartContext = createContext();
 
 export function CartProvider({ children, useApi = false, userId = null }) {
-  const [initialized, setInitialized] = useState(false);
-
   // Initialize cart from localStorage if possible (client-side only)
   const [cart, setCart] = useState(() => {
     // Only run in the browser, not during SSR
@@ -28,32 +26,10 @@ export function CartProvider({ children, useApi = false, userId = null }) {
 
   const baseUrl = "https://chidamo.com/wp-json";
 
-  // Modified initialization effect
-  useEffect(() => {
-    if (typeof window !== "undefined" && !initialized) {
-      const savedCart = localStorage.getItem("cart");
-      if (savedCart && !useApi) {
-        setCart(JSON.parse(savedCart));
-      }
-      setInitialized(true);
-    }
-  }, [initialized, useApi]);
-
   // Load cart from API if useApi is true and userId is provided
   useEffect(() => {
-    async function handleCartTransition() {
-      if (useApi && userId && initialized) {
-        // First, try to migrate any existing localStorage cart
-        const localCart = localStorage.getItem("cart");
-        if (localCart) {
-          const parsedCart = JSON.parse(localCart);
-          if (parsedCart.length > 0) {
-            await migrateCartToApi(parsedCart);
-            localStorage.removeItem("cart");
-          }
-        }
-
-        // Then load the cart from API
+    async function loadCartFromApi() {
+      if (useApi && userId) {
         try {
           setLoadingStates((prev) => ({ ...prev, initialLoad: true }));
           const response = await fetch(`${baseUrl}/api/cart?user_id=${userId}`);
@@ -61,14 +37,24 @@ export function CartProvider({ children, useApi = false, userId = null }) {
           setCart(data.items || []);
         } catch (error) {
           console.error("Failed to fetch cart:", error);
+          // Keep existing cart if API fails
         } finally {
           setLoadingStates((prev) => ({ ...prev, initialLoad: false }));
         }
       }
     }
 
-    handleCartTransition();
-  }, [useApi, userId, initialized]);
+    if (useApi && userId) {
+      loadCartFromApi();
+    }
+  }, [useApi, userId]);
+
+  // Save cart to localStorage when not using API
+  useEffect(() => {
+    if (!useApi && typeof window !== "undefined") {
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+  }, [cart, useApi]);
 
   async function addToCart(product) {
     // Set loading state for this specific product

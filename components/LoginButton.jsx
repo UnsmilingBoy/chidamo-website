@@ -56,6 +56,7 @@ export default function LoginButton({ username, password, setError }) {
             case 200:
               console.log(id);
               await migrateCartToApi(null, id);
+              window.location.reload();
               redirect(returnPage || "/");
 
             default:
