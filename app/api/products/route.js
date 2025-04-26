@@ -1,3 +1,4 @@
+import { fetchWithRetry } from "@/lib/fetchWithRetry";
 import { NextResponse } from "next/server";
 
 export async function GET(request) {
@@ -44,7 +45,7 @@ export async function GET(request) {
       apiUrl += `?${queryParams.toString()}&per_page=12`;
     }
 
-    const res = await fetch(apiUrl, {
+    const res = await fetchWithRetry(apiUrl, {
       headers: {
         Authorization: `Basic ${auth}`,
       },

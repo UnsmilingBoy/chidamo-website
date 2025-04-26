@@ -1,3 +1,4 @@
+import { fetchWithRetry } from "@/lib/fetchWithRetry";
 import { NextResponse } from "next/server";
 
 export async function GET(request, { params }) {
@@ -15,7 +16,7 @@ export async function GET(request, { params }) {
     // Construct the WooCommerce API URL
     const apiUrl = `${wooCommerceUrl}/wp-json/wc/v3/products/${id}`;
 
-    const res = await fetch(apiUrl, {
+    const res = await fetchWithRetry(apiUrl, {
       headers: {
         Authorization: `Basic ${auth}`,
       },

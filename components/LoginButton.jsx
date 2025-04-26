@@ -2,6 +2,7 @@
 
 import { useCart } from "@/context/CartContext";
 import { baseUrl } from "@/lib/baseUrl";
+import LoadingSpinner from "@/utils/loadingSpinner";
 import Image from "next/image";
 import { redirect, useSearchParams } from "next/navigation";
 import { useState } from "react";
@@ -68,17 +69,7 @@ export default function LoginButton({ username, password, setError }) {
       }}
       className="bg-primary flex justify-center text-white w-full rounded-md py-3"
     >
-      {loading ? (
-        <Image
-          className="h-full"
-          src="/images/loading-gif.gif"
-          width={24}
-          height={40}
-          alt="Loading gif"
-        />
-      ) : (
-        "ورود"
-      )}
+      {loading ? <LoadingSpinner color="white" size={20} border={2} /> : "ورود"}
     </button>
   );
 }
