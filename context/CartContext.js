@@ -33,7 +33,9 @@ export function CartProvider({ children, useApi = false, userId = null }) {
       if (useApi && userId) {
         try {
           setLoadingStates((prev) => ({ ...prev, initialLoad: true }));
-          const response = await fetch(`${baseUrl}/api/cart?user_id=${userId}`);
+          const response = await fetch(
+            `${baseUrl}/wp-json/api/cart?user_id=${userId}`
+          );
           const data = await response.json();
           setCart(data.items || []);
         } catch (error) {
@@ -73,7 +75,7 @@ export function CartProvider({ children, useApi = false, userId = null }) {
           user_id: userId,
         };
 
-        const response = await fetch(`${baseUrl}/api/cart/add`, {
+        const response = await fetch(`${baseUrl}/wp-json/api/cart/add`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -119,7 +121,7 @@ export function CartProvider({ children, useApi = false, userId = null }) {
 
     try {
       if (useApi && userId) {
-        const response = await fetch(`${baseUrl}/api/cart/remove`, {
+        const response = await fetch(`${baseUrl}/wp-json/api/cart/remove`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
@@ -154,7 +156,7 @@ export function CartProvider({ children, useApi = false, userId = null }) {
 
     try {
       if (useApi && userId) {
-        const response = await fetch(`${baseUrl}/api/cart/update`, {
+        const response = await fetch(`${baseUrl}/wp-json/api/cart/update`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -190,7 +192,7 @@ export function CartProvider({ children, useApi = false, userId = null }) {
     try {
       if (useApi && userId) {
         const response = await fetch(
-          `${baseUrl}/api/cart/clear?user_id=${userId}`,
+          `${baseUrl}/wp-json/api/cart/clear?user_id=${userId}`,
           {
             method: "DELETE",
           }
@@ -224,7 +226,7 @@ export function CartProvider({ children, useApi = false, userId = null }) {
 
     if (cartToMigrate.length > 0) {
       try {
-        const response = await fetch(`${baseUrl}/api/cart/sync`, {
+        const response = await fetch(`${baseUrl}/wp-json/api/cart/sync`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
