@@ -4,7 +4,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "chidamo.com",
+        hostname: "*",
         pathname: "/wp-content/uploads/**",
       },
     ],

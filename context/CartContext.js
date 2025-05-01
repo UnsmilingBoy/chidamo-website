@@ -1,4 +1,5 @@
 "use client";
+import { baseUrl } from "@/lib/baseUrl";
 import { createContext, useContext, useEffect, useState } from "react";
 
 const CartContext = createContext();
@@ -24,7 +25,7 @@ export function CartProvider({ children, useApi = false, userId = null }) {
     productLoading: null, // For tracking individual product loading state
   });
 
-  const baseUrl = "https://chidamo.com/wp-json";
+  // const baseUrl = "https://chidamo.com/wp-json";
 
   // Load cart from API if useApi is true and userId is provided
   useEffect(() => {

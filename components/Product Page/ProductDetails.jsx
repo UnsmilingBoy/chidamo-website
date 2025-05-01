@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Details from "./DetailsTab/Details";
-import ProdcutIntroduction from "./DetailsTab/ProductIntroduction";
 import ProdcutReviews from "./DetailsTab/ProductReviews";
 
 export default function ProductDetails({ reviews, product }) {

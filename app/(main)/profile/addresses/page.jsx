@@ -1,4 +1,4 @@
-import { Edit, Trash } from "lucide-react";
+import { Edit } from "lucide-react";
 import { cookies } from "next/headers";
 import EditAddressButton from "./components/EditAddressButton";
 import { getUserInfo } from "@/lib/fetchUserInfo";

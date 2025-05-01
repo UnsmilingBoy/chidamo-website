@@ -1,4 +1,3 @@
-import { primaryColor } from "@/utils/SeasonChanger";
 import { toPersianPrice } from "@/utils/toPersianNumber";
 import { Star } from "lucide-react";
 import Image from "next/image";

@@ -3,7 +3,6 @@ import PricingOverview from "@/components/Product Page/PricingOverview";
 import ProductDetails from "@/components/Product Page/ProductDetails";
 import ProductOverview from "@/components/Product Page/ProductOverview";
 import RelatedProducts from "@/components/Product Page/RelatedProduct";
-import StoriesSection from "@/components/StoriesSection/StoriesSection";
 import { getProductPageData } from "@/lib/fetchProducts";
 import Image from "next/image";
 

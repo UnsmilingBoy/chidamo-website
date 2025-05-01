@@ -29,11 +29,8 @@ export async function POST(req) {
         ...(process.env.NODE_ENV === "production" && {
           domain: ".chidamo.com",
         }), // Set domain only in production
-        maxAge: 3600,
+        maxAge: 3600 * 24 * 30,
       });
-      // console.log(
-      //   "THE ITEM IN THE COOKIE IS: " + cookieStore.get("token")?.value
-      // );
 
       return NextResponse.json({ success: true, token: data.token });
     }

@@ -1,8 +1,6 @@
 "use client";
 
 import { Switch } from "@headlessui/react";
-import Link from "next/link";
-import { useState } from "react";
 
 export default function HeadlessSwitch({ enable, handleSwitch }) {
   return (

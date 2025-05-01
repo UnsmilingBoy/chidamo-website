@@ -1,10 +1,14 @@
 "use client";
 
 import { MapPinHouse } from "lucide-react";
-import { redirect, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-export default function CheckOutInputFields({ isSelected }) {
+export default function CheckOutInputFields({
+  selected,
+  setSelected,
+  form,
+  handleChange,
+}) {
   useEffect(() => {
     fetch("/iran_cities.json")
       .then((res) => res.json())
@@ -13,20 +17,40 @@ export default function CheckOutInputFields({ isSelected }) {
   }, []);
   const inputFields = [
     {
+      placeholder: "نام",
+      span: 2,
+      value: form.firstName,
+      name: "firstName",
+    },
+    {
+      placeholder: "نام خانوادگی",
+      span: 2,
+      value: form.lastName,
+      name: "lastName",
+    },
+    {
       placeholder: "آدرس",
       span: 2,
+      value: form.address,
+      name: "address",
     },
     {
       placeholder: "پلاک",
       span: 1,
+      value: form.pelak,
+      name: "pelak",
     },
     {
       placeholder: "واحد",
       span: 1,
+      value: form.vahed,
+      name: "vahed",
     },
     {
       placeholder: "کدپستی",
       span: 2,
+      value: form.postcode,
+      name: "postcode",
     },
   ];
 
@@ -78,9 +102,9 @@ export default function CheckOutInputFields({ isSelected }) {
 
   return (
     <div
-      onClick={() => redirect("/checkout?address=custom")}
+      onClick={() => setSelected(1)}
       className={`flex flex-col border-2 cursor-pointer w-full items-start ${
-        isSelected == "custom" ? "border-primary" : "border-[DEDEDE]"
+        selected == 1 ? "border-primary" : "border-[DEDEDE]"
       } py-3 px-5 gap-4 rounded-lg`}
     >
       <div className="flex flex-row gap-4 items-center">
@@ -90,7 +114,9 @@ export default function CheckOutInputFields({ isSelected }) {
       <div className="grid grid-cols-1 sm:grid-cols-2 w-full gap-5">
         <select
           id="province-select"
-          onChange={handleProvinceSelection}
+          name="state"
+          value={form.state}
+          onChange={handleChange}
           className="border border-[#e2e2e2] rounded p-3 outline-none w-full"
         >
           {provinceList.map((option) => (
@@ -101,7 +127,9 @@ export default function CheckOutInputFields({ isSelected }) {
         </select>
         <select
           id="city-select"
-          onChange={handleCitySelection}
+          name="city"
+          value={form.city}
+          onChange={handleChange}
           className="border border-[#e2e2e2] rounded p-3 w-full outline-none"
         >
           {cities.map((option, index) => (
@@ -115,6 +143,9 @@ export default function CheckOutInputFields({ isSelected }) {
         {inputFields.map((item, index) => (
           <input
             key={index}
+            value={item.value}
+            name={item.name}
+            onChange={handleChange}
             className={`col-span-1 sm:col-span-2 border border-[#e2e2e2] p-3 rounded-md outline-none`}
             type="text"
             placeholder={item.placeholder}

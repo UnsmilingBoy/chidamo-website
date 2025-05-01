@@ -5,9 +5,8 @@ import { completeOrder } from "@/serverActions";
 import LoadingSpinner from "@/utils/loadingSpinner";
 import { toPersianPrice } from "@/utils/toPersianNumber";
 
-export default function CartPricingInfo() {
-  const { addToCart, cart, updateQuantity, removeFromCart, isLoading } =
-    useCart();
+export default function CartPricingInfo({ completeOrderFunc }) {
+  const { cart, isLoading } = useCart();
   const totalPrice = cart.reduce(
     (total, item) => total + parseInt(item["regular_price"]) * item.quantity,
     0
@@ -39,7 +38,7 @@ export default function CartPricingInfo() {
         )}
       </div>
       <button
-        onClick={completeOrder}
+        onClick={completeOrderFunc ? completeOrderFunc : completeOrder}
         className="bg-primary font-[Shabnam] p-3 rounded-md my-3 text-white"
       >
         تکمیل سفارش

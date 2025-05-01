@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import ProductTile from "../ProductTile";
 import CategorySortBy from "./CategorySortBy";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import Image from "next/image";
 import LoadingProductTile from "./LoadingProductTile";
 import CategoryFilters from "./CategoryFilters";
 

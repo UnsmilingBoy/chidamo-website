@@ -1,4 +1,3 @@
-import CategoryFilters from "@/components/Category Page/CategoryFilters";
 import CategoryProducts from "@/components/Category Page/CategoryProducts";
 import { getCategoryAndProducts } from "@/lib/fetchProducts";
 import Link from "next/link";

@@ -1,6 +1,5 @@
 import localFont from "next/font/local";
 import MiniLoader from "@/components/MiniLoader";
-import { CartProvider } from "@/context/CartContext";
 import "@/styles/globals.css";
 
 const shabnam = localFont({
