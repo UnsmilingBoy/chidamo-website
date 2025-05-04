@@ -3,12 +3,12 @@ import Link from "next/link";
 
 export default function StoriesSection() {
   const data = [
-    ["اکسسوری مردانه", "/images/keychain.jpg", "116"],
-    ["اکسسوری زنانه", "/images/necklace.jpg", "117"],
-    ["عطر و ادکلن", "/images/atr.jpg", "88"],
-    ["پوشاک بچگانه", "/images/kidsclothing.png", "108"],
-    ["پوشاک زنانه", "/images/womenclothing.png", "107"],
-    ["پوشاک مردانه", "/images/pooshaak.jpg", "106"],
+    ["اکسسوری مردانه", "/images/keychain.jpg", "56"],
+    ["اکسسوری زنانه", "/images/necklace.jpg", "57"],
+    ["عطر و ادکلن", "/images/atr.jpg", "20"],
+    ["پوشاک بچگانه", "/images/kidsclothing.png", "21"],
+    ["پوشاک زنانه", "/images/womenclothing.png", "21"],
+    ["پوشاک مردانه", "/images/pooshaak.jpg", "21"],
   ];
 
   return (

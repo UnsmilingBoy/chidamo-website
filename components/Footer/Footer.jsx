@@ -1,5 +1,4 @@
 "use client";
-import { toPersianNumber } from "@/utils/toPersianNumber";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -20,19 +19,22 @@ export default function Footer({ categories }) {
   ];
 
   const quickAccess = [
-    ["بلاگ", "/"],
-    ["خرید پوشاک", "/category/84"],
-    ["محصولات هنری", "/category/90"],
-    ["پوشاک زنانه", "/category/107"],
-    ["پوشاک مردانه", "/category/106"],
-    ["صنعت مد", "/category/84"],
-    ["زیور آلات", "/category/88"],
-    ["عطر و ادکلن", "/category/84"],
+    // ["بلاگ", "/"],
+    ["خرید پوشاک", "/category/21"],
+    ["محصولات هنری", "/category/26"],
+    ["اکسسوری", "/category/20"],
+    ["زیور آلات", "/category/20"],
+    ["عطر و ادکلن", "/category/20"],
     ["محصولات پرفروش", "/mostpopular"],
     ["فروشنده شو!", "https://seller.chidamo.com/"],
   ];
 
-  const aboutUs = ["بلاگ", "سوالات متداول", "فروشگاه حضوری", "تماس با ما"];
+  const aboutUs = [
+    // "بلاگ",
+    "سوالات متداول",
+    "فروشگاه حضوری",
+    "تماس با ما",
+  ];
 
   const rules = [
     "قوانین و مقررات",

@@ -4,7 +4,7 @@
 import Image from "next/image";
 import { useEffect } from "react";
 
-export default function Error({ error, reset }) {
+export default function Error({ error }) {
   useEffect(() => {
     console.error(error);
   }, [error]);
@@ -17,10 +17,12 @@ export default function Error({ error, reset }) {
         width={300}
         height={300}
       />
-      <h2 className="text-base md:text-xl font-bold">مشکلی پیش آمده است.</h2>
+      <h2 className="text-base md:text-xl font-medium my-2">
+        مشکلی پیش آمده است. لطفاً چند لحظه دیگر دوباره تلاش کنید.
+      </h2>
       {/* <p className="text-gray-600 my-2">{error.message}</p> */}
       <button
-        onClick={() => reset()}
+        onClick={() => window.location.reload()}
         className="text-sm md:text-base px-3 py-2 bg-primary text-white rounded"
       >
         تلاش مجدد

@@ -20,7 +20,7 @@ export default function Error({ error, reset }) {
       <h2 className="text-base md:text-xl font-bold">مشکلی پیش آمده است.</h2>
       {/* <p className="text-gray-600 my-2">{error.message}</p> */}
       <button
-        onClick={() => reset()}
+        onClick={() => window.location.reload()}
         className="text-sm md:text-base px-3 py-2 bg-primary text-white rounded"
       >
         تلاش مجدد

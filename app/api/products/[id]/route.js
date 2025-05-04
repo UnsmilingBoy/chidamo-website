@@ -20,6 +20,7 @@ export async function GET(request, { params }) {
       headers: {
         Authorization: `Basic ${auth}`,
       },
+      next: { revalidate: 60 },
     });
 
     if (!res.ok) {

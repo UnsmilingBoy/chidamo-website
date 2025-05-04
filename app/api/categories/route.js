@@ -21,6 +21,7 @@ export async function GET(request) {
         headers: {
           Authorization: `Basic ${auth}`, // Basic authentication
         },
+        cache: "force-cache",
       }
     );
 
