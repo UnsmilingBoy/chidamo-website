@@ -1,4 +1,5 @@
 import { getUserOrders } from "@/lib/fetchUserInfo";
+import { fetchWithRetry } from "@/lib/fetchWithRetry";
 import { ChevronLeft } from "lucide-react";
 import { cookies } from "next/headers";
 import Image from "next/image";
@@ -18,10 +19,13 @@ export default async function Orders() {
   let orders = null;
   let user = null;
   if (token) {
-    const res = await fetch(`${process.env.BASE_URL}/wp-json/wp/v2/users/me`, {
-      headers: { Authorization: `Bearer ${token}` },
-      cache: "no-store",
-    });
+    const res = await fetchWithRetry(
+      `${process.env.BASE_URL}/wp-json/wp/v2/users/me`,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+        cache: "no-store",
+      }
+    );
 
     if (res.ok) {
       user = await res.json();

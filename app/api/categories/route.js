@@ -1,3 +1,4 @@
+import { fetchWithRetry } from "@/lib/fetchWithRetry";
 import { NextResponse } from "next/server";
 
 export async function GET(request) {
@@ -14,7 +15,7 @@ export async function GET(request) {
   }).toString();
 
   try {
-    const res = await fetch(
+    const res = await fetchWithRetry(
       `${wooCommerceUrl}/wp-json/wc/v3/products/categories?${queryParams}`,
       {
         // Construct URL

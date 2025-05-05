@@ -9,6 +9,7 @@ import {
 import { cookies } from "next/headers";
 import EditUserInfoButton from "./components/EditUserInfoButton";
 import { getUserInfo } from "@/lib/fetchUserInfo";
+import { fetchWithRetry } from "@/lib/fetchWithRetry";
 
 // async function getUserInfo(id) {
 //   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
@@ -26,10 +27,13 @@ export default async function UserInfo() {
   let wpUser = null;
   let user = null;
   if (token) {
-    const res = await fetch(`${process.env.BASE_URL}/wp-json/wp/v2/users/me`, {
-      headers: { Authorization: `Bearer ${token}` },
-      cache: "no-store",
-    });
+    const res = await fetchWithRetry(
+      `${process.env.BASE_URL}/wp-json/wp/v2/users/me`,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+        cache: "no-store",
+      }
+    );
 
     if (res.ok) {
       wpUser = await res.json();

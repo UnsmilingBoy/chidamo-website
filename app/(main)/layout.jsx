@@ -5,6 +5,7 @@ import { AuthProvider } from "@/context/AuthContext";
 import { cookies } from "next/headers";
 import ExpandCollapseText from "@/components/HomeExpandableText";
 import { CartProvider } from "@/context/CartContext";
+import { fetchWithRetry } from "@/lib/fetchWithRetry";
 
 async function getCategories() {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
@@ -21,10 +22,13 @@ export default async function RootLayout({ children }) {
   let user = null;
 
   if (token) {
-    const res = await fetch(`${process.env.BASE_URL}/wp-json/wp/v2/users/me`, {
-      headers: { Authorization: `Bearer ${token}` },
-      cache: "no-store",
-    });
+    const res = await fetchWithRetry(
+      `${process.env.BASE_URL}/wp-json/wp/v2/users/me`,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+        cache: "no-store",
+      }
+    );
 
     if (res.ok) {
       user = await res.json();

@@ -30,6 +30,20 @@ const nextConfig = {
       },
     ];
   },
+  serverRuntimeConfig: {
+    // Will only be available on the server side
+    connectionTimeout: 10000, // 10 seconds
+    readTimeout: 10000, // 10 seconds
+  },
+  onDemandEntries: {
+    // period (in ms) where the server will keep pages in the buffer
+    maxInactiveAge: 60 * 1000,
+    // number of pages that should be kept simultaneously without being disposed
+    pagesBufferLength: 5,
+  },
+  experimental: {
+    serverActions: true,
+  },
 };
 
 export default nextConfig;
