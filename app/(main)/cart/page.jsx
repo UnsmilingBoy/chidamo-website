@@ -63,7 +63,7 @@ export default function Cart() {
                   <div className="flex flex-col gap-2">
                     <div className="w-[100px] h-[100px] aspect-square overflow-hidden rounded-md">
                       <Image
-                        src={item.images[0].src}
+                        src={item?.images[0]?.src || "/images/no-image.jpg"}
                         width={100}
                         height={100}
                         alt="Product image"

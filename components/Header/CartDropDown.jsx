@@ -75,7 +75,7 @@ export default function CartDropDown() {
             </div>
           ) : (
             <>
-              <ul className="max-h-60 overflow-y-auto">
+              <ul className="max-h-60 overflow-y-auto overflow-x-hidden">
                 {cart.map((item, index) => (
                   <li
                     key={index}
@@ -86,7 +86,7 @@ export default function CartDropDown() {
                     <Link href={`/product/${item.id}`}>
                       <div className="flex flex-row gap-2">
                         <Image
-                          src={item?.images[0]?.src}
+                          src={item?.images[0]?.src || "/images/no-image.jpg"}
                           width={35}
                           height={35}
                           className="rounded-xl w-[40px] h-[40px]"
@@ -105,7 +105,7 @@ export default function CartDropDown() {
                       </div>
                     </Link>
                     {isLoading.productLoading ? (
-                      <LoadingSpinner />
+                      <LoadingSpinner border={2} />
                     ) : (
                       <button
                         onClick={() => removeFromCart(item.id)}

@@ -57,7 +57,7 @@ export default function CategoryProducts({
             {products.map((product, index) => (
               <ProductTile
                 key={index}
-                image={product?.images?.[0]?.src || "/images/atr.jpg"}
+                image={product?.images?.[0]?.src}
                 price={product["regular_price"]}
                 title={product.name}
                 productId={product.id}

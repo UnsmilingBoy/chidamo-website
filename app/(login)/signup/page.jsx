@@ -1,5 +1,6 @@
 "use client";
 
+import LoadingSpinner from "@/utils/loadingSpinner";
 import { logoPicker } from "@/utils/SeasonChanger";
 import { Info } from "lucide-react";
 import Image from "next/image";
@@ -138,13 +139,7 @@ export default function SignUpPage() {
           className="bg-primary text-white p-3 rounded-md max-w-[250px] w-full"
         >
           {loading ? (
-            <Image
-              className="h-full m-auto"
-              src="/images/loading-gif.gif"
-              width={24}
-              height={40}
-              alt="Loading gif"
-            />
+            <LoadingSpinner color="white" size={20} border={2} />
           ) : (
             <p>ثبت نام</p>
           )}

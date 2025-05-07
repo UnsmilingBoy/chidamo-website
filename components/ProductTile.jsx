@@ -22,7 +22,7 @@ export default function ProductTile({
       <div className="flex flex-col items-center border gap-2 p-3 md:p-[15px] hover:bg-slate-50 h-full">
         <div className="w-full aspect-square overflow-hidden p-1">
           <Image
-            src={image}
+            src={image || "/images/no-image.jpg"}
             width={200}
             height={400}
             className="object-cover w-full h-full rounded-md"

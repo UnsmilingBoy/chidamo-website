@@ -8,7 +8,7 @@ export default function RelatedProducts({ dataList }) {
         {dataList?.map((product, index) => (
           <div key={index} className="w-44 md:w-56 flex-none">
             <ProductTile
-              image={product?.images?.[0]?.src || "/images/atr.jpg"}
+              image={product?.images?.[0]?.src}
               title={product.name}
               productId={product.id}
               onSalePrice={product["sale_price"]}

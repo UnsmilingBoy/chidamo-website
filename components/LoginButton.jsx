@@ -19,6 +19,12 @@ const loginUser = async (username, password) => {
     const data = await response.json();
     // console.log(data);
 
+    if (!response.ok) {
+      return {
+        status: response.status,
+      };
+    }
+
     localStorage.setItem("token", data.token); // Store token
     const res = await fetch(`${baseUrl}/wp-json/wp/v2/users/me`, {
       headers: { Authorization: `Bearer ${data.token}` },
@@ -34,8 +40,10 @@ const loginUser = async (username, password) => {
       id: user.id,
     };
   } catch (error) {
-    console.error("Login error:", error.message);
-    return null;
+    // console.error("Login error:", error.message);
+    return {
+      status: 402,
+    };
   }
 };
 
@@ -55,7 +63,6 @@ export default function LoginButton({ username, password, setError }) {
           let { status, id } = await loginUser(username, password);
           switch (status) {
             case 200:
-              console.log(id);
               await migrateCartToApi(null, id);
               window.location.reload();
               redirect(returnPage || "/");

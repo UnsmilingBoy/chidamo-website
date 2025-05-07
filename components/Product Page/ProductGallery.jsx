@@ -6,7 +6,7 @@ export default function ProductGallery({ photosArray }) {
       <div className="w-full h-auto aspect-square sm:w-64 sm:h-64 md:w-96 md:h-96 rounded-lg">
         <Image
           className="w-full h-full object-cover rounded-md"
-          src={photosArray[0] || "/images/atr.jpg"}
+          src={photosArray[0] || "/images/no-image.jpg"}
           alt="Product picture"
           width={300}
           height={300}
@@ -20,7 +20,7 @@ export default function ProductGallery({ photosArray }) {
           >
             <Image
               className="w-full h-full object-cover rounded-md"
-              src={pic || "/images/atr.jpg"}
+              src={pic || "/images/no-image.jpg"}
               alt="Product picture"
               width={300}
               height={300}

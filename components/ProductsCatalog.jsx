@@ -10,36 +10,6 @@ import ProductTile from "@/components/ProductTile";
 import Link from "next/link";
 
 export default function ProductsCatalog({ products }) {
-  const offersData = [
-    ["/images/kafsh.jpg", "کیف فانتزی هرمی دخترونه چرم طبیعی بز", "290000"],
-    ["/images/atr.jpg", "کیف فانتزی هرمی دخترونه چرم طبیعی بز", "290000"],
-    [
-      "/images/kife-narenji.jpg",
-      "کیف فانتزی هرمی دخترونه چرم طبیعی بز",
-      "290000",
-    ],
-    ["/images/kafsh.jpg", "کیف فانتزی هرمی دخترونه چرم طبیعی بز", "290000"],
-    ["/images/atr.jpg", "کیف فانتزی هرمی دخترونه چرم طبیعی بز", "290000"],
-    [
-      "/images/kife-narenji.jpg",
-      "کیف فانتزی هرمی دخترونه چرم طبیعی بز",
-      "290000",
-    ],
-    ["/images/kafsh.jpg", "کیف فانتزی هرمی دخترونه چرم طبیعی بز", "290000"],
-    ["/images/atr.jpg", "کیف فانتزی هرمی دخترونه چرم طبیعی بز", "290000"],
-    [
-      "/images/kife-narenji.jpg",
-      "کیف فانتزی هرمی دخترونه چرم طبیعی بز",
-      "290000",
-    ],
-    ["/images/kafsh.jpg", "کیف فانتزی هرمی دخترونه چرم طبیعی بز", "290000"],
-    ["/images/atr.jpg", "کیف فانتزی هرمی دخترونه چرم طبیعی بز", "290000"],
-    [
-      "/images/kife-narenji.jpg",
-      "کیف فانتزی هرمی دخترونه چرم طبیعی بز",
-      "290000",
-    ],
-  ];
   return (
     <section className="flex flex-col gap-3 border border-[#b1b1b1] rounded-xl sm:p-7 p-4">
       <div className="flex flex-row justify-between">
@@ -74,7 +44,7 @@ export default function ProductsCatalog({ products }) {
               <div className="flex gap-[10px] items-center">
                 <ProductTile
                   productId={item.id}
-                  image={item?.images[0]?.src || "/images/atr.jpg"}
+                  image={item?.images[0]?.src}
                   title={item.name}
                   price={item["regular_price"]}
                   onSalePrice={item["sale_price"]}
