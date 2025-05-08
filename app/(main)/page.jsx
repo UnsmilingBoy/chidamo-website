@@ -5,15 +5,7 @@ import SalesBox from "@/components/SalesBox/SalesBox";
 import StoriesSection from "@/components/StoriesSection/StoriesSection";
 import { searchForProduct } from "@/lib/fetchProducts";
 
-// async function getProducts() {
-//   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-//   const res = await fetch(baseUrl + "/api/products");
-//   const products = await res.json();
-//   return products.products;
-// }
-
 export default async function Home({ searchParams }) {
-  // const products = await getProducts();
   const { products } = await searchForProduct({ params: searchParams });
 
   return (

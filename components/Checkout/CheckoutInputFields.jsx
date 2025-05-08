@@ -55,6 +55,7 @@ export default function CheckOutInputFields({
   ];
 
   const provinceList = [
+    // { value: "select", label: "انتخاب استان..." },
     { value: "Tehran", label: "تهران" },
     { value: "Alborz", label: "البرز" },
     { value: "Isfahan", label: "اصفهان" },
@@ -89,16 +90,7 @@ export default function CheckOutInputFields({
 
   const [cities, setCities] = useState([]);
 
-  const [selectedProvince, setSelectedProvince] = useState(
-    provinceList[0].value
-  );
-  const [seletedCity, setSelectedCity] = useState(cities[0]);
-  const handleCitySelection = (e) => {
-    setSelectedCity(e.target.value);
-  };
-  const handleProvinceSelection = (e) => {
-    setSelectedProvince(e.target.value);
-  };
+  const filteredCities = cities.filter((city) => city.province === form.state);
 
   return (
     <div
@@ -119,6 +111,9 @@ export default function CheckOutInputFields({
           onChange={handleChange}
           className="border border-[#e2e2e2] rounded p-3 outline-none w-full"
         >
+          <option value="" disabled>
+            انتخاب استان...
+          </option>
           {provinceList.map((option) => (
             <option key={option.value} value={option.value}>
               {option.label}
@@ -132,7 +127,10 @@ export default function CheckOutInputFields({
           onChange={handleChange}
           className="border border-[#e2e2e2] rounded p-3 w-full outline-none"
         >
-          {cities.map((option, index) => (
+          <option value="" disabled>
+            انتخاب شهر...
+          </option>
+          {filteredCities.map((option, index) => (
             <option key={index} value={option.value}>
               {option.label}
             </option>

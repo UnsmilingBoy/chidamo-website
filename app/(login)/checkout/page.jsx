@@ -1,4 +1,3 @@
-import CartPricingInfo from "@/components/Cart/CartPricingInfo";
 import { getUserInfo } from "@/lib/fetchUserInfo";
 import { logoPicker } from "@/utils/SeasonChanger";
 import { ArrowRight, Truck } from "lucide-react";
@@ -47,7 +46,11 @@ export default async function Checkout() {
         </Link>
         <div className="w-28 h-1"></div>
       </div>
-      <SelectAddressBox address={user.billing["address_1"]} />
+      <SelectAddressBox
+        address={user.shipping["address_1"]}
+        fullAddress={user.shipping}
+        id={wpUser.id}
+      />
     </div>
   );
 }

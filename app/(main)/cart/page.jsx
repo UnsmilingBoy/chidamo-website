@@ -114,10 +114,10 @@ export default function Cart() {
                       </p>
                     </Link>
                     <div className="flex flex-col gap-2">
-                      <div className="flex gap-1 items-center">
+                      {/* <div className="flex gap-1 items-center">
                         <div className="w-1 h-1 p-[6px] bg-green-600 rounded-full"></div>
                         <p className="text-sm">سبز</p>
-                      </div>
+                      </div> */}
                       <p className="text-sm">7 روز تضمین بازگشت کالا</p>
                       <p className="text-sm">ارسال فروشنده</p>
                     </div>

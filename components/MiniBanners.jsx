@@ -5,10 +5,10 @@ import Link from "next/link";
 export default function MiniBanner() {
   let season = currentSeason();
   const banners = [
-    [`/images/category-minibanner-${season}-1.png`, "117"],
-    [`/images/category-minibanner-${season}-2.png`, "88"],
-    [`/images/category-minibanner-${season}-3.png`, "104"],
-    [`/images/category-minibanner-${season}-4.png`, "88"],
+    [`/images/category-minibanner-${season}-1.png`, "57"],
+    [`/images/category-minibanner-${season}-2.png`, "20"],
+    [`/images/category-minibanner-${season}-3.png`, "28"],
+    [`/images/category-minibanner-${season}-4.png`, "20"],
   ];
 
   return (

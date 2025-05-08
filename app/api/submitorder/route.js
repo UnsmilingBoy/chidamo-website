@@ -5,6 +5,7 @@ export async function POST(req) {
     const body = await req.json();
 
     const {
+      customer_id,
       billing,
       shipping,
       line_items,
@@ -29,6 +30,7 @@ export async function POST(req) {
           payment_method,
           payment_method_title,
           set_paid: true,
+          customer_id: customer_id,
           billing,
           shipping,
           line_items,
