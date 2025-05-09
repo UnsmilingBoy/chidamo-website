@@ -52,6 +52,13 @@ export default function CheckOutInputFields({
       value: form.postcode,
       name: "postcode",
     },
+
+    {
+      placeholder: "شماره همراه",
+      span: 2,
+      value: form.phone,
+      name: "phone",
+    },
   ];
 
   const provinceList = [

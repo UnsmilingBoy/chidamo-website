@@ -5,7 +5,7 @@ import { completeOrder } from "@/serverActions";
 import LoadingSpinner from "@/utils/loadingSpinner";
 import { toPersianPrice } from "@/utils/toPersianNumber";
 
-export default function CartPricingInfo({ completeOrderFunc }) {
+export default function CartPricingInfo({ completeOrderFunc, loading }) {
   const { cart, isLoading } = useCart();
   const totalPrice = cart.reduce(
     (total, item) => total + parseInt(item["regular_price"]) * item.quantity,
@@ -37,12 +37,21 @@ export default function CartPricingInfo({ completeOrderFunc }) {
           </p>
         )}
       </div>
-      <button
-        onClick={completeOrderFunc ? completeOrderFunc : completeOrder}
-        className="bg-primary font-[Shabnam] p-3 rounded-md my-3 text-white"
-      >
-        تکمیل سفارش
-      </button>
+      {loading ? (
+        <LoadingSpinner
+          className={"my-3"}
+          color={"primary"}
+          size={24}
+          border={3}
+        />
+      ) : (
+        <button
+          onClick={completeOrderFunc ? completeOrderFunc : completeOrder}
+          className="bg-primary font-[Shabnam] p-3 rounded-md my-3 text-white"
+        >
+          تکمیل سفارش
+        </button>
+      )}
     </div>
   );
 }

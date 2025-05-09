@@ -102,14 +102,14 @@ export default async function OrderPage({ params }) {
               rel="noopener noreferrer"
             >
               <div
-                className={`flex flex-row gap-2 items-center ${
+                className={`flex flex-row gap-4 items-center ${
                   !index == order["line_items"].length - 1 &&
                   "border-b border-[#BEBEBE]"
                 } p-5`}
               >
                 <Image
-                  src={product.image.src}
-                  className="w-[100px] sm:w-[150px]"
+                  src={product?.image?.src || "/images/no-image.jpg"}
+                  className="w-[100px] sm:w-[150px] rounded-md"
                   width={150}
                   height={50}
                   alt="Product Image"

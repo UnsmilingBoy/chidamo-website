@@ -7,9 +7,25 @@ import { useCart } from "@/context/CartContext";
 import CartPricingInfo from "@/components/Cart/CartPricingInfo";
 import Link from "next/link";
 
+async function submitOrder(order) {
+  const res = await fetch("/api/submitorder", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(order),
+  });
+
+  const data = await res.json();
+  if (!res.ok) {
+    throw new Error(data.error || "Order submission failed");
+  }
+
+  return { data: data, status: res.status };
+}
+
 export default function SelectAddressBox({ address, id, fullAddress }) {
   const [selected, setSelected] = useState(0);
   const { cart } = useCart();
+  const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
@@ -19,6 +35,7 @@ export default function SelectAddressBox({ address, id, fullAddress }) {
     city: "",
     state: "",
     postcode: "",
+    phone: "",
   });
 
   const handleChange = (e) => {
@@ -26,19 +43,41 @@ export default function SelectAddressBox({ address, id, fullAddress }) {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  function handleCompleteOrder() {
+  async function handleCompleteOrder() {
     let selectedAddress = selected ? form : fullAddress;
     if (selectedAddress == fullAddress) {
       if (fullAddress["address_1"]) {
-        console.log({
-          id: id,
+        setLoading(true);
+        const { data, status } = await submitOrder({
+          set_paid: false,
+          customer_id: id,
+          status: "pending",
+          billing: {
+            ...selectedAddress,
+          },
           shipping: {
             ...selectedAddress,
           },
-          line_items: {
-            ...cart,
-          },
+          line_items: cart.map((product) => {
+            return { product_id: product.id, quantity: product.quantity };
+          }),
         });
+        if (status == 200) {
+          console.log("DONE");
+        } else {
+          console.log("FAILED");
+        }
+        setLoading(false);
+
+        // console.log({
+        //   id: id,
+        //   shipping: {
+        //     ...selectedAddress,
+        //   },
+        //   line_items: {
+        //     ...cart,
+        //   },
+        // });
       } else {
         console.log("ERROR EMPTY ADDRESS");
       }
@@ -51,15 +90,34 @@ export default function SelectAddressBox({ address, id, fullAddress }) {
         }
       });
       if (!error) {
-        console.log({
-          id: id,
+        setLoading(true);
+        const { data, status } = await submitOrder({
+          set_paid: false,
+          customer_id: id,
+          status: "pending",
+          billing: {
+            first_name: form.firstName,
+            last_name: form.lastName,
+            phone: form.phone,
+          },
           shipping: {
-            ...selectedAddress,
+            first_name: form.firstName,
+            last_name: form.lastName,
+            address_1: `${form.address} پلاک ${form.pelak} واحد ${form.vahed}`,
+            city: form.city,
+            state: form.state,
+            postcode: form.postcode,
+            phone: form.phone,
+            country: "IR",
           },
-          line_items: {
-            ...cart,
-          },
+          line_items: cart.map((product) => {
+            return { product_id: product.id, quantity: product.quantity };
+          }),
         });
+
+        console.log(data);
+
+        setLoading(false);
       }
     }
   }
@@ -92,7 +150,10 @@ export default function SelectAddressBox({ address, id, fullAddress }) {
           handleChange={handleChange}
         />
       </div>
-      <CartPricingInfo completeOrderFunc={handleCompleteOrder} />
+      <CartPricingInfo
+        completeOrderFunc={handleCompleteOrder}
+        loading={loading}
+      />
     </div>
   );
 }

@@ -89,7 +89,7 @@ export default async function Orders() {
                 {order["line_items"].map((product, index) => (
                   <Image
                     key={index}
-                    src={product.image.src}
+                    src={product?.image?.src || "/images/no-image.jpg"}
                     width={100}
                     height={60}
                     alt="Product Picture"
