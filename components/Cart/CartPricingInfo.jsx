@@ -1,6 +1,7 @@
 "use client";
 
 import { useCart } from "@/context/CartContext";
+import { SHIPPING_PRICE } from "@/lib/consts";
 import { completeOrder } from "@/serverActions";
 import LoadingSpinner from "@/utils/loadingSpinner";
 import { toPersianPrice } from "@/utils/toPersianNumber";
@@ -12,7 +13,7 @@ export default function CartPricingInfo({ completeOrderFunc, loading }) {
     0
   );
 
-  const shippingPrice = 80000;
+  const shippingPrice = SHIPPING_PRICE;
   return (
     <div className="flex flex-col gap-3 p-5 w-full md:w-[400px] border border-gray-200 rounded-md h-fit">
       <div className="flex flex-row justify-between">

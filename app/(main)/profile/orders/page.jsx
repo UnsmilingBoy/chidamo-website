@@ -56,18 +56,28 @@ export default async function Orders() {
                     />
                     <p>تکمیل شده</p>
                   </div>
-                ) : order.status == "cancelled" ? (
+                ) : order.status == "pending" ? (
                   <div className="flex flex-row items-center gap-1">
                     <Image
                       src={"/images/returned-orders.svg"}
                       width={18}
                       height={20}
-                      alt="Done Orders"
+                      alt="pending orders"
                     />
-                    <p>لغو شده</p>
+                    <p>پرداخت نشده</p>
+                  </div>
+                ) : order.status == "processing" ? (
+                  <div className="flex flex-row items-center gap-1">
+                    <Image
+                      src={"/images/current-orders.svg"}
+                      width={22}
+                      height={22}
+                      alt="pending orders"
+                    />
+                    <p>در حال انجام</p>
                   </div>
                 ) : (
-                  <p>در حال انجام</p>
+                  <p>لغو شده</p>
                 )}
                 <ChevronLeft size={18} />
               </div>

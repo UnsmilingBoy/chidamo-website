@@ -6,6 +6,8 @@ import { useState } from "react";
 import { useCart } from "@/context/CartContext";
 import CartPricingInfo from "@/components/Cart/CartPricingInfo";
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import { SHIPPING_PRICE } from "@/lib/consts";
 
 async function submitOrder(order) {
   const res = await fetch("/api/submitorder", {
@@ -63,7 +65,21 @@ export default function SelectAddressBox({ address, id, fullAddress }) {
           }),
         });
         if (status == 200) {
-          console.log("DONE");
+          console.log(data);
+          const res = await fetch("/api/payment-get-id", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              amount: (totalPrice + shippingPrice) * 10,
+              factorId: data["order"]["id"],
+            }),
+          });
+
+          const bankId = await res.json();
+          if (!res.ok) {
+            throw new Error(bankId.error || "getting bank id failed");
+          }
+          redirect(`https://bitpay.ir/payment/gateway-${bankId}-get`);
         } else {
           console.log("FAILED");
         }
@@ -121,6 +137,14 @@ export default function SelectAddressBox({ address, id, fullAddress }) {
       }
     }
   }
+
+  const totalPrice = cart.reduce(
+    (total, item) => total + parseInt(item["regular_price"]) * item.quantity,
+    0
+  );
+
+  const shippingPrice = SHIPPING_PRICE;
+
   return (
     <div className="flex flex-col sm:flex-row gap-5">
       <div className="flex flex-col w-full border border-[#DEDEDE] gap-2 p-5 rounded-lg">
