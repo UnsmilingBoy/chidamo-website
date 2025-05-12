@@ -22,6 +22,7 @@ export async function POST(req, { params }) {
         reviewer: name,
         reviewer_email: email,
         rating: rating,
+        status: "hold",
       }),
     });
 

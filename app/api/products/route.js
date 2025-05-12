@@ -42,7 +42,7 @@ export async function GET(request) {
     // Construct the WooCommerce API URL with the category filter if provided
     let apiUrl = `${wooCommerceUrl}/wp-json/wc/v3/products`;
     if (queryParams.toString()) {
-      apiUrl += `?${queryParams.toString()}&per_page=12&_fields=id,name,date_created,date_modified,status,description,short_description,price,regular_price,sale_price,on_sale,total_sales,stock_quantity,average_rating,rating_count,images,attributes,related_ids,stock_status,chidamo-store-id`;
+      apiUrl += `?${queryParams.toString()}&per_page=12&_fields=id,name,date_created,date_modified,status,description,short_description,price,regular_price,sale_price,on_sale,total_sales,stock_quantity,average_rating,rating_count,images,attributes,related_ids,stock_status,chidamo-store-id&status=publish`;
     }
 
     const res = await fetchWithRetry(apiUrl, {
