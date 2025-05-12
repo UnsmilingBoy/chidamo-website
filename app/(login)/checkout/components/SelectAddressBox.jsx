@@ -7,7 +7,7 @@ import { useCart } from "@/context/CartContext";
 import CartPricingInfo from "@/components/Cart/CartPricingInfo";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { SHIPPING_PRICE } from "@/lib/consts";
+import { bankUrl, SHIPPING_PRICE } from "@/lib/consts";
 
 async function submitOrder(order) {
   const res = await fetch("/api/submitorder", {
@@ -79,7 +79,7 @@ export default function SelectAddressBox({ address, id, fullAddress }) {
           if (!res.ok) {
             throw new Error(bankId.error || "getting bank id failed");
           }
-          redirect(`https://bitpay.ir/payment/gateway-${bankId}-get`);
+          redirect(bankUrl(bankId));
         } else {
           console.log("FAILED");
         }
@@ -131,7 +131,25 @@ export default function SelectAddressBox({ address, id, fullAddress }) {
           }),
         });
 
-        console.log(data);
+        if (status == 200) {
+          console.log(data);
+          const res = await fetch("/api/payment-get-id", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              amount: (totalPrice + shippingPrice) * 10,
+              factorId: data["order"]["id"],
+            }),
+          });
+
+          const bankId = await res.json();
+          if (!res.ok) {
+            throw new Error(bankId.error || "getting bank id failed");
+          }
+          redirect(bankUrl(bankId));
+        } else {
+          console.log("FAILED");
+        }
 
         setLoading(false);
       }

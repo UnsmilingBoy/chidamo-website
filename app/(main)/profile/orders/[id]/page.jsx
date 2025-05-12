@@ -62,19 +62,19 @@ export default async function OrderPage({ params }) {
             <div className="flex flex-row gap-10 justify-start">
               <p>
                 تحویل گیرنده:{" "}
-                <span className="text-black font-medium">{`${order.billing["first_name"]} ${order.billing["last_name"]}`}</span>
+                <span className="text-black font-medium">{`${order.shipping["first_name"]} ${order.shipping["last_name"]}`}</span>
               </p>
               <p>
                 شماره موبایل:{" "}
                 <span className="text-black font-medium">
-                  {order.billing.phone}
+                  {order.shipping.phone}
                 </span>
               </p>
             </div>
             <p>
               آدرس:{" "}
               <span className="text-black font-medium">
-                {order.billing["address_1"]}
+                {order.shipping["address_1"]}
               </span>
             </p>
           </div>
