@@ -34,14 +34,11 @@ export default async function OrderResult({ params, searchParams }) {
     formData.append("api", process.env.BANK_API);
     formData.append("json", "1");
 
-    const res = await fetch(
-      "https://bitpay.ir/payment-test/gateway-result-second",
-      {
-        method: "POST",
-        body: formData,
-        cache: "no-store",
-      }
-    );
+    const res = await fetch("https://bitpay.ir/payment/gateway-result-second", {
+      method: "POST",
+      body: formData,
+      cache: "no-store",
+    });
 
     result = await res.json();
     if (result.status == 1) {
