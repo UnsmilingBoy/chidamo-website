@@ -1,4 +1,5 @@
 import localFont from "next/font/local";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import MiniLoader from "@/components/MiniLoader";
 import "@/styles/globals.css";
 
@@ -31,6 +32,7 @@ export default async function RootLayout({ children }) {
       <body>
         <MiniLoader />
         {children}
+        <SpeedInsights />
       </body>
     </html>
   );
