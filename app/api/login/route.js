@@ -29,7 +29,7 @@ export async function POST(req) {
         ...(process.env.NODE_ENV === "production" && {
           domain: ".chidamo.com",
         }), // Set domain only in production
-        maxAge: 5,
+        maxAge: 3600 * 24 * 30,
       });
 
       return NextResponse.json({ success: true, token: data.token });
