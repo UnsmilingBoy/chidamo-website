@@ -15,8 +15,8 @@ async function handleRedirect(req) {
   idGet = searchParams.get("id_get") || "";
   factorId = searchParams.get("factorId") || "";
 
-  const { origin } = new URL(req.url);
-  const redirectUrl = `${origin}/order-result/${factorId}?trans_id=${transId}&id_get=${idGet}`;
+  // const { origin } = new URL(req.url);
+  const redirectUrl = `https://www.chidamo.com/order-result/${factorId}?trans_id=${transId}&id_get=${idGet}`;
 
   return Response.redirect(redirectUrl, 302);
 }
