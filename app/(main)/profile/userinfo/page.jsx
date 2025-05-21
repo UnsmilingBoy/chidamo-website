@@ -66,17 +66,17 @@ export default async function UserInfo() {
               <span className="font-medium text-black">{user.email}</span>
             </p>
           </div>
-          <div className="flex flex-row items-center gap-2">
+          {/* <div className="flex flex-row items-center gap-2">
             <div className="p-3 bg-gray-100 rounded-full">
               <Phone />
             </div>
             <p className="text-gray-500">
               تلفن همراه:{" "}
               <span className="font-medium text-black">
-                {user?.billing?.phone || "شماره ای وارد نشده است."}
+                {user?.phone_number || "شماره ای وارد نشده است."}
               </span>
             </p>
-          </div>
+          </div> */}
           <div className="flex flex-row items-center gap-2">
             <div className="p-3 bg-gray-100 rounded-full">
               <UserSquareIcon />

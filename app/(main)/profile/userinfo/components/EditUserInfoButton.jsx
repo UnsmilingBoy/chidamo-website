@@ -1,4 +1,5 @@
 "use client";
+import LoadingSpinner from "@/utils/loadingSpinner";
 import { Info, X } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
@@ -46,7 +47,7 @@ export default function EditUserInfoButton({
     ["نام", inputFirstName, setFirstName],
     ["نام خانوادگی", inputLastName, setLastName],
     ["ایمیل", inputEmail, setEmail],
-    ["شماره همراه", inputPhone, setPhone],
+    // ["شماره همراه", inputPhone, setPhone],
   ];
 
   async function submitForm() {
@@ -126,12 +127,7 @@ export default function EditUserInfoButton({
                 className="p-2 bg-primary rounded-md text-white"
               >
                 {loading ? (
-                  <Image
-                    src={"/images/loading-gif.gif"}
-                    width={24}
-                    height={30}
-                    alt="Loading gif"
-                  />
+                  <LoadingSpinner size={20} color="white" />
                 ) : (
                   <p>ثبت تغییرات</p>
                 )}

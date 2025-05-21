@@ -1,4 +1,5 @@
 "use client";
+import LoadingSpinner from "@/utils/loadingSpinner";
 import { Edit, Info, X } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
@@ -156,12 +157,7 @@ export default function EditAddressButton({
                 className="p-2 bg-primary rounded-md text-white"
               >
                 {loading ? (
-                  <Image
-                    src={"/images/loading-gif.gif"}
-                    width={24}
-                    height={30}
-                    alt="Loading gif"
-                  />
+                  <LoadingSpinner size={20} color="white" />
                 ) : (
                   <p>ثبت تغییرات</p>
                 )}

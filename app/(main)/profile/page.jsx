@@ -89,7 +89,9 @@ export default async function profile() {
             <p className="text-gray-500">
               نام و نام خانوادگی:{" "}
               <span className="font-medium text-black">
-                {`${user["first_name"]} ${user["last_name"]}`}
+                {user["first_name"]
+                  ? `${user["first_name"]} ${user["last_name"]}`
+                  : "بدون نام"}
               </span>
             </p>
           </div>
@@ -99,7 +101,9 @@ export default async function profile() {
             </div>
             <p className="text-gray-500">
               ایمیل:{" "}
-              <span className="font-medium text-black">{user.email}</span>
+              <span className="font-medium text-black">
+                {user.email ? user.email : "بدون ایمیل"}
+              </span>
             </p>
           </div>
           <div className="flex flex-row items-center gap-2">
@@ -109,7 +113,7 @@ export default async function profile() {
             <p className="text-gray-500">
               تلفن همراه:{" "}
               <span className="font-medium text-black">
-                {user?.billing?.phone || "شماره ای وارد نشده است."}
+                {user?.phone_number || "شماره ای وارد نشده است."}
               </span>
             </p>
           </div>
