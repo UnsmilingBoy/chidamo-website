@@ -86,14 +86,31 @@ export default function PricingOverview({ product, isSticky, display }) {
         ) : (
           <div className="w-36"></div>
         )}
-        {product["stock_quantity"] > 0 && (
-          <div className="flex flex-row justify-end items-center gap-2">
-            <p className="font-medium text-2xl">
-              {toPersianPrice(product.price)}
-            </p>
-            <p className="text-sm">تومان</p>
-          </div>
-        )}
+        {product["stock_quantity"] > 0 ? (
+          product["on_sale"] ? (
+            <div className="flex flex-col gap-2">
+              <div className="flex flex-row justify-end items-center gap-2">
+                <p className="font-normal text-2xl text-gray-400 line-through">
+                  {toPersianPrice(product.regular_price)}
+                </p>
+                <p className="text-sm">تومان</p>
+              </div>
+              <div className="flex flex-row justify-end items-center gap-2">
+                <p className="font-medium text-2xl text-primary">
+                  {toPersianPrice(product.sale_price)}
+                </p>
+                <p className="text-sm">تومان</p>
+              </div>
+            </div>
+          ) : (
+            <div className="flex flex-row justify-end items-center gap-2">
+              <p className="font-medium text-2xl">
+                {toPersianPrice(product.price)}
+              </p>
+              <p className="text-sm">تومان</p>
+            </div>
+          )
+        ) : null}
       </div>
 
       {product["stock_quantity"] <= 0 ? (

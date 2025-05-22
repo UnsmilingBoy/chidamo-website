@@ -4,7 +4,7 @@ import { Info, X } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 
-const editAddress = async (id, firstName, lastName, phone, email) => {
+const editAddress = async (id, firstName, lastName, email) => {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   try {
     const response = await fetch(`${baseUrl}/api/edituserinfo/${id}`, {
@@ -13,7 +13,6 @@ const editAddress = async (id, firstName, lastName, phone, email) => {
       body: JSON.stringify({
         firstName,
         lastName,
-        phone,
         email,
       }),
     });
@@ -46,33 +45,23 @@ export default function EditUserInfoButton({
   const inputList = [
     ["نام", inputFirstName, setFirstName],
     ["نام خانوادگی", inputLastName, setLastName],
-    ["ایمیل", inputEmail, setEmail],
+    // ["ایمیل", inputEmail, setEmail],
     // ["شماره همراه", inputPhone, setPhone],
   ];
 
   async function submitForm() {
     if (
       inputFirstName == firstName &&
-      inputLastName == lastName &&
-      inputPhone == phone &&
-      inputEmail == email
+      inputLastName == lastName
+      // inputEmail == email
     ) {
       setError("تغییری صورت نگرفته است.");
-    } else if (inputFirstName == "" || inputPhone == "" || inputEmail == "") {
+    } else if (inputFirstName == "") {
       setError("لطفا همه ی فیلد ها را کامل کنید.");
-    } else if (inputPhone.length != 11 || inputPhone.slice(0, 2) != "09") {
-      console.log(inputPhone.slice(0, 2));
-      setError("شماره موبایل نامعتبر است. (مثلا: 09123456789)");
     } else {
       setLoading(true);
       setError("");
-      let response = await editAddress(
-        id,
-        inputFirstName,
-        inputLastName,
-        inputPhone,
-        inputEmail
-      );
+      let response = await editAddress(id, inputFirstName, inputLastName);
       setLoading(false);
       window.location.reload();
       setOverlay(false);

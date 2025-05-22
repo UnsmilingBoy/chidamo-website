@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 export async function POST(req, { params }) {
-  const { firstName, lastName, phone, email } = await req.json();
+  const { firstName, lastName } = await req.json();
   const baseUrl = process.env.BASE_URL;
   const consumerKey = process.env.CONSUMER_KEY;
   const consumerSecret = process.env.CONSUMER_SECRET;
@@ -19,10 +19,7 @@ export async function POST(req, { params }) {
       body: JSON.stringify({
         first_name: firstName,
         last_name: lastName,
-        email: email,
-        billing: {
-          phone: phone,
-        },
+        // email: email,
       }),
     });
 

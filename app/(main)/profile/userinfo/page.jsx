@@ -95,7 +95,9 @@ export default async function UserInfo() {
             <p className="text-gray-500">
               نوع کاربر:{" "}
               <span className="font-medium text-black">
-                {user?.role == "customer" ? "مشتری" : "فروشنده" || "بدون رول."}
+                {user?.role == "chidamo-seller"
+                  ? "فروشنده"
+                  : "مشتری" || "بدون رول."}
               </span>
             </p>
           </div>
