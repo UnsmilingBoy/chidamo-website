@@ -7,7 +7,7 @@ export default function BlogHeader() {
     <header className="w-full items-center p-3 shadow-md">
       <div className=" flex flex-row gap-2 max-w-[1350px] m-auto">
         <Image src={logoPicker()} alt="Logo" width={135} height={135} />
-        <div className="flex flex-row mx-5 bg-[#F0F0F0] rounded-xl items-center px-5 h-12">
+        <div className="hidden sm:flex flex-row mx-5 bg-[#F0F0F0] rounded-xl items-center px-5 h-12">
           <SearchIcon className="text-[#9C9D9E]" />
           <input
             //   onKeyDown={searchFunction}

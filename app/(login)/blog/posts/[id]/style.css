@@ -1,0 +1,20 @@
+.custom-content-style h2 {
+  font-size: 24px;
+  margin: 24px 0px;
+}
+
+.custom-content-style h3 {
+  font-size: 24px;
+  margin: 24px 0px;
+}
+
+.custom-content-style a {
+  color: green;
+  font-weight: 500;
+}
+
+.custom-content-style img {
+  margin: 20px auto;
+  width: fit-content;
+  height: fit-content;
+}

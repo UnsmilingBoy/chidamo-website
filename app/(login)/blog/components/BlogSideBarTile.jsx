@@ -1,10 +1,14 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 
-export default function BlogSideBarTile({ post, className }) {
+export default function BlogSideBarTile({ post, lastOne, className }) {
   return (
-    <div className={`flex flex-row border-b gap-5 pb-5`}>
+    <Link
+      href={`/blog/posts/${post.id}`}
+      className={`flex flex-row ${!lastOne && "border-b"} gap-5 pb-5`}
+    >
       <div className="w-[100px] h-[70px] aspect-video">
         <Image
           className={`w-full h-full object-cover rounded-sm`}
@@ -24,6 +28,6 @@ export default function BlogSideBarTile({ post, className }) {
           dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}
         />
       </div>
-    </div>
+    </Link>
   );
 }
