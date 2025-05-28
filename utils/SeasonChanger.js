@@ -1,5 +1,5 @@
 let month = new Date().getMonth();
-// month = 5; //For test
+month = 5; //For test
 
 export function primaryColor() {
   if (month >= 2 && month <= 4) {

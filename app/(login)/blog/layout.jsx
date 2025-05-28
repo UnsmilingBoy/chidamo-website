@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer/Footer";
 import BlogHeader from "./components/BlogHeader";
 
 export default function Layout({ children }) {
@@ -5,6 +6,7 @@ export default function Layout({ children }) {
     <div className="flex flex-col">
       <BlogHeader />
       {children}
+      <Footer />
     </div>
   );
 }

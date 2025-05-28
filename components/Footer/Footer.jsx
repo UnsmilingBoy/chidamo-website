@@ -19,7 +19,7 @@ export default function Footer({ categories }) {
   ];
 
   const quickAccess = [
-    // ["بلاگ", "/"],
+    ["بلاگ", "/blog"],
     ["خرید پوشاک", "/category/21"],
     ["محصولات هنری", "/category/26"],
     ["اکسسوری", "/category/20"],

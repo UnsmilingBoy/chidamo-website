@@ -7,7 +7,7 @@ export default async function Blog({ searchParams }) {
   const { page } = await searchParams;
   const currentPage = page || 1;
 
-  const { posts, pages } = await getPosts(currentPage);
+  const { posts, pages } = await getPosts({ page: currentPage });
 
   return (
     <div className="flex flex-col mt-1">
