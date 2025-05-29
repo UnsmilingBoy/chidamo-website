@@ -9,6 +9,12 @@ export default function Error({ error }) {
     console.error(error);
   }, [error]);
 
+  async function handleLogout() {
+    await fetch("/api/logout", { method: "POST" });
+    localStorage.setItem("cart", []);
+    window.location.reload();
+  }
+
   return (
     <div className="text-center gap-6 flex justify-center flex-col items-center py-10">
       <Image
@@ -22,7 +28,7 @@ export default function Error({ error }) {
       </h2>
       {/* <p className="text-gray-600 my-2">{error.message}</p> */}
       <button
-        onClick={() => window.location.reload()}
+        onClick={handleLogout}
         className="text-sm md:text-base px-3 py-2 bg-primary text-white rounded"
       >
         تلاش مجدد

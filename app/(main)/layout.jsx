@@ -5,7 +5,6 @@ import { AuthProvider } from "@/context/AuthContext";
 import { cookies } from "next/headers";
 import ExpandCollapseText from "@/components/HomeExpandableText";
 import { CartProvider } from "@/context/CartContext";
-import { fetchWithRetry } from "@/lib/fetchWithRetry";
 
 async function getCategories() {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
@@ -22,16 +21,31 @@ export default async function RootLayout({ children }) {
   let user = null;
 
   if (token) {
-    const res = await fetchWithRetry(
-      `${process.env.BASE_URL}/wp-json/wp/v2/users/me`,
-      {
-        headers: { Authorization: `Bearer ${token}` },
-        cache: "no-store",
-      }
-    );
+    try {
+      const res = await fetch(
+        `${process.env.BASE_URL}/wp-json/wp/v2/users/me`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+          cache: "no-store",
+        }
+      );
 
-    if (res.ok) {
-      user = await res.json();
+      if (res.ok) {
+        user = await res.json();
+      } else {
+        // Token is invalid, clear it using the logout API
+        await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/logout`, {
+          method: "POST",
+          cache: "no-store",
+        });
+      }
+    } catch (error) {
+      console.error("Error validating token:", error);
+      // In case of error, also clear the token
+      await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/logout`, {
+        method: "POST",
+        cache: "no-store",
+      });
     }
   }
 

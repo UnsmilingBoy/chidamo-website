@@ -18,13 +18,13 @@ export default async function profile() {
   let onGoing = 0;
 
   if (token) {
-    const res = await fetchWithRetry(
-      `${process.env.BASE_URL}/wp-json/wp/v2/users/me`,
-      {
-        headers: { Authorization: `Bearer ${token}` },
-        cache: "no-store",
-      }
-    );
+    const res = await fetch(`${process.env.BASE_URL}/wp-json/wp/v2/users/me`, {
+      headers: { Authorization: `Bearer ${token}` },
+      cache: "no-store",
+    });
+    if (!res.ok) {
+      console.log("CAT");
+    }
 
     if (res.ok) {
       user = await res.json();
