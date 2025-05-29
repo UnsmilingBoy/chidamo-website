@@ -23,7 +23,6 @@ export default function BlogPostsList({ posts, currentPage, pages }) {
         </div>
       ) : (
         <div className="flex flex-col gap-5">
-          <h1 className="font-medium text-xl py-3">جدیدترین مطالب</h1>
           <div className="flex flex-col gap-5">
             {posts.map((post, index) => (
               <BlogHomeTile key={index} post={post} />

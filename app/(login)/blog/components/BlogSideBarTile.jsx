@@ -12,7 +12,10 @@ export default function BlogSideBarTile({ post, lastOne, className }) {
       <div className="w-[100px] h-[70px] aspect-video">
         <Image
           className={`w-full h-full object-cover rounded-sm`}
-          src={post._embedded["wp:featuredmedia"][0].source_url}
+          src={
+            post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
+            "/images/no-image.jpg"
+          }
           alt="Post Picture"
           width={200}
           height={200}

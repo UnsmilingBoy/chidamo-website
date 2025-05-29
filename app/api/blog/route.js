@@ -13,7 +13,7 @@ export async function GET(request) {
     // Construct the WooCommerce API URL
     let apiUrl = `${wooCommerceUrl}/wp-json/wp/v2/posts?_embed&page=${page}`;
     if (queryParams.toString()) {
-      apiUrl += `?${queryParams.toString()}&per_page=12&_fields=id,name,date_created,date_modified,status,description,short_description,price,regular_price,sale_price,on_sale,total_sales,stock_quantity,average_rating,rating_count,images,attributes,related_ids,stock_status,chidamo-store-id&status=publish`;
+      apiUrl += `&${queryParams.toString()}`;
     }
 
     const res = await fetch(apiUrl, {
