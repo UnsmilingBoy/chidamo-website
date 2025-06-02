@@ -5,7 +5,7 @@ export function primaryColor() {
   if (month >= 2 && month <= 4) {
     return "#358838"; // Spring (March - May)
   } else if (month >= 5 && month <= 7) {
-    return "#007A78"; // Summer (June - August)
+    return "#C43E4F"; // Summer (June - August)
   } else if (month >= 8 && month <= 10) {
     return "#8c311c"; // Fall (September - November)
   } else {
@@ -16,7 +16,7 @@ export function footerColor() {
   if (month >= 2 && month <= 4) {
     return "#19401A"; // Spring (March - May)
   } else if (month >= 5 && month <= 7) {
-    return "#00403F"; // Summer (June - August)
+    return "#6D212B"; // Summer (June - August)
   } else if (month >= 8 && month <= 10) {
     return "#40160D"; // Fall (September - November)
   } else {
@@ -28,7 +28,7 @@ export function productPageLightPrimaryColor() {
   if (month >= 2 && month <= 4) {
     return "#F5FFF5"; // Spring (March - May)
   } else if (month >= 5 && month <= 7) {
-    return "#F5FFFF"; // Summer (June - August)
+    return "#FFEBED"; // Summer (June - August)
   } else if (month >= 8 && month <= 10) {
     return "#FFF7F5"; // Fall (September - November)
   } else {
@@ -40,7 +40,7 @@ export function logoPicker() {
   if (month >= 2 && month <= 4) {
     return "/images/spring-logo.svg"; // Spring (March - May)
   } else if (month >= 5 && month <= 7) {
-    return "/images/summer-2-logo.svg"; // Summer (June - August)
+    return "/images/summer-logo.svg"; // Summer (June - August)
   } else if (month >= 8 && month <= 10) {
     return "/images/autumn-logo.svg"; // Fall (September - November)
   } else {
