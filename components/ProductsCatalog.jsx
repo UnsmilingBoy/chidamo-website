@@ -18,9 +18,11 @@ export default function ProductsCatalog({ products }) {
         </p>
         <Link
           href={"/category/88"}
-          className="flex flex-row items-center gap-2 px-2 bg-primary rounded-md"
+          className="flex flex-row items-center gap-2"
         >
-          <p className="text-white text-sm md:text-base">مشاهده همه</p>
+          <p className="text-primary font-medium text-sm md:text-base">
+            مشاهده همه
+          </p>
           <Image
             src="/images/left-arrow.svg"
             width={5}

@@ -1,5 +1,5 @@
 let month = new Date().getMonth();
-month = 5; //For test
+// month = 5; //For test
 
 export function primaryColor() {
   if (month >= 2 && month <= 4) {
@@ -69,5 +69,17 @@ export function currentSeason() {
     return "autumn"; // Fall (September - November)
   } else {
     return "winter"; // Winter (December - February)
+  }
+}
+
+export function currentSeasonPersian() {
+  if (month >= 2 && month <= 4) {
+    return "بهاره"; // Spring (March - May)
+  } else if (month >= 5 && month <= 7) {
+    return "تابستانه"; // Summer (June - August)
+  } else if (month >= 8 && month <= 10) {
+    return "پاییزه"; // Fall (September - November)
+  } else {
+    return "زمستانه"; // Winter (December - February)
   }
 }

@@ -94,7 +94,7 @@ export default function CategoryFilters({
       className={`${
         overlayVersion ? "flex" : "hidden"
       } md:flex flex-col items-start ${
-        overlayVersion ? "w-full" : "w-[400px]"
+        overlayVersion ? "w-full" : "w-[300px]"
       } border border-[#d3d3d3] rounded-md h-fit`}
     >
       {!overlayVersion && (

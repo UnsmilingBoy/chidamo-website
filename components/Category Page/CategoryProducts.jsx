@@ -40,7 +40,7 @@ export default function CategoryProducts({
   return (
     <div className="flex flex-row gap-10">
       <CategoryFilters setLoading={setLoading} />
-      <div className="flex w-full flex-col gap-5 items-center">
+      <div className="flex flex-col gap-5 items-center w-full flex-1">
         {!hideSort && <CategorySortBy setLoading={setLoading} />}
         {!products.length ? (
           <div className="flex justify-center items-center w-full h-[50vh]">
