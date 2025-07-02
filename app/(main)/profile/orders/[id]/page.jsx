@@ -77,6 +77,17 @@ export default async function OrderPage({ params }) {
                 {order.shipping["address_1"]}
               </span>
             </p>
+            <p>
+              کد رهگیری پستی:{" "}
+              <span className="text-black font-medium">
+                {order.tracing_codes.map((obj, index) => (
+                  <span key={index}>
+                    {obj.code}
+                    {index < order.tracing_codes.length - 1 && ", "}
+                  </span>
+                ))}
+              </span>
+            </p>
           </div>
         </div>
         <div className="flex flex-col gap-3 p-5 text-sm text-gray-500 border-b border-[#bebebe]">
