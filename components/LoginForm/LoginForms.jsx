@@ -4,10 +4,9 @@ import LoginButton from "@/components/LoginButton";
 import { logoPicker } from "@/utils/SeasonChanger";
 import Image from "next/image";
 import { Suspense, useState } from "react";
+import { motion } from "framer-motion";
 
 export default function LoginPage() {
-  // const [username, setUsername] = useState("");
-  // const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
   const [otp, setOtp] = useState("");
 
@@ -15,8 +14,13 @@ export default function LoginPage() {
   const [verifyOtp, setVerifyOtp] = useState(false);
 
   return (
-    <div className="w-screen h-screen flex items-center justify-center">
-      <div className="flex flex-col items-center gap-14 border-2 border-[#DFDFDF] rounded-md p-10">
+    <div className="w-screen h-screen flex items-center justify-center p-5">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ type: "tween", stiffness: 300, damping: 20 }}
+        className="max-w-sm flex flex-col items-center gap-14 border-2 border-gray-200 rounded-md p-10 w-full"
+      >
         <Image src={logoPicker()} width={140} height={40} alt="Chidamo Logo" />
         <div className="flex flex-col items-start gap-3">
           <p className="">
@@ -58,7 +62,7 @@ export default function LoginPage() {
             </Suspense>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

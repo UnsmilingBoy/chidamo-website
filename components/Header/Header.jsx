@@ -20,6 +20,7 @@ import UserDropDown from "../UserDropDown";
 import { useAuth } from "@/context/AuthContext";
 import CartDropDown from "./CartDropDown";
 import { useMediaQuery } from "react-responsive";
+import { motion } from "framer-motion";
 
 export default function Header({ categories }) {
   const pathname = usePathname();
@@ -104,16 +105,25 @@ export default function Header({ categories }) {
         } flex flex-col w-full z-40 border-b border-[#dcdcdc]`}
       >
         <Ad />
+
+        {/* Mobile Header */}
+
         <div className="py-3 flex flex-col gap-3 px-6 md:px-10 bg-white md:hidden">
           <div className="w-full flex justify-between items-center">
             <Menu onClick={() => setIsOpen(true)} color="#666666" size={24} />
             <Link href="/">
-              <Image
-                src={logoPicker()}
-                alt="Logo with leaf"
-                width={110}
-                height={100}
-              />
+              <motion.div
+                initial={{ opacity: 0, y: 5 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ type: "spring", stiffness: 100, damping: 20 }}
+              >
+                <Image
+                  src={logoPicker()}
+                  alt="Logo with leaf"
+                  width={110}
+                  height={100}
+                />
+              </motion.div>
             </Link>
 
             {isFixed ? (
@@ -221,6 +231,9 @@ export default function Header({ categories }) {
             </div>
           )}
         </div>
+
+        {/* Desktop Header */}
+
         <div
           className={`${
             isFixed ? "py-3" : "py-5"
@@ -229,12 +242,19 @@ export default function Header({ categories }) {
           <div className="flex flex-row justify-between w-full m-auto xl:max-w-[1600px]">
             <div className="flex flex-row w-full md:w-auto items-center">
               <Link href="/">
-                <Image
-                  src={logoPicker()}
-                  alt="Logo with leaf"
-                  width={isMobile ? 100 : 135}
-                  height={100}
-                />
+                <motion.div
+                  initial={{ opacity: 0, y: 5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                >
+                  {" "}
+                  <Image
+                    src={logoPicker()}
+                    alt="Logo with leaf"
+                    width={isMobile ? 100 : 135}
+                    height={100}
+                  />
+                </motion.div>
               </Link>
               <div className="hidden md:flex flex-row mx-5 bg-[#F0F0F0] rounded-xl items-center px-5 h-12">
                 <SearchIcon className="text-[#9C9D9E]" />
