@@ -3,15 +3,21 @@
 import LoginButton from "@/components/LoginButton";
 import { logoPicker } from "@/utils/SeasonChanger";
 import Image from "next/image";
-import { Suspense, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function LoginPage() {
   const [phone, setPhone] = useState("");
   const [otp, setOtp] = useState("");
+  const focusNode = useRef(null);
 
   const [error, setError] = useState(false);
   const [verifyOtp, setVerifyOtp] = useState(false);
+
+  useEffect(() => {
+    focusNode.current.focus();
+  }, []);
 
   return (
     <div className="w-screen h-screen flex items-center justify-center p-5">
@@ -21,8 +27,18 @@ export default function LoginPage() {
         transition={{ type: "tween", stiffness: 300, damping: 20 }}
         className="max-w-sm flex flex-col items-center gap-14 border-2 border-gray-200 rounded-md p-10 w-full"
       >
-        <Image src={logoPicker()} width={140} height={40} alt="Chidamo Logo" />
-        <div className="flex flex-col items-start gap-3">
+        <Link href={"/"}>
+          <Image
+            src={logoPicker()}
+            width={140}
+            height={40}
+            alt="Chidamo Logo"
+          />
+        </Link>
+        <form
+          onSubmit={(e) => e.preventDefault()}
+          className="flex flex-col items-start gap-3"
+        >
           <p className="">
             {verifyOtp ? "کد ارسال شده را وارد کنید." : "ورود به حساب کاربری"}
           </p>
@@ -37,6 +53,7 @@ export default function LoginPage() {
             />
           ) : (
             <input
+              ref={focusNode}
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               className="outline-none w-72 p-3 rounded-md bg-[#F4F4F4]"
@@ -61,7 +78,7 @@ export default function LoginPage() {
               />
             </Suspense>
           </div>
-        </div>
+        </form>
       </motion.div>
     </div>
   );

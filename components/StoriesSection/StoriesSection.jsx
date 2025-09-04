@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function StoriesSection() {
   const data = [
@@ -12,10 +15,15 @@ export default function StoriesSection() {
   ];
 
   return (
-    <section className="flex flex-row justify-evenly my-10 w-full overflow-scroll gap-5 scrollbar-none">
+    <section className="flex flex-row justify-evenly items-center my-10 w-full overflow-scroll gap-5 scrollbar-none py-2">
       {data.map((item, index) => (
         <Link key={index} href={`/category/${item[2]}`}>
-          <div className="flex flex-col items-center gap-2">
+          <motion.div
+            className="flex flex-col items-center gap-2"
+            transition={{ type: "spring" }}
+            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.05 }}
+          >
             <div className="rounded-full w-[70px] h-[70px] md:w-24 md:h-24 overflow-hidden border-[2px] md:border-[3px] border-primary">
               <Image
                 className="object-cover w-full h-full rounded-full"
@@ -26,7 +34,7 @@ export default function StoriesSection() {
               />
             </div>
             <p className="text-sm text-center">{item[0]}</p>
-          </div>
+          </motion.div>
         </Link>
       ))}
     </section>

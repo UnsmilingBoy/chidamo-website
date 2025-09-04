@@ -7,6 +7,7 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import ProductTile from "../ProductTile";
 import { currentSeasonPersian } from "@/utils/SeasonChanger";
+import Link from "next/link";
 
 export default function SalesBox({ products }) {
   const offersData = [
@@ -48,7 +49,7 @@ export default function SalesBox({ products }) {
             تخفیفات {currentSeasonPersian()} چیدامو
           </p>
         </div>
-        <div className="flex flex-row gap-3">
+        <Link href={"/onsale"} className="flex flex-row gap-3 z-[999999]">
           <p className="hidden lg:block">نمایش همه</p>
           <Image
             src="/images/left-arrow.svg"
@@ -56,7 +57,7 @@ export default function SalesBox({ products }) {
             width={7}
             height={30}
           />
-        </div>
+        </Link>
       </div>
       <div className="relative w-full cursor-grab py-5 select-none">
         <Swiper

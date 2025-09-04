@@ -5,6 +5,7 @@ import { baseUrl } from "@/lib/baseUrl";
 import LoadingSpinner from "@/utils/loadingSpinner";
 import { redirect, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { motion, spring } from "framer-motion";
 
 const sendOtp = async (phone) => {
   try {
@@ -158,7 +159,11 @@ export default function LoginButton({
 
   return (
     <div className="flex flex-col gap-2">
-      <button
+      <motion.button
+        type="submit"
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.95 }}
+        transition={{ type: spring }}
         onClick={verifyOtp ? verifyOtpFunc : sendOtpFunc}
         className="bg-primary flex justify-center text-white w-full rounded-md py-3"
       >
@@ -169,7 +174,7 @@ export default function LoginButton({
         ) : (
           "ادامه"
         )}
-      </button>
+      </motion.button>
       {verifyOtp && (
         <div className="flex flex-row w-full gap-2">
           <button

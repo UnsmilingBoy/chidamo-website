@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function Footer({ categories }) {
   const isMobile = 0;
@@ -59,7 +60,10 @@ export default function Footer({ categories }) {
             height={40}
             alt="Footer Logo"
           />
-          <button
+          <motion.button
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            transition={{ type: "spring" }}
             onClick={scrollToTop}
             className="flex flex-row items-center p-3 md:p-4 bg-white text-black rounded-lg gap-2 md:gap-7"
           >
@@ -71,7 +75,7 @@ export default function Footer({ categories }) {
               height={15}
               alt="Arrow"
             />
-          </button>
+          </motion.button>
         </div>
         <div className="w-full h-[1px] my-7 bg-white"></div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 w-full gap-5 gap-y-16 justify-items-center">
@@ -111,7 +115,7 @@ export default function Footer({ categories }) {
       </div>
       <div className="flex justify-center items-center w-full h-14 bg-footer rounded-b-2xl">
         <p className="text-sm text-center">
-          1403 تمام حقوق مادی و معنوی این سایت متعلق به چیدامو می‌باشد.
+          1404 تمام حقوق مادی و معنوی این سایت متعلق به چیدامو می‌باشد.
         </p>
       </div>
     </footer>
